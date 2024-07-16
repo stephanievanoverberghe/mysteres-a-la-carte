@@ -1,0 +1,16 @@
+{
+    "name": "mysteres-a-la-carte",
+    "version": "1.0.0",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "sass": "sass -w src/sass:src/css"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "devDependencies": {
+        "sass": "^1.77.8"
+    }
+}

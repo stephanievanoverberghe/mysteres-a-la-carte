@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+a {
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+}
+
+/*# sourceMappingURL=style.css.map */
