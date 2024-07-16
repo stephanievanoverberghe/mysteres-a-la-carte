@@ -5,13 +5,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="src/css/style.css">
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/33a775bcdb.js" crossorigin="anonymous"></script>
     <title>Mystères à la carte</title>
 </head>
 
 <body>
-    <header></header>
+    <div class="container">
+        <header class="header">
+            <div class="header__img">
+                <img src="src/assets/logo/logo-mystere.png" alt="Logo Mystères à la carte" class="header__img--size">
+            </div>
+            <!-- HEADER DESKTOP -->
+            <ul class="header__nav">
+                <li><a href="#" class="nav__item active">Concept</a></li>
+                <li><a href="#" class="nav__item">Expérience</a></li>
+                <li><a href="#" class="nav__item">Menus</a></li>
+                <li><a href="#" class="nav__item">A propos</a></li>
+            </ul>
+            <button class="header__btn"><i class="fa-solid fa-check"></i>Réserver</button>
+            <!-- HEADER MOBILE -->
+            <div class="header__menu" id="menuTrigger">
+                <i class="fa fa-bars menu__icon"></i>
+                <i class="fa-solid fa-xmark menu__icon icon__hidden"></i>
+            </div>
+            <ul class="header__mobile" id="menu">
+                <li class="mobile__item"><a href="#" class="nav__item active">Concept</a></li>
+                <li class="mobile__item"><a href="#" class="nav__item">Expérience</a></li>
+                <li class="mobile__item"><a href="#" class="nav__item">Menus</a></li>
+                <li class="mobile__item"><a href="#" class="nav__item">A propos</a></li>
+                <button class="btn"><i class="fa-solid fa-check"></i>Réserver</button>
+            </ul>
+        </header>
+    </div>
     <main></main>
     <footer></footer>
+
+    <script src="src/js/menu-mobile.js"></script>
 </body>
 
 </html>

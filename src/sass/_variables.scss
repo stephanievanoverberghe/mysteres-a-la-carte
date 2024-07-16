@@ -1,0 +1,25 @@
+:root {
+    --beige: #f7f0e1;
+    --or: #faab0b;
+    --night-blue: #01264a;
+    --deep-dark: #090401;
+    --or-hover: #ffc247;
+    --or-active: #ffd47d;
+
+    @font-face {
+        font-family: 'Cinzel';
+        src: url(../assets/fonts/Cinzel-Bold.ttf) format('truetype');
+        font-weight: 700;
+    }
+
+    @font-face {
+        font-family: 'Comfortaa';
+        src: url(../assets/fonts/Comfortaa-Regular.ttf) format('truetype');
+        font-weight: 500;
+    }
+
+    --cinzel: 'Cinzel',
+    serif;
+    --comfortaa: 'Comfortaa',
+    sans-serif;
+}

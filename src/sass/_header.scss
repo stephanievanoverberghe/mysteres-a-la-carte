@@ -1,0 +1,127 @@
+@use 'media-queries' as *;
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 3.7rem;
+
+    @include lg {
+        align-items: center;
+    }
+
+    &__img--size {
+        height: 7.6rem;
+        width: 7.6rem;
+    }
+
+    &__nav {
+        display: none;
+
+        @include lg {
+            display: flex;
+            gap: 5rem;
+        }
+    }
+
+    &__btn {
+        display: none;
+        background-color: var(--or);
+        color: var(--night-blue);
+        font-weight: bold;
+        font-size: 1.6rem;
+        font-family: var(--comfortaa);
+        border: none;
+        border-radius: 0.5rem;
+        padding: 1.6rem 2.4rem;
+        cursor: pointer;
+
+        @include lg {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            &:hover {
+                background-color: var(--or-hover);
+                transition: background-color .3s ease-in-out;
+            }
+        }
+    }
+
+    &__menu {
+        font-size: 4rem;
+        color: var(--or);
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        @include lg {
+            display: none;
+        }
+    }
+
+    .icon__hidden {
+        position: absolute;
+        opacity: 0;
+        transform: rotate(90deg);
+        transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .icon__visible {
+        opacity: 1;
+        transform: rotate(0deg);
+        transition: opacity 0.3s, transform 0.3s;
+    }
+
+    &__mobile {
+        font-size: 1.5rem;
+        position: absolute;
+        z-index: 1;
+        top: 15rem;
+        left: 0;
+        right: 0;
+        width: 100%;
+        background-color: rgba(1, 38, 74, 0.5);
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem 0;
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: opacity 0.3s, transform 0.3s;
+        display: flex;
+        align-items: center;
+        text-align: center;
+
+        @include lg {
+            display: none;
+        }
+    }
+
+    .menu__visible {
+        opacity: 1;
+        transform: translateY(0);
+        display: flex;
+    }
+
+    .mobile__item {
+        width: 100%;
+        padding: 1rem 0;
+        background-color: rgba(1, 38, 74, 0.5);
+    }
+
+    .nav__item {
+        text-decoration: none;
+        text-transform: uppercase;
+        color: var(--beige);
+        font-family: var(--cinzel);
+        font-size: 1.6rem;
+        font-weight: 700;
+        padding: 0.3rem;
+
+        &:hover {
+            color: var(--or);
+            transition: color .3s ease-in-out;
+        }
+    }
+}
