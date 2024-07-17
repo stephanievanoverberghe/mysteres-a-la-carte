@@ -12,3 +12,37 @@
     background-position: center;
     background-repeat: no-repeat;
 }
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 5rem 1.2rem;
+    padding: 10rem 2.5rem 4rem 2.5rem;
+    border-radius: 5rem;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(1, 38, 74, 0.5) 44%, rgba(9, 4, 1, 0.5) 100%);
+
+    &__title {
+        font-family: var(--cinzel);
+        font-size: 2.7rem;
+        font-weight: 900;
+        color: var(--or);
+        margin-bottom: 4rem;
+    }
+
+    &__subtitle {
+        font-family: var(--cinzel);
+        font-size: 2rem;
+        font-weight: 900;
+        color: var(--beige);
+        margin-bottom: 2rem;
+    }
+
+    &__content {
+        font-size: 1.5rem;
+        color: var(--beige);
+        margin-bottom: 3.5rem;
+    }
+}
