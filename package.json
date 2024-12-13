@@ -1,0 +1,19 @@
+{
+    "name": "mysteres-a-la-carte",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview",
+        "sass": "sass --watch src/scss/index.scss:dist/style.css"
+    },
+    "devDependencies": {
+        "autoprefixer": "^10.4.20",
+        "eslint": "^9.16.0",
+        "prettier": "^3.4.2",
+        "sass": "^1.83.0",
+        "vite": "^6.0.1"
+    }
+}
