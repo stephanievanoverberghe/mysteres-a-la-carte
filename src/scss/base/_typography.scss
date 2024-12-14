@@ -1,0 +1,55 @@
+@use '../base/mixins' as media;
+
+body {
+    font-family: var(--font-text);
+    font-size: 12px;
+    color: var(--white);
+
+    @include media.md {
+        font-size: 14px;
+    }
+
+    @include media.lg {
+        font-size: 16px;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-title);
+    color: var(--yellow);
+}
+
+h1 {
+    font-size: 25px;
+
+    @include media.md {
+        font-size: 30px;
+    }
+
+    @include media.lg {
+        font-size: 48px;
+        letter-spacing: 10px;
+    }
+}
+
+h2 {
+    font-size: 20px;
+
+    @include media.md {
+        font-size: 23px;
+    }
+
+    @include media.lg {
+        font-size: 36px;
+    }
+}
+
+p,
+span {
+    line-height: 1.5;
+}

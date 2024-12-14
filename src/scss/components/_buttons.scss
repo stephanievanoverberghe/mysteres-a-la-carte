@@ -1,0 +1,30 @@
+@use '../base/mixins' as media;
+
+.btn {
+    background: var(--yellow);
+    border: none;
+    color: var(--blue);
+    border-radius: 5px;
+    padding: 14px 24px;
+    font-family: var(--text);
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+
+    @include media.md {
+        font-size: 14px;
+    }
+
+    @include media.lg {
+        font-size: 16px;
+    }
+
+    &:hover {
+        background-color: var(--yellow-light);
+        transition: background 0.3s ease-in-out;
+    }
+
+    i {
+        padding-right: 8px;
+    }
+}

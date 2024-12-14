@@ -1,0 +1,91 @@
+@use '../base/mixins' as media;
+
+.header {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--radial), url(/src/assets/images/hero.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &__nav {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 40px;
+    }
+
+    .nav {
+
+        &__items,
+        &__btn {
+            display: none;
+
+            @include media.lg {
+                display: flex;
+            }
+        }
+
+        &__items {
+            gap: 25px;
+        }
+    }
+
+    .item {
+        font-family: var(--font-title);
+        font-weight: 700;
+        padding: 5px;
+        cursor: pointer;
+
+        &:hover {
+            color: var(--yellow);
+            transition: color .3s ease-in-out;
+        }
+    }
+
+    &__menu {
+        font-size: 24px;
+        color: var(--yellow);
+
+        @include media.md {
+            font-size: 28px;
+        }
+
+        @include media.lg {
+            display: none;
+        }
+    }
+
+    &__hero {
+        background: var(--radial);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+        padding: 50px 25px;
+        border-radius: 50px;
+        margin: 0 10px;
+
+        @include media.md {
+            gap: 30px;
+            margin: 0 20px;
+        }
+
+        @include media.lg {
+            margin: auto;
+            width: 75%;
+        }
+    }
+
+    &__subtitle {
+        color: var(--white);
+    }
+}

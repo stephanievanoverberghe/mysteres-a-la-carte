@@ -4,34 +4,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Comfortaa:wght@300..700&display=swap"
+    rel="stylesheet">
+  <script src="https://kit.fontawesome.com/33a775bcdb.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="dist/style.css">
 
-  <title>Votre Projet</title>
+  <title>Mystères à la carte</title>
 </head>
 
 <body>
-  <header>
-    <div class="logo">Mystères à la Carte</div>
-    <nav class="nav">
-      <ul>
-        <li><a href="#concept">Le Concept</a></li>
-        <li><a href="#menus">Nos Menus</a></li>
-        <li><a href="#experience">Expérience</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+  <div class="container">
+    <header class="header">
+      <div class="header__nav">
+        <img src="./src/assets/images/logo.png" alt="Logo Mystères à la carte">
+        <ul class="nav__items">
+          <li class="item">Concept</li>
+          <li class="item">Expérience</li>
+          <li class="item">Menus</li>
+          <li class="item">A propos</li>
+        </ul>
+        <button class="btn nav__btn"><i class="fa-solid fa-check"></i>Réserver</button>
+        <i class="fa-solid fa-bars header__menu"></i>
+      </div>
+      <div class="header__hero">
+        <h1>Mystères à la carte</h1>
+        <h2 class="header__subtitle">Vivez une aventure gastronomique unique</h2>
+        <span>Un escape game où chaque plat vous rapproche de la solution.</span>
+        <button class="btn"><i class="fa-solid fa-check"></i>Réserver maintenant</button>
+      </div>
+    </header>
+    <main>
 
-  <main>
-    <section id="hero" class="hero">
-      <h1>Vivez une aventure gastronomique unique</h1>
-      <button class="btn">Réserver Maintenant</button>
-    </section>
-  </main>
+    </main>
 
-  <footer>
-    <p>&copy; 2024 Mystères à la Carte</p>
-  </footer>
+    <footer>
+
+    </footer>
+  </div>
+
 
   <script type="module" src="/src/js/index.js"></script>
 </body>
