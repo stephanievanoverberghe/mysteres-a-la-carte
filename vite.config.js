@@ -2,7 +2,6 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
     root: '.',
-    base: '/mysteres-a-la-carte/',
     build: {
         outDir: '../dist',
         emptyOutDir: true,

@@ -19,6 +19,7 @@ a {
   --yellow-light: #ffc44e;
   --blue-light: #213447;
   --radial: radial-gradient(50% 50% at 50% 50%, rgba(1, 38, 74, 0.5) 0%, rgba(9, 4, 1, 0.5) 100%);
+  --radial-background: radial-gradient(50% 50% at 50% 50%, #01264A 0%, #090401 100%);
   --font-title: "Cinzel", serif;
   --font-text: "Comfortaa", sans-serif;
 }
@@ -84,7 +85,7 @@ span {
 }
 
 body {
-  background-image: url("../../../public/bg-mobile.png");
+  background: var(--radial-background);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -95,7 +96,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: var(--radial), url("../../../public/hero.png");
+  background: var(--radial), url("/src/assets/images/hero.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
