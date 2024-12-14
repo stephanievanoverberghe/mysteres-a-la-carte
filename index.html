@@ -20,10 +20,10 @@
       <div class="header__nav">
         <img src="./src/assets/images/logo.png" alt="Logo Mystères à la carte">
         <ul class="nav__items">
-          <li class="item">Concept</li>
-          <li class="item">Expérience</li>
-          <li class="item">Menus</li>
-          <li class="item">A propos</li>
+          <li class="item"><a href="#concept">Concept</a></li>
+          <li class="item"><a href="#experience">Expérience</a></li>
+          <li class="item"><a href="#menus">Menus</a></li>
+          <li class="item"><a href="#about">À propos</a></li>
         </ul>
         <button class="btn nav__btn"><i class="fa-solid fa-check"></i>Réserver</button>
         <i class="fa-solid fa-bars header__menu"></i>
@@ -35,8 +35,42 @@
         <button class="btn"><i class="fa-solid fa-check"></i>Réserver maintenant</button>
       </div>
     </header>
-    <main>
-
+    <main class="main">
+      <section class="concept" id="concept">
+        <p>Alliez mystère et gastronomie pour une expérience unique</p>
+        <h2>Le concept</h2>
+        <ul class="concept__nav">
+          <li class="nav__item"><a class="link active" href="#">Description</a></li>
+          <li class="nav__item"><a class="link" href="#">Scénario</a></li>
+          <li class="nav__item"><a class="link" href="#">Principe du jeu</a></li>
+          <li class="nav__item"><a class="link" href="#">Déroulement d'une partie</a></li>
+          <li class="nav__item"><a class="link" href="#">Expérience sensorielle</a></li>
+        </ul>
+        <div class="concept__active">
+          <p>Mystères à la carte est un concept novateur qui combine l’excitation d’un escape game avec la
+            sophistication d’une expérience gastronomique.</p>
+          <p>Imaginez-vous plongé dans une ambiance mystérieuse, où chaque plat servi est une pièce du puzzle à
+            résoudre.</p>
+          <p>Ce projet unique transforme chaque repas en une aventure interactive où le goût et l’ingéniosité se
+            rencontrent.</p>
+          <div class="img">
+            <img src="./src/assets/images/concept/concept-01.jpg" alt="">
+            <img src="./src/assets/images/concept/concept-03.jpg" alt="">
+          </div>
+        </div>
+      </section>
+      <section class="menus" id="menus">
+        <h2>Nos menus</h2>
+      </section>
+      <section class="experience" id="experience">
+        <h2>Une expérience immersive</h2>
+      </section>
+      <section class="reservation" id="reservation">
+        <h2>Réservez votre aventure</h2>
+      </section>
+      <section class="about" id="about">
+        <h2>A propos de nous</h2>
+      </section>
     </main>
 
     <footer>

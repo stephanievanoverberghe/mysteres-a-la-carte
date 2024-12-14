@@ -18,3 +18,7 @@
 
 // Pages
 @use './pages/home';
+
+html {
+    scroll-behavior: smooth;
+}

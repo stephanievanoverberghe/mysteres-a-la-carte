@@ -1,0 +1,16 @@
+.container {
+
+    .main {
+        background: var(--radial);
+        padding: 40px 10px;
+
+        h2 {
+            font-size: 16px;
+            letter-spacing: 3px;
+        }
+
+        img {
+            max-width: 100%;
+        }
+    }
+}

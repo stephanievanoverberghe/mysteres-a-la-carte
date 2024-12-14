@@ -37,10 +37,11 @@
         }
     }
 
-    .item {
+    .item>a {
         font-family: var(--font-title);
         font-weight: 700;
         padding: 5px;
+        color: var(--white);
         cursor: pointer;
 
         &:hover {
