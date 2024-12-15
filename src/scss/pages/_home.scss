@@ -30,18 +30,6 @@
 
         img {
             max-width: 100%;
-
-            @include media.lg {
-                height: 200px;
-            }
-
-            @include media.xl {
-                height: 250px;
-            }
-
-            @include media.xxl {
-                height: 300px;
-            }
         }
 
         section {
@@ -58,6 +46,20 @@
     }
 
     .concept {
+
+        img {
+            @include media.lg {
+                height: 200px;
+            }
+
+            @include media.xl {
+                height: 250px;
+            }
+
+            @include media.xxl {
+                height: 300px;
+            }
+        }
 
         &__nav {
             display: flex;
@@ -130,6 +132,7 @@
         border-radius: 15px;
 
         @include media.lg {
+            position: relative;
             background: none;
             border-bottom: none;
             border-radius: 0;
@@ -146,6 +149,7 @@
                 color: var(--white);
                 transition: color 0.3s ease-in-out;
                 padding: 5px;
+                letter-spacing: 1px;
 
                 &:hover {
                     color: var(--yellow);
@@ -160,6 +164,16 @@
 
         @include media.lg {
             background: none;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 1px;
+                background-color: var(--yellow);
+            }
         }
 
         a {
@@ -168,6 +182,7 @@
 
             @include media.lg {
                 color: var(--yellow);
+
             }
         }
     }
