@@ -1,21 +1,55 @@
+@use '../base/mixins' as media;
+
 .container {
 
     .main {
         background: var(--radial);
         padding: 0 10px;
 
+        @include media.md {
+            padding: 0 30px;
+        }
+
+        @include media.lg {
+            padding: 0 100px;
+        }
+
+        @include media.xxl {
+            padding: 0 200px;
+        }
+
         h2 {
             font-size: 16px;
             letter-spacing: 3px;
             margin: 15px 0 30px 0;
+
+            @include media.md {
+                font-size: 22px;
+            }
         }
 
         img {
             max-width: 100%;
+
+            @include media.lg {
+                height: 200px;
+            }
+
+            @include media.xl {
+                height: 250px;
+            }
+
+            @include media.xxl {
+                height: 300px;
+            }
         }
 
         section {
-            padding: 40px 0;
+            padding-top: 40px;
+
+            @include media.md {
+                padding-top: 80px;
+            }
         }
 
         p {
@@ -29,6 +63,19 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
+
+            @include media.md {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                padding-bottom: 20px;
+            }
+
+            @include media.lg {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-around;
+            }
         }
 
         &__active {
@@ -40,16 +87,37 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 10px;
             margin-top: 20px;
+
+            @include media.lg {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        img {
+            object-fit: cover;
         }
     }
 
     .img {
         &__left {
             border-radius: 50px 0 0 50px;
+            justify-self: end;
+
         }
 
         &__right {
             border-radius: 0 50px 50px 0;
+            justify-self: start;
+        }
+
+        &__middle {
+            display: none;
+
+            @include media.lg {
+                display: block;
+                justify-self: center;
+                width: 100%;
+            }
         }
     }
 
@@ -61,10 +129,28 @@
         text-align: center;
         border-radius: 15px;
 
+        @include media.lg {
+            background: none;
+            border-bottom: none;
+            border-radius: 0;
+            border-right: none;
+            font-size: 14px;
+        }
+
         a {
             letter-spacing: 1.5px;
             color: var(--yellow);
             font-weight: 700;
+
+            @include media.lg {
+                color: var(--white);
+                transition: color 0.3s ease-in-out;
+                padding: 5px;
+
+                &:hover {
+                    color: var(--yellow);
+                }
+            }
         }
     }
 
@@ -72,11 +158,26 @@
         background: var(--yellow);
         color: var(--blue);
 
+        @include media.lg {
+            background: none;
+        }
+
         a {
             letter-spacing: 1.5px;
             color: var(--blue);
+
+            @include media.lg {
+                color: var(--yellow);
+            }
         }
     }
 
+    .pip {
+        display: none;
+
+        @include media.lg {
+            display: block;
+        }
+    }
 
 }

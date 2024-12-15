@@ -208,16 +208,56 @@ body {
   background: var(--radial);
   padding: 0 10px;
 }
+@media only screen and (min-width: 768px) {
+  .container .main {
+    padding: 0 30px;
+  }
+}
+@media only screen and (min-width: 1050px) {
+  .container .main {
+    padding: 0 100px;
+  }
+}
+@media only screen and (min-width: 1300px) {
+  .container .main {
+    padding: 0 200px;
+  }
+}
 .container .main h2 {
   font-size: 16px;
   letter-spacing: 3px;
   margin: 15px 0 30px 0;
 }
+@media only screen and (min-width: 768px) {
+  .container .main h2 {
+    font-size: 22px;
+  }
+}
 .container .main img {
   max-width: 100%;
 }
+@media only screen and (min-width: 1050px) {
+  .container .main img {
+    height: 200px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .container .main img {
+    height: 250px;
+  }
+}
+@media only screen and (min-width: 1300px) {
+  .container .main img {
+    height: 300px;
+  }
+}
 .container .main section {
-  padding: 40px 0;
+  padding-top: 40px;
+}
+@media only screen and (min-width: 768px) {
+  .container .main section {
+    padding-top: 80px;
+  }
 }
 .container .main p {
   margin-bottom: 10px;
@@ -226,6 +266,21 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+@media only screen and (min-width: 768px) {
+  .container .concept__nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding-bottom: 20px;
+  }
+}
+@media only screen and (min-width: 1050px) {
+  .container .concept__nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+  }
 }
 .container .concept__active {
   margin-top: 20px;
@@ -236,11 +291,31 @@ body {
   gap: 10px;
   margin-top: 20px;
 }
+@media only screen and (min-width: 1050px) {
+  .container .concept__img {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.container .concept img {
+  object-fit: cover;
+}
 .container .img__left {
   border-radius: 50px 0 0 50px;
+  justify-self: end;
 }
 .container .img__right {
   border-radius: 0 50px 50px 0;
+  justify-self: start;
+}
+.container .img__middle {
+  display: none;
+}
+@media only screen and (min-width: 1050px) {
+  .container .img__middle {
+    display: block;
+    justify-self: center;
+    width: 100%;
+  }
 }
 .container .nav__item {
   background: var(--blue);
@@ -250,18 +325,55 @@ body {
   text-align: center;
   border-radius: 15px;
 }
+@media only screen and (min-width: 1050px) {
+  .container .nav__item {
+    background: none;
+    border-bottom: none;
+    border-radius: 0;
+    border-right: none;
+    font-size: 14px;
+  }
+}
 .container .nav__item a {
   letter-spacing: 1.5px;
   color: var(--yellow);
   font-weight: 700;
 }
+@media only screen and (min-width: 1050px) {
+  .container .nav__item a {
+    color: var(--white);
+    transition: color 0.3s ease-in-out;
+    padding: 5px;
+  }
+  .container .nav__item a:hover {
+    color: var(--yellow);
+  }
+}
 .container .active {
   background: var(--yellow);
   color: var(--blue);
 }
+@media only screen and (min-width: 1050px) {
+  .container .active {
+    background: none;
+  }
+}
 .container .active a {
   letter-spacing: 1.5px;
   color: var(--blue);
+}
+@media only screen and (min-width: 1050px) {
+  .container .active a {
+    color: var(--yellow);
+  }
+}
+.container .pip {
+  display: none;
+}
+@media only screen and (min-width: 1050px) {
+  .container .pip {
+    display: block;
+  }
 }
 
 html {
