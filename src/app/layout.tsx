@@ -2,6 +2,11 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 import ScrollProgress from '@/components/ScrollProgress';
+import TopLoader from '@/components/TopLoader';
+import { ToastProvider } from '@/components/ToastProvider';
+import BackgroundFX from '@/components/BackgroundFX';
+import CursorGlow from '@/components/Cursor';
+import Splash from '@/components/Splash';
 
 export const metadata: Metadata = {
     title: 'Create Next App',
@@ -16,8 +21,14 @@ export default function RootLayout({
     return (
         <html lang="fr">
             <body>
-                <ScrollProgress />
-                {children}
+                <TopLoader />
+                <BackgroundFX />
+                <CursorGlow />
+                <ToastProvider>
+                    <Splash />
+                    <ScrollProgress />
+                    {children}
+                </ToastProvider>
             </body>
         </html>
     );

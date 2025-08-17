@@ -4,6 +4,8 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import BookingSuccess from '@/components/BookingSuccess';
+import { useToast } from './ToastProvider';
+import ScrollReveal from './ScrollReveal';
 
 /** Menus (ids stricts) */
 const MENUS = [
@@ -23,19 +25,18 @@ const formSchema = z.object({
     time: z.string().min(1, 'Heure requise'),
     people: z.number().int().min(1, 'Min 1').max(8, 'Max 8'),
     menuId: z.enum(MENU_IDS),
-    // ↓ Ces champs deviennent string à la sortie, mais le resolver les tape comme optionnels à l'entrée
     allergies: z.string().max(600).default(''),
     message: z.string().max(800).default(''),
     consent: z.boolean().refine((v) => v === true, { message: 'Consentement requis' }),
     bot: z.string().max(0).default(''), // honeypot
 });
-// IMPORTANT : on tape le form avec les TYPES D'ENTRÉE (input) pour matcher le resolver RHF
 type FormValues = z.input<typeof formSchema>;
 
 export default function BookingForm() {
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
     const [openSuccess, setOpenSuccess] = useState(false);
     const [last, setLast] = useState<Partial<FormValues>>({});
+    const { success, error } = useToast();
 
     const {
         register,
@@ -62,10 +63,11 @@ export default function BookingForm() {
     const onSubmit = async (data: FormValues) => {
         setStatus('loading');
         try {
-            // Honeypot: si rempli, on stoppe sans rien faire côté “réseau”
+            // Honeypot: si rempli, on “réussit” silencieusement
             if (data.bot) {
                 setStatus('success');
                 setOpenSuccess(true);
+                success('Demande envoyée', 'Nous confirmons sous 24 h ouvrées.');
                 reset({
                     name: '',
                     email: '',
@@ -103,6 +105,7 @@ export default function BookingForm() {
             setLast({ name: data.name, people: data.people, date: data.date, time: data.time });
             setStatus('success');
             setOpenSuccess(true);
+            success('Demande envoyée', 'Nous confirmons sous 24 h ouvrées.');
 
             reset({
                 name: '',
@@ -119,6 +122,7 @@ export default function BookingForm() {
             });
         } catch {
             setStatus('error');
+            error('Échec de l’envoi', 'Réessayez dans un instant.');
         }
     };
 
@@ -128,9 +132,11 @@ export default function BookingForm() {
         <section id="reserver" aria-labelledby="reserver-title" className="relative">
             <div className="container">
                 <div className="max-w-2xl">
-                    <h2 id="reserver-title" className="text-3xl md:text-4xl font-semibold">
-                        Réserver
-                    </h2>
+                    <ScrollReveal>
+                        <h2 id="reserver-title" className="text-3xl md:text-4xl font-semibold">
+                            Réserver
+                        </h2>
+                    </ScrollReveal>
                     <p className="mt-3 text-muted-foreground">Envoyez une demande — nous confirmons par email sous 24&nbsp;h ouvrées.</p>
                 </div>
 

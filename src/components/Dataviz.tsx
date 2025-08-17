@@ -1,6 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, LabelList } from 'recharts';
+import ScrollReveal from './ScrollReveal';
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -51,9 +52,11 @@ export default function Dataviz() {
             <div className="container">
                 <motion.div variants={containerV} initial="hidden" whileInView="show" viewport={{ once: true, margin: '-15% 0px -20% 0px' }}>
                     <motion.div variants={blockV} className="max-w-2xl">
-                        <h2 id="dv-title" className="text-3xl md:text-4xl font-semibold">
-                            Le saviez-vous&nbsp;?
-                        </h2>
+                        <ScrollReveal>
+                            <h2 id="dv-title" className="text-3xl md:text-4xl font-semibold">
+                                Le saviez-vous&nbsp;?
+                            </h2>
+                        </ScrollReveal>
                         <p className="mt-3 text-muted-foreground">
                             Chez nos joueurs tests, les <span className="text-foreground">indices gustatifs</span> sont les plus décisifs.
                         </p>

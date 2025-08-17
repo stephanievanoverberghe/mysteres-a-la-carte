@@ -1,6 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import { UtensilsCrossed } from 'lucide-react';
+import ScrollReveal from './ScrollReveal';
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -22,9 +23,11 @@ export default function Menus() {
         <section id="experiences" aria-labelledby="menus-title" className="relative">
             <div className="container">
                 <div className="max-w-2xl">
-                    <h2 id="menus-title" className="text-3xl md:text-4xl font-semibold">
-                        Nos expériences
-                    </h2>
+                    <ScrollReveal>
+                        <h2 id="menus-title" className="text-3xl md:text-4xl font-semibold">
+                            Nos expériences
+                        </h2>
+                    </ScrollReveal>
                     <p className="mt-3 text-muted-foreground">Quatre parcours à la carte. Choisissez votre mystère.</p>
                 </div>
 

@@ -3,6 +3,7 @@ import { motion, useMotionValue, useTransform, useReducedMotion } from 'framer-m
 import { useRef, useEffect } from 'react';
 import { ChevronDown } from 'lucide-react';
 import LiveSpots from '@/components/LiveSpots';
+import Magnetic from './Magnetic';
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -84,9 +85,11 @@ export default function Hero() {
 
                 {/* CTA */}
                 <motion.div variants={fadeUp} className="mt-8 flex flex-wrap items-center gap-4">
-                    <a href="#reserver" className="btn">
-                        Réserver maintenant
-                    </a>
+                    <Magnetic>
+                        <a href="#reserver" className="btn">
+                            Réserver maintenant
+                        </a>
+                    </Magnetic>
                     <a href="#cadeau" className="btn-ghost">
                         Offrir une carte cadeau
                     </a>

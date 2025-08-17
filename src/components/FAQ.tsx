@@ -2,6 +2,7 @@
 import { useState, type ReactNode } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, HelpCircle, Mail } from 'lucide-react';
+import ScrollReveal from './ScrollReveal';
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -64,9 +65,11 @@ export default function FAQ() {
                 <div className="flex items-start gap-3">
                     <HelpCircle className="mt-1 h-6 w-6 text-primary" />
                     <div className="max-w-2xl">
-                        <h2 id="faq-title" className="text-3xl md:text-4xl font-semibold">
-                            FAQ
-                        </h2>
+                        <ScrollReveal>
+                            <h2 id="faq-title" className="text-3xl md:text-4xl font-semibold">
+                                FAQ
+                            </h2>
+                        </ScrollReveal>
                         <p className="mt-3 text-muted-foreground">Les réponses aux questions les plus fréquentes.</p>
                     </div>
                 </div>

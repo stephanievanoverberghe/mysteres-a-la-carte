@@ -1,6 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import { Clock } from 'lucide-react';
+import ScrollReveal from './ScrollReveal';
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -23,9 +24,11 @@ export default function Steps() {
             <div className="container">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
                     <div className="max-w-2xl">
-                        <h2 id="steps-title" className="text-3xl md:text-4xl font-semibold">
-                            À quoi vous attendre
-                        </h2>
+                        <ScrollReveal>
+                            <h2 id="steps-title" className="text-3xl md:text-4xl font-semibold">
+                                À quoi vous attendre
+                            </h2>
+                        </ScrollReveal>
                         <p className="mt-3 text-muted-foreground">Une progression en 4 temps pour savourer l’enquête.</p>
                     </div>
                     <div className="inline-flex items-center gap-2 rounded-xl border border-muted bg-background/60 px-3 py-2 text-sm text-muted-foreground">

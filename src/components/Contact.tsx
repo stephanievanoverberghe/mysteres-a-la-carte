@@ -1,6 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import { MapPin, Mail, Phone, Clock, Train, Car, Navigation } from 'lucide-react';
+import ScrollReveal from './ScrollReveal';
 
 const ease = [0.22, 1, 0.36, 1] as const;
 const containerV = { hidden: {}, show: { transition: { staggerChildren: 0.06 } } };
@@ -34,9 +35,11 @@ export default function Contact() {
                     <motion.div variants={blockV} className="flex items-start gap-3">
                         <MapPin className="mt-1 h-6 w-6 text-primary" />
                         <div className="max-w-2xl">
-                            <h2 id="contact-title" className="text-3xl md:text-4xl font-semibold">
-                                Contact & Accès
-                            </h2>
+                            <ScrollReveal>
+                                <h2 id="contact-title" className="text-3xl md:text-4xl font-semibold">
+                                    Contact & Accès
+                                </h2>
+                            </ScrollReveal>
                             <p className="mt-3 text-muted-foreground">Retrouvez-nous à Bastille. Écrivez-nous ou réservez votre table.</p>
                         </div>
                     </motion.div>

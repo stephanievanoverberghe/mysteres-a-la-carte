@@ -1,6 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import { Lightbulb, UtensilsCrossed, Users } from 'lucide-react';
+import ScrollReveal from './ScrollReveal';
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -37,9 +38,11 @@ export default function Concept() {
         <section id="concept" aria-labelledby="concept-title" className="relative">
             <div className="container">
                 <div className="max-w-2xl">
-                    <h2 id="concept-title" className="text-3xl md:text-4xl font-semibold">
-                        Le concept
-                    </h2>
+                    <ScrollReveal>
+                        <h2 id="concept-title" className="text-3xl md:text-4xl font-semibold">
+                            Le concept
+                        </h2>
+                    </ScrollReveal>
                     <p className="mt-3 text-muted-foreground">Une expérience immersive qui mêle jeu d’enquête et gastronomie. 60 à 90 minutes, difficulté modulable.</p>
                 </div>
 
