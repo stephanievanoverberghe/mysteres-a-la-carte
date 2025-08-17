@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+/* ---- Thème (Tailwind v4 via @theme inline) ---- */
+@theme inline {
+  --color-background: #0B0B0E;
+  --color-foreground: #EDE9E0;
+
+  --color-primary: #D4AF37;
+  --color-primary-foreground: #0B0B0E;
+
+  --color-accent: #0F1A1A;
+  --color-accent-foreground: #EDE9E0;
+
+  --color-muted: #1A1A1F;
+  --color-muted-foreground: #C8C8CC;
+
+  --radius-xl: 0.75rem;
+}
+
+/* ---- Base ---- */
+:root {
+  color-scheme: dark;
+  /* Si tu utilises les polices Next (geist) tu peux garder ces variables : */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html,
+body {
+  height: 100%;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans, Arial), Helvetica, sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* ---- Utilitaires utiles au projet ---- */
+.container {
+  @apply mx-auto max-w-6xl px-4;
+}
+
+.btn {
+  @apply inline-flex items-center gap-2 rounded-xl border border-primary px-5 py-3 font-semibold tracking-wide transition hover:bg-primary hover:text-primary-foreground;
+}
+
+.shadow-soft {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
+}
