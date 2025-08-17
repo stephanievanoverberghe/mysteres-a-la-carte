@@ -2,7 +2,7 @@
 import { useState, type ReactNode } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, HelpCircle, Mail } from 'lucide-react';
-import ScrollReveal from './ScrollReveal';
+import ScrollReveal from './FX/UI/ScrollReveal';
 
 const ease = [0.22, 1, 0.36, 1] as const;
 

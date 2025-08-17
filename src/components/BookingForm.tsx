@@ -4,8 +4,8 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import BookingSuccess from '@/components/BookingSuccess';
-import { useToast } from './ToastProvider';
-import ScrollReveal from './ScrollReveal';
+import { useToast } from './FX/UI/ToastProvider';
+import ScrollReveal from './FX/UI/ScrollReveal';
 
 /** Menus (ids stricts) */
 const MENUS = [

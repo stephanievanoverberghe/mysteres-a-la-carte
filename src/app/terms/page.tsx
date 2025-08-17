@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 const SITE = {
     name: 'Mystères à la carte',
     nature: 'Site démo one-page à des fins de portfolio (aucune activité commerciale).',
-    owner: 'Alchimiste Créations / Vanoverberghe Stéphanie',
-    address: 'Bastille, 75011 Paris, France',
+    owner: 'Alchimiste Créations / Stéphanie Vanoverberghe',
+    address: '59000 Lille, France',
     email: 'orangestreet@live.fr',
     phone: '+33 1 23 45 67 89',
     lastUpdate: '17/08/2025',

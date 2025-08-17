@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
 import './globals.css';
 
-import ScrollProgress from '@/components/ScrollProgress';
-import TopLoader from '@/components/TopLoader';
-import { ToastProvider } from '@/components/ToastProvider';
-import BackgroundFX from '@/components/BackgroundFX';
-import CursorGlow from '@/components/Cursor';
-import Splash from '@/components/Splash';
+import ScrollProgress from '@/components/FX/UI/ScrollProgress';
+import TopLoader from '@/components/FX/UI/TopLoader';
+import { ToastProvider } from '@/components/FX/UI/ToastProvider';
+import BackgroundFX from '@/components/FX/UI/BackgroundFX';
+import CursorGlow from '@/components/FX/UI/CursorGlow';
+import Splash from '@/components/FX/UI/Splash';
 
 export const metadata: Metadata = {
     title: 'Create Next App',

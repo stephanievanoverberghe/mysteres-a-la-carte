@@ -11,7 +11,7 @@ const SITE = {
     name: 'Mystères à la carte',
     nature: 'Site démo one-page à des fins de portfolio (aucune activité commerciale).',
     owner: 'Alchimiste Créations / Stéphanie Vanoverberghe',
-    address: 'Bastille, 75011 Paris, France',
+    address: '59000 Lille, France',
     email: 'orangestreet@live.fr',
     phone: '+33 1 23 45 67 89',
     host: {
