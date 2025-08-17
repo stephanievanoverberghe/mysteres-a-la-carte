@@ -92,7 +92,7 @@ export function useToast() {
 function ToastCard({ t, onClose }: { t: ToastItem; onClose: () => void }) {
     const { title, description, variant = 'default', actionLabel, onAction } = t;
 
-    const colors: Record<Variant, { ring: string; icon: ReactNode }> = {
+    const colors: Record<Variant, { ring: string; icon: React.ReactNode }> = {
         default: {
             ring: 'border-muted',
             icon: <Info className="h-5 w-5 text-muted-foreground" />,
