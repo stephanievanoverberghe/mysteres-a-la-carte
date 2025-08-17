@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import './globals.css';
 
 import ScrollProgress from '@/components/FX/UI/ScrollProgress';
@@ -8,16 +9,26 @@ import CursorGlow from '@/components/FX/UI/CursorGlow';
 import Splash from '@/components/FX/UI/Splash';
 import SkipLink from '@/components/SkipLink';
 
-export const metadata = {
+export const metadata: Metadata = {
     metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://mysteres-a-la-carte.vercel.app/'),
     title: { default: 'Mystères à la carte', template: '%s — Mystères à la carte' },
     description: 'Escape game culinaire à Bastille. Démo one-page pour portfolio.',
     openGraph: {
         type: 'website',
+        url: '/',
         siteName: 'Mystères à la carte',
+        images: [
+            {
+                url: '/og.png',
+                width: 1200,
+                height: 630,
+                alt: 'Mystères à la carte — Résolvez l’énigme. Dégustez la solution.',
+            },
+        ],
     },
     twitter: {
         card: 'summary_large_image',
+        images: ['/og.png'],
     },
 };
 
