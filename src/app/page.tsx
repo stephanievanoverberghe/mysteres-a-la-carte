@@ -17,25 +17,25 @@ export default function HomePage() {
                 <section id="hero">
                     <Hero />
                 </section>
-                <section id="concept" className="container py-24">
+                <section id="concept" className="md:py-24 py-14">
                     <Concept />
                 </section>
-                <section id="experiences" className="container py-24">
+                <section id="experiences" className="md:py-24 py-14">
                     <Menus />
                 </section>
-                <section id="steps" className="container py-24 bg-muted/30">
+                <section id="steps" className="md:py-24 py-14 bg-muted/30">
                     <Steps />
                 </section>
-                <section id="dataviz" className="container py-24">
+                <section id="dataviz" className="md:py-24 py-14">
                     <Dataviz />
                 </section>
-                <section id="reserver" className="container py-24 bg-muted/30">
+                <section id="reserver" className="md:py-24 py-14 bg-muted/30">
                     <BookingForm />
                 </section>
-                <section id="faq" className="container py-24">
+                <section id="faq" className="md:py-24 py-14">
                     <FAQ />
                 </section>
-                <section id="contact" className="container py-24 bg-muted/30">
+                <section id="contact" className="md:py-24 py-14 bg-muted/30">
                     <Contact />
                 </section>
             </main>

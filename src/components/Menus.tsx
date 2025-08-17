@@ -74,12 +74,16 @@ export default function Menus() {
                                 </div>
                             )}
 
-                            <div className="mt-6 flex items-center justify-between">
-                                <a href="#reserver" className="btn">
+                            {/* Actions : mobile = colonne + full width + centré ; desktop = ligne */}
+                            <div className="mt-6 flex flex-col items-stretch gap-3 md:flex-row md:items-center md:justify-between">
+                                <a href="#reserver" className="btn w-full justify-center md:w-auto">
                                     <UtensilsCrossed className="h-4 w-4" />
                                     Choisir ce menu
                                 </a>
-                                <a href="#concept" className="text-sm underline underline-offset-4 text-muted-foreground hover:text-primary">
+                                <a
+                                    href="#concept"
+                                    className="inline-flex w-full items-center justify-center text-sm underline underline-offset-4 text-muted-foreground hover:text-primary md:w-auto"
+                                >
                                     Voir le concept
                                 </a>
                             </div>
