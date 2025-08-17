@@ -104,9 +104,9 @@ export default function Footer() {
                     >
                         <h4 className="font-medium">Légal</h4>
                         <ul className="mt-3 space-y-2 text-muted-foreground">
-                            <Li href="/mentions-legales">Mentions légales</Li>
-                            <Li href="/cgv">CGV</Li>
-                            <Li href="/confidentialite">Confidentialité</Li>
+                            <Li href="/legal-notice">Mentions légales</Li>
+                            <Li href="/terms">CGV</Li>
+                            <Li href="/privacy-policy">Confidentialité</Li>
                         </ul>
                     </motion.nav>
                 </div>
