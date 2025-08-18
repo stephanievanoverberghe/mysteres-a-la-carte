@@ -25,7 +25,7 @@ export default function Footer() {
                 {/* ligne d’accent */}
                 <div className="h-px w-full bg-[linear-gradient(90deg,transparent,rgba(212,175,55,0.6),transparent)]" />
 
-                <div className="grid grid-cols-1 lg:grid-cols-4 gap-10 py-12">
+                <div className="grid grid-cols-1 lg:grid-cols-4 gap-10 py-12 text-center md:text-left">
                     {/* Brand + pitch */}
                     <motion.div
                         initial={{ opacity: 0, y: 12 }}
@@ -41,7 +41,7 @@ export default function Footer() {
                         </p>
 
                         {/* Newsletter (console log en MVP) */}
-                        <form onSubmit={submit} className="mt-6 flex gap-3">
+                        <form onSubmit={submit} className="mt-6 flex flex-col md:flex-row gap-3">
                             <label htmlFor="nl" className="sr-only">
                                 Votre email
                             </label>
@@ -54,7 +54,7 @@ export default function Footer() {
                                 className="min-w-0 flex-1 rounded-xl border border-muted bg-background/60 px-3 py-2"
                                 autoComplete="email"
                             />
-                            <button type="submit" className="btn inline-flex items-center gap-2">
+                            <button type="submit" className="btn inline-flex items-center gap-2  w-full justify-center md:w-auto cursor-pointer">
                                 <Mail className="h-4 w-4" />
                                 S’abonner
                             </button>
@@ -62,7 +62,7 @@ export default function Footer() {
                         {sent && <p className="mt-2 text-sm text-green-400">Merci ! Vous recevrez nos prochaines dates.</p>}
 
                         {/* Réseaux */}
-                        <div className="mt-6 flex items-center gap-3">
+                        <div className="mt-6 flex items-center justify-center md:justify-start gap-3">
                             <Social href="https://instagram.com" label="Instagram">
                                 <Instagram className="h-5 w-5" />
                             </Social>
@@ -112,7 +112,7 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom bar */}
-                <div className="flex flex-col gap-4 border-t border-muted/60 py-6 md:flex-row md:items-center md:justify-between text-sm">
+                <div className="flex flex-col gap-4 border-t border-muted/60 py-6 md:flex-row md:items-center md:justify-between text-sm text-center md:text-left">
                     <p className="text-muted-foreground">© {year} Mystères à la carte — Tous droits réservés.</p>
                     <div className="flex items-center gap-3">
                         <a href="#top" className="inline-flex items-center gap-2 underline underline-offset-4 hover:text-primary">

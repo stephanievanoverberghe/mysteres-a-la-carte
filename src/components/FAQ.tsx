@@ -84,12 +84,12 @@ export default function FAQ() {
                 </div>
 
                 {/* CTA contact */}
-                <div className="mt-10 flex items-center gap-3 text-sm">
-                    <a href="#contact" className="btn">
+                <div className="mt-10 flex flex-col items-stretch gap-3 md:flex-row md:items-center md:justify-between text-sm">
+                    <a href="#contact" className="btn w-full justify-center md:w-auto">
                         <Mail className="h-4 w-4" />
                         Nous contacter
                     </a>
-                    <span className="text-muted-foreground">Toujours une question&nbsp;? On vous répond rapidement.</span>
+                    <span className="text-muted-foreground text-center md:text-left">Toujours une question&nbsp;? On vous répond rapidement.</span>
                 </div>
             </div>
 

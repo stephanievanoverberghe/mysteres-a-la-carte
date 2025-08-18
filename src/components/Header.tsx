@@ -56,7 +56,7 @@ export default function Header() {
                 </Link>
 
                 {/* Nav desktop */}
-                <nav className="hidden md:flex items-center gap-6" aria-label="Navigation principale">
+                <nav className="hidden lg:flex items-center gap-6" aria-label="Navigation principale">
                     {NAV.map((item) => (
                         <a
                             key={item.href}
@@ -80,7 +80,7 @@ export default function Header() {
 
                 {/* Bouton mobile */}
                 <button
-                    className="md:hidden p-2 rounded-xl border border-muted hover:bg-muted/20"
+                    className="lg:hidden p-2 rounded-xl border border-muted hover:bg-muted/20"
                     onClick={() => setOpen((v) => !v)}
                     aria-label="Ouvrir le menu"
                     aria-expanded={open}
@@ -93,7 +93,7 @@ export default function Header() {
             {/* Nav mobile */}
             <div
                 id="mobile-nav"
-                className={`md:hidden overflow-hidden border-t border-muted bg-background transition-[max-height,opacity]
+                className={`lg:hidden overflow-hidden border-t border-muted bg-background transition-[max-height,opacity]
         ${open ? 'max-h-[480px] opacity-100' : 'max-h-0 opacity-0'}`}
             >
                 <div className="container flex flex-col gap-2 py-4">

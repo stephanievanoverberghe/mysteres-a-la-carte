@@ -1,12 +1,12 @@
 'use client';
 import { motion, useMotionValue, useTransform, useReducedMotion } from 'framer-motion';
 import { useRef, useEffect } from 'react';
+import Image from 'next/image';
 import { ChevronDown } from 'lucide-react';
 import LiveSpots from '@/components/LiveSpots';
 import Magnetic from './FX/UI/Magnetic';
 
 const ease = [0.22, 1, 0.36, 1] as const;
-
 const containerV = { hidden: {}, show: { transition: { staggerChildren: 0.08 } } };
 const fadeUp = { hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0, transition: { duration: 0.6, ease } } };
 
@@ -16,50 +16,71 @@ export default function Hero() {
     const rootRef = useRef<HTMLDivElement>(null);
     const mx = useMotionValue(0);
     const my = useMotionValue(0);
-
     useEffect(() => {
         const el = rootRef.current;
         if (!el || prefersReducedMotion) return;
         const onMove = (e: MouseEvent) => {
-            const rect = el.getBoundingClientRect();
-            const x = (e.clientX - rect.left) / rect.width;
-            const y = (e.clientY - rect.top) / rect.height;
-            mx.set(x * 2 - 1);
-            my.set(y * 2 - 1);
+            const r = el.getBoundingClientRect();
+            mx.set(((e.clientX - r.left) / r.width) * 2 - 1);
+            my.set(((e.clientY - r.top) / r.height) * 2 - 1);
         };
         el.addEventListener('mousemove', onMove);
         return () => el.removeEventListener('mousemove', onMove);
     }, [prefersReducedMotion, mx, my]);
 
-    const orb1x = useTransform(mx, (v) => v * 20);
-    const orb1y = useTransform(my, (v) => v * 10);
-    const orb2x = useTransform(mx, (v) => v * -15);
-    const orb2y = useTransform(my, (v) => v * 8);
+    const bgX = useTransform(mx, (v) => v * 10);
+    const bgY = useTransform(my, (v) => v * 6);
 
     return (
-        <div ref={rootRef} className="relative isolate overflow-hidden">
+        <section id="hero" ref={rootRef} className="relative isolate overflow-hidden">
+            {/* Image de fond */}
+            <motion.div aria-hidden className="absolute inset-0 -z-20 will-change-transform" style={{ x: prefersReducedMotion ? 0 : bgX, y: prefersReducedMotion ? 0 : bgY }}>
+                <Image src="/hero.png" alt="" fill priority fetchPriority="high" sizes="100vw" className="object-cover scale-[1.03]" />
+            </motion.div>
+
+            {/* Scrims + glow + grain */}
+            <div
+                aria-hidden
+                className="absolute inset-0 -z-10"
+                style={{ background: 'linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.25) 35%, rgba(0,0,0,0.55) 100%)' }}
+            />
+            <div
+                aria-hidden
+                className="pointer-events-none absolute -top-24 -left-24 h-[42rem] w-[42rem] -z-10 rounded-full blur-3xl opacity-50"
+                style={{ background: 'radial-gradient(closest-side, rgba(212,175,55,0.28), transparent 70%)' }}
+            />
+            <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 -z-[5] opacity-[0.08] mix-blend-soft-light bg-[url('/textures/noise.png')] bg-repeat bg-[length:240px_240px] animate-[noise-pan_14s_linear_infinite]"
+            />
+
             <motion.div
                 variants={containerV}
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, margin: '-20% 0px -20% 0px' }}
-                className="container pt-28 pb-14 md:pt-36 md:pb-40"
+                className="container pt-28 pb-28 md:pt-36 md:pb-40"
             >
-                {/* Wrapper pour centrer sur mobile */}
-                <div className="mx-auto max-w-3xl text-center md:text-left">
-                    {/* Badge intro */}
+                {/* ⬇️ marges horizontales sur md */}
+                <div className="mx-auto max-w-3xl text-center md:text-left md:mx-8 lg:mx-0">
                     <motion.span
                         variants={fadeUp}
-                        className="inline-flex items-center gap-2 rounded-full border border-muted bg-background/60 px-3 py-1 text-xs text-muted-foreground mx-auto md:mx-0"
+                        className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/30 px-3 py-1 text-xs text-white/80 backdrop-blur"
                     >
                         Escape game culinaire • Bastille, Paris
                     </motion.span>
 
-                    {/* Titre principal */}
                     <motion.h1 variants={fadeUp} className="mt-5 text-4xl md:text-6xl font-semibold leading-tight">
                         Résolvez l’énigme.{' '}
                         <span className="relative inline-block">
-                            <span className="text-primary">Dégustez</span>
+                            <span className="text-primary relative inline-block overflow-hidden">
+                                Dégustez
+                                <span
+                                    aria-hidden
+                                    className="pointer-events-none absolute inset-y-0 -left-full w-1/2 bg-gradient-to-r from-transparent via-white/40 to-transparent
+                             mix-blend-screen will-change-transform animate-[sweep_2.4s_ease-in-out_infinite]"
+                                />
+                            </span>
                             <motion.span
                                 aria-hidden
                                 initial={{ scaleX: 0 }}
@@ -72,12 +93,11 @@ export default function Hero() {
                         la solution.
                     </motion.h1>
 
-                    {/* Accroche */}
-                    <motion.p variants={fadeUp} className="mt-6 mx-auto md:mx-0 max-w-2xl text-lg text-muted-foreground">
+                    <motion.p variants={fadeUp} className="mt-6 mx-auto md:mx-0 max-w-2xl text-lg text-white/80">
                         Indices cachés dans les plats, complicité en salle, 60–90&nbsp;min de sensations à partager.
                     </motion.p>
 
-                    {/* CTA — en colonne plein largeur sur mobile, en ligne sur desktop */}
+                    {/* CTA */}
                     <motion.div variants={fadeUp} className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-start sm:gap-4">
                         <Magnetic>
                             <a href="#reserver" className="btn w-full justify-center sm:w-auto">
@@ -92,57 +112,23 @@ export default function Hero() {
                         </a>
                     </motion.div>
 
-                    {/* Chips d’infos — centrées sur mobile */}
-                    <motion.div variants={fadeUp} className="mt-10 flex flex-wrap justify-center md:justify-start gap-3 text-sm text-muted-foreground">
-                        <span className="rounded-xl border border-muted bg-background/60 px-3 py-1">Durée 60–90 min</span>
-                        <span className="rounded-xl border border-muted bg-background/60 px-3 py-1">2–6 joueurs</span>
-                        <span className="rounded-xl border border-muted bg-background/60 px-3 py-1">4 menus à la carte</span>
+                    <motion.div variants={fadeUp} className="mt-10 flex flex-wrap justify-center md:justify-start gap-3 text-sm text-white/80">
+                        <span className="rounded-xl border border-white/20 bg-black/30 px-3 py-1 backdrop-blur">Durée 60–90 min</span>
+                        <span className="rounded-xl border border-white/20 bg-black/30 px-3 py-1 backdrop-blur">2–6 joueurs</span>
+                        <span className="rounded-xl border border-white/20 bg-black/30 px-3 py-1 backdrop-blur">4 menus à la carte</span>
                     </motion.div>
 
-                    {/* Compteur de places — centré sur mobile */}
                     <motion.div variants={fadeUp} className="mt-6 flex justify-center md:justify-start">
                         <LiveSpots />
                     </motion.div>
                 </div>
             </motion.div>
 
-            {/* Hint scroll */}
-            <a href="#concept" className="absolute left-1/2 top=[85%] -translate-x-1/2 hidden md:inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary">
-                <ChevronDown className="animate-bounce" />
+            {/* ⬇️ visible à partir de md */}
+            <a href="#concept" className="group absolute left-1/2 bottom-6 -translate-x-1/2 hidden lg:inline-flex items-center gap-2 text-sm text-white/80 hover:text-primary z-20">
+                <ChevronDown className="animate-bounce transition-transform group-hover:translate-y-0.5" />
                 Faire défiler
             </a>
-
-            {/* Orbes / glows */}
-            <motion.div
-                aria-hidden
-                className="pointer-events-none absolute -top-24 -left-24 h-[40rem] w-[40rem] rounded-full blur-3xl will-change-transform"
-                style={{
-                    x: prefersReducedMotion ? 0 : orb1x,
-                    y: prefersReducedMotion ? 0 : orb1y,
-                    background: 'radial-gradient(closest-side, rgba(212,175,55,0.35), transparent 70%)',
-                }}
-                initial={{ opacity: 0.35 }}
-                animate={prefersReducedMotion ? {} : { opacity: [0.35, 0.55, 0.35] }}
-                transition={prefersReducedMotion ? {} : { duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-            />
-            <motion.div
-                aria-hidden
-                className="pointer-events-none absolute top-1/3 right-[-10%] h-[28rem] w-[28rem] rounded-full blur-3xl will-change-transform"
-                style={{
-                    x: prefersReducedMotion ? 0 : orb2x,
-                    y: prefersReducedMotion ? 0 : orb2y,
-                    background: 'radial-gradient(closest-side, rgba(15,26,26,0.8), transparent 70%)',
-                }}
-                initial={{ opacity: 0.22 }}
-                animate={prefersReducedMotion ? {} : { opacity: [0.22, 0.4, 0.22] }}
-                transition={prefersReducedMotion ? {} : { duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-            />
-
-            {/* Glow radial général */}
-            <div
-                aria-hidden
-                className="pointer-events-none absolute inset-0 -z-10 opacity-20 bg-[radial-gradient(900px_400px_at_30%_20%,var(--color-primary)_0%,transparent_60%)]"
-            />
-        </div>
+        </section>
     );
 }

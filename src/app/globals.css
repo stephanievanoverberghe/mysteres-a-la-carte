@@ -47,7 +47,36 @@ body {
   @apply inline-flex items-center gap-2 rounded-xl border border-muted px-5 py-3 font-semibold tracking-wide text-muted-foreground transition hover:text-primary hover:border-primary hover:bg-muted/10;
 }
 
-
 .shadow-soft {
   box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
+}
+
+/* --- Light sweep animé sur le texte --- */
+@keyframes sweep {
+  0% {
+    transform: translateX(-120%);
+  }
+
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+/* --- Pan léger du bruit pour éviter le statique --- */
+@keyframes noise-pan {
+  0% {
+    background-position: 0px 0px;
+  }
+
+  100% {
+    background-position: 140px 80px;
+  }
+}
+
+/* Respecte les préférences d’accessibilité */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
 }
