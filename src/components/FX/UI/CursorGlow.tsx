@@ -14,7 +14,7 @@ export default function CursorGlow() {
     useEffect(() => {
         if (prefersReduced) return;
         const onMove = (e: MouseEvent) => {
-            x.set(e.clientX - 200); // centré pour 400px
+            x.set(e.clientX - 200);
             y.set(e.clientY - 200);
         };
         window.addEventListener('mousemove', onMove);

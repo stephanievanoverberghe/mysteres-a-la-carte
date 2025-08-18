@@ -4,7 +4,7 @@ import { useRef } from 'react';
 
 type Props = {
     children: React.ReactNode;
-    intensity?: number; // px
+    intensity?: number;
     className?: string;
 };
 
@@ -19,9 +19,9 @@ export default function Magnetic({ children, intensity = 18, className }: Props)
         const el = ref.current;
         if (!el) return;
         const rect = el.getBoundingClientRect();
-        const rx = (e.clientX - rect.left) / rect.width; // 0..1
-        const ry = (e.clientY - rect.top) / rect.height; // 0..1
-        mx.set((rx - 0.5) * 2); // -1..1
+        const rx = (e.clientX - rect.left) / rect.width;
+        const ry = (e.clientY - rect.top) / rect.height;
+        mx.set((rx - 0.5) * 2);
         my.set((ry - 0.5) * 2);
     };
 

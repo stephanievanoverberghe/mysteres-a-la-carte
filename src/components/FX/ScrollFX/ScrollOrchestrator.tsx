@@ -14,12 +14,12 @@ export default function ScrollOrchestrator() {
         if (typeof window === 'undefined') return;
 
         const mq = window.matchMedia('(min-width: 1024px)');
-        if (!mq.matches) return; // pas d’effet < lg
+        if (!mq.matches) return;
 
         const root = document.documentElement;
-        let target = 0; // cible vers laquelle on tend
-        let current = 0; // valeur courante lissée
-        let dirSign = 0; // -1 / 0 / 1
+        let target = 0;
+        let current = 0;
+        let dirSign = 0;
         let dir: 'up' | 'down' | 'none' = 'none';
         let raf = 0;
 

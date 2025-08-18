@@ -47,7 +47,7 @@ export default function Header() {
     useEffect(() => {
         let lastY = window.scrollY;
         const onScroll = () => {
-            if (window.innerWidth >= 1024 || open) return; // desktop ou menu ouvert → pas de hide
+            if (window.innerWidth >= 1024 || open) return;
             const y = window.scrollY;
             const goingDown = y > lastY + 4;
             const goingUp = y < lastY - 4;
@@ -67,7 +67,7 @@ export default function Header() {
         };
     }, [open]);
 
-    // Fermer au change de hash (quand on clique un lien ancre)
+    // Fermer au change de hash
     useEffect(() => {
         const handler = () => setOpen(false);
         window.addEventListener('hashchange', handler);

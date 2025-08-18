@@ -8,9 +8,9 @@ import type { CSSProperties, ElementType, ReactNode } from 'react';
  */
 type Props = {
     children: ReactNode;
-    translate?: number; // px max
-    rotate?: number; // deg max
-    scale?: number; // delta de scale max (ex: 0.02 => 1±0.02)
+    translate?: number;
+    rotate?: number;
+    scale?: number;
     className?: string;
     as?: ElementType;
 };

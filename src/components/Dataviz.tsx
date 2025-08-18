@@ -11,13 +11,13 @@ const blockV = {
     show: { opacity: 1, y: 0, transition: { duration: 0.5, ease } },
 };
 
-/** ---- Types locaux (pas de `any`, pas de NameType/ValueType) ---- */
+/** ---- Types locaux ---- */
 type DataPoint = { name: string; value: number };
 type ReTooltipPayload = { value: number; name: string; color?: string };
 type ReTooltipProps = { active?: boolean; payload?: ReTooltipPayload[]; label?: string | number };
 type LabelContentProps = { x?: number; y?: number; width?: number; value?: number | string };
 
-/** ---- Données (pas de `as const` pour éviter le readonly) ---- */
+/** ---- Données ---- */
 const DATA: DataPoint[] = [
     { name: 'Gustatif', value: 68 },
     { name: 'Visuel', value: 21 },

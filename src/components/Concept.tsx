@@ -35,9 +35,9 @@ export default function Concept() {
     const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
         if (prefersReduced) return;
         const rect = e.currentTarget.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width; // 0..1
-        const y = (e.clientY - rect.top) / rect.height; // 0..1
-        mx.set(x * 2 - 1); // -1..1
+        const x = (e.clientX - rect.left) / rect.width;
+        const y = (e.clientY - rect.top) / rect.height;
+        mx.set(x * 2 - 1);
         my.set(y * 2 - 1);
     };
     const onLeave = () => {
@@ -48,11 +48,8 @@ export default function Concept() {
     return (
         <section id="concept" aria-labelledby="concept-title" className="relative md:py-24 py-14">
             <div className="container">
-                {/* ⬇️ marges horizontales sur tablette, reset sur desktop */}
                 <div className="md:mx-8 lg:mx-0">
-                    {/* Empile jusqu’à lg, split en 2 colonnes à partir de lg */}
                     <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-10">
-                        {/* Texte : mobile+tablet après l'image ; desktop à gauche */}
                         <div className="max-w-2xl order-2 lg:order-1">
                             <ScrollReveal>
                                 <h2 id="concept-title" className="text-3xl md:text-4xl font-semibold">

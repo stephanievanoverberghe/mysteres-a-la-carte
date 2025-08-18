@@ -23,14 +23,14 @@ export default function Footer() {
     return (
         <footer aria-labelledby="footer-title" className="relative mt-24 border-t border-muted">
             <div className="container">
-                {/* padding horizontal cohérent (comme Hero/Concept) */}
+                {/* padding horizontal cohérent */}
                 <div className="md:px-10 lg:px-0">
                     {/* ligne d’accent */}
                     <div className="h-px w-full bg-[linear-gradient(90deg,transparent,rgba(212,175,55,0.6),transparent)]" />
 
-                    {/* GRID: 1 → 2 → 4 cols */}
+                    {/* GRID */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 py-12 text-center sm:text-left">
-                        {/* Brand + pitch (span 2 sur desktop) */}
+                        {/* Brand + pitch */}
                         <motion.div
                             initial={{ opacity: 0, y: 12 }}
                             whileInView={{ opacity: 1, y: 0, transition: { duration: 0.5, ease } }}
@@ -57,7 +57,7 @@ export default function Footer() {
                                 L’escape game culinaire à <span className="text-foreground">Bastille</span>. Résolvez l’énigme, dégustez la solution.
                             </p>
 
-                            {/* Newsletter (stack → inline) */}
+                            {/* Newsletter */}
                             <form onSubmit={submit} className="mt-6 flex flex-col sm:flex-row sm:items-stretch gap-3 max-w-xl mx-auto sm:mx-0">
                                 <label htmlFor="nl" className="sr-only">
                                     Votre email
@@ -82,7 +82,7 @@ export default function Footer() {
                                 </p>
                             )}
 
-                            {/* Réseaux (centrés mobile / gauche desktop) */}
+                            {/* Réseaux */}
                             <div className="mt-6 flex items-center justify-center sm:justify-start gap-3">
                                 <Social href="https://instagram.com" label="Instagram">
                                     <Instagram className="h-5 w-5" />
@@ -132,7 +132,7 @@ export default function Footer() {
                         </motion.nav>
                     </div>
 
-                    {/* Bottom bar — wrap + align responsive */}
+                    {/* Bottom bar */}
                     <div className="flex flex-col gap-4 border-t border-muted/60 py-6 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between text-sm text-center sm:text-left">
                         <p className="text-muted-foreground">© {year} Mystères à la carte — Tous droits réservés.</p>
                         <div className="flex items-center justify-center sm:justify-end gap-3">

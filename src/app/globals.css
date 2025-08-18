@@ -20,9 +20,6 @@
 /* ---- Base ---- */
 :root {
   color-scheme: dark;
-  /* Si tu utilises les polices Next (geist) tu peux garder ces variables : */
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
 html,
@@ -62,7 +59,7 @@ body {
   }
 }
 
-/* --- Pan léger du bruit pour éviter le statique --- */
+/* --- Pan léger du bruit --- */
 @keyframes noise-pan {
   0% {
     background-position: 0px 0px;

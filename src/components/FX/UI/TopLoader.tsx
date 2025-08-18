@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import { usePathname, useSearchParams } from 'next/navigation';
 
 export default function TopLoader() {
-    // Auto-Suspense pour éviter l’erreur Vercel (404/_not-found)
     return (
         <Suspense fallback={null}>
             <TopLoaderInner />
@@ -15,7 +14,6 @@ export default function TopLoader() {
 function TopLoaderInner() {
     const pathname = usePathname();
     const search = useSearchParams();
-    // string stable pour deps (évite le warning eslint)
     const searchString = useMemo(() => search?.toString() ?? '', [search]);
 
     const [visible, setVisible] = useState(false);

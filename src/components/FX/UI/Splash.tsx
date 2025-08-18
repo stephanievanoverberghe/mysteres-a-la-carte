@@ -89,7 +89,7 @@ export default function Splash() {
                         initial={{ scale: prefersReduced ? 1 : 0.98, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1, transition: { duration: 0.5, ease } }}
                         className="relative select-none text-center px-6"
-                        onClick={(e) => e.stopPropagation()} // ne pas fermer en cliquant sur le logo/texte
+                        onClick={(e) => e.stopPropagation()}
                     >
                         <div className="mx-auto flex items-center justify-center">
                             <Image

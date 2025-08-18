@@ -37,7 +37,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <ScrollOrchestrator />
                 <SkipLink />
                 <ToastProvider>
-                    {/* Les FX arrivent après : moins d’impact LCP/TTI */}
                     <FXMounts />
                     {children}
                 </ToastProvider>

@@ -37,18 +37,8 @@ export default function Hero() {
 
     return (
         <section id="hero" ref={rootRef} className="relative isolate overflow-hidden">
-            {/* BG optimisé = LCP */}
             <motion.div aria-hidden className="absolute inset-0 -z-20 will-change-transform" style={{ x: prefersReducedMotion ? 0 : bgX, y: prefersReducedMotion ? 0 : bgY }}>
-                <Image
-                    src="/hero.webp" // si tu ajoutes /hero.avif, remplace ici : Next servira AVIF/WebP
-                    alt=""
-                    fill
-                    priority
-                    fetchPriority="high"
-                    sizes="100vw"
-                    className="object-cover scale-[1.03]"
-                    draggable={false}
-                />
+                <Image src="/hero.webp" alt="" fill priority fetchPriority="high" sizes="100vw" className="object-cover scale-[1.03]" draggable={false} />
             </motion.div>
 
             {/* Scrims + glow + grain */}
@@ -75,7 +65,7 @@ export default function Hero() {
                     viewport={{ once: true, margin: '-20% 0px -20% 0px' }}
                     className="container pt-28 pb-28 md:pt-36 md:pb-40"
                 >
-                    {/* marges horizontales sur md (comme demandé) */}
+                    {/* marges horizontales*/}
                     <div className="mx-auto max-w-3xl text-center md:text-left md:mx-8 lg:mx-0">
                         <motion.span
                             variants={fadeUp}
@@ -138,7 +128,7 @@ export default function Hero() {
                 </motion.div>
             </LazyMotion>
 
-            {/* Hint scroll — visible à partir de md */}
+            {/* Hint scroll */}
             <a href="#concept" className="group absolute left-1/2 bottom-6 -translate-x-1/2 hidden md:inline-flex items-center gap-2 text-sm text-white/80 hover:text-primary z-20">
                 <ChevronDown className="animate-bounce transition-transform group-hover:translate-y-0.5" />
                 Faire défiler

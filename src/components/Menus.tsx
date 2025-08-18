@@ -75,7 +75,7 @@ export default function Menus() {
                                         {m.price}€
                                     </div>
 
-                                    {/* Tags → seulement à partir de lg */}
+                                    {/* Tags */}
                                     {m.tags.length > 0 && (
                                         <div className="absolute right-4 top-4 hidden lg:flex flex-wrap gap-2">
                                             {m.tags.map((t) => (
@@ -86,7 +86,7 @@ export default function Menus() {
                                         </div>
                                     )}
 
-                                    {/* Bandeau “glass” → visible/animé à partir de lg uniquement */}
+                                    {/* Bandeau “glass” */}
                                     <div
                                         className="absolute inset-x-0 bottom-0 hidden lg:block
                              p-5 bg-background/50 backdrop-blur border-t border-white/10
@@ -113,7 +113,7 @@ export default function Menus() {
                                     </div>
                                 </div>
 
-                                {/* Contenu mobile/tablette (< lg) */}
+                                {/* Contenu mobile/tablette */}
                                 <div className="p-6 lg:hidden">
                                     <div className="flex items-start justify-between gap-4">
                                         <div>
