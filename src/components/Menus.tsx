@@ -17,10 +17,10 @@ const MENUS = [
 ] as const;
 
 const IMG: Record<(typeof MENUS)[number]['id'], string> = {
-    'carn-hivor': '/menu/carn-hivor.png',
-    botanique: '/menu/botanique.png',
-    evasion: '/menu/evasion.png',
-    'aventure-gourmande': '/menu/aventure.png',
+    'carn-hivor': '/menu/carn-hivor.webp',
+    botanique: '/menu/botanique.webp',
+    evasion: '/menu/evasion.webp',
+    'aventure-gourmande': '/menu/aventure.webp',
 };
 
 export default function Menus() {

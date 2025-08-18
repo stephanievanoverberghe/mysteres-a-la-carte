@@ -11,10 +11,10 @@ const cardV = { hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0, transit
 
 type Step = { n: number; title: string; desc: string; img?: string };
 const STEPS: Step[] = [
-    { n: 1, title: 'Brief de table', desc: 'Annonce du scénario et des règles.', img: '/steps/brief.png' },
-    { n: 2, title: 'Entrée-énigme', desc: 'Premiers indices gustatifs.', img: '/steps/entree.png' },
-    { n: 3, title: 'Plat principal', desc: 'Pistes à recouper avec l’équipe.', img: '/steps/plat.png' },
-    { n: 4, title: 'Dessert-résolution', desc: 'Le twist final se savoure !', img: '/steps/dessert.png' },
+    { n: 1, title: 'Brief de table', desc: 'Annonce du scénario et des règles.', img: '/steps/brief.webp' },
+    { n: 2, title: 'Entrée-énigme', desc: 'Premiers indices gustatifs.', img: '/steps/entree.webp' },
+    { n: 3, title: 'Plat principal', desc: 'Pistes à recouper avec l’équipe.', img: '/steps/plat.webp' },
+    { n: 4, title: 'Dessert-résolution', desc: 'Le twist final se savoure !', img: '/steps/dessert.webp' },
 ];
 
 export default function Steps() {

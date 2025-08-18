@@ -1,14 +1,10 @@
 import type { Metadata } from 'next';
 import './globals.css';
 
-import ScrollProgress from '@/components/FX/UI/ScrollProgress';
-import TopLoader from '@/components/FX/UI/TopLoader';
 import { ToastProvider } from '@/components/FX/UI/ToastProvider';
-import BackgroundFX from '@/components/FX/UI/BackgroundFX';
-import CursorGlow from '@/components/FX/UI/CursorGlow';
-import Splash from '@/components/FX/UI/Splash';
 import SkipLink from '@/components/SkipLink';
 import ScrollOrchestrator from '@/components/FX/ScrollFX/ScrollOrchestrator';
+import FXMounts from '@/components/FX/UI/FXMounts';
 
 export const metadata: Metadata = {
     metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://mysteres-a-la-carte.vercel.app/'),
@@ -33,19 +29,15 @@ export const metadata: Metadata = {
     },
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="fr">
             <body className="overflow-x-hidden">
                 <ScrollOrchestrator />
-
                 <SkipLink />
-                <TopLoader />
-                <BackgroundFX />
-                <CursorGlow />
                 <ToastProvider>
-                    <Splash />
-                    <ScrollProgress />
+                    {/* Les FX arrivent après : moins d’impact LCP/TTI */}
+                    <FXMounts />
                     {children}
                 </ToastProvider>
             </body>

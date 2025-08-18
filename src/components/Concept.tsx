@@ -116,7 +116,7 @@ export default function Concept() {
                                     className="absolute inset-0 will-change-transform"
                                 >
                                     <Image
-                                        src="/concept.png"
+                                        src="/concept.webp"
                                         alt="Ambiance d’enquête culinaire : indices, service complice, table raffinée"
                                         fill
                                         className="object-cover"
