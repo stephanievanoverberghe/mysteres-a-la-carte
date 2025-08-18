@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import { ToastProvider } from '@/components/FX/UI/ToastProvider';
 import SkipLink from '@/components/SkipLink';
@@ -40,6 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <FXMounts />
                     {children}
                 </ToastProvider>
+                <SpeedInsights />
             </body>
         </html>
     );
