@@ -81,7 +81,7 @@ export default function Splash() {
                     {/* grain discret (desktop only) */}
                     <div
                         aria-hidden
-                        className="pointer-events-none absolute inset-0 -z-10 hidden md:block opacity-[0.06] mix-blend-soft-light bg-[url('/textures/noise.png')] bg-repeat bg-[length:240px_240px] animate-[noise-pan_16s_linear_infinite]"
+                        className="pointer-events-none absolute inset-0 -z-10 hidden md:block opacity-[0.06] mix-blend-soft-light bg-[url('/textures/noise.webp')] bg-repeat bg-[length:240px_240px] animate-[noise-pan_16s_linear_infinite]"
                     />
 
                     {/* Contenu centré */}
