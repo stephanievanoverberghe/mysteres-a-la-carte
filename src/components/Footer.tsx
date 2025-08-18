@@ -1,6 +1,8 @@
 'use client';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
+import Link from 'next/link';
 import { Instagram, Facebook, Youtube, ArrowUp, Mail } from 'lucide-react';
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -35,9 +37,22 @@ export default function Footer() {
                             viewport={{ once: true, margin: '-20% 0px -20% 0px' }}
                             className="lg:col-span-2"
                         >
-                            <h3 id="footer-title" className="text-xl font-semibold">
-                                Mystères à la carte
-                            </h3>
+                            {/* Logo */}
+                            <Link href="#hero" className="inline-flex items-center gap-2 hover:opacity-90 transition">
+                                <span className="sr-only" id="footer-title">
+                                    Mystères à la carte — Accueil
+                                </span>
+                                <Image
+                                    src="/logo.png"
+                                    alt="Mystères à la carte"
+                                    width={180}
+                                    height={40}
+                                    className="h-8 w-auto md:h-9"
+                                    sizes="(min-width:1024px) 180px, 140px"
+                                    priority={false}
+                                />
+                            </Link>
+
                             <p className="mt-3 max-w-xl text-muted-foreground mx-auto sm:mx-0">
                                 L’escape game culinaire à <span className="text-foreground">Bastille</span>. Résolvez l’énigme, dégustez la solution.
                             </p>
