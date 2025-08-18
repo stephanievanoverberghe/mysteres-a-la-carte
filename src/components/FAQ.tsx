@@ -60,36 +60,38 @@ export default function FAQ() {
     const [openId, setOpenId] = useState<string | null>(FAQS[0]?.id ?? null);
 
     return (
-        <section id="faq" aria-labelledby="faq-title" className="relative">
+        <section id="faq" aria-labelledby="faq-title" className="relative md:py-24 py-14">
             <div className="container">
-                <div className="flex items-start gap-3">
-                    <HelpCircle className="mt-1 h-6 w-6 text-primary" />
-                    <div className="max-w-2xl">
-                        <ScrollReveal>
-                            <h2 id="faq-title" className="text-3xl md:text-4xl font-semibold">
-                                FAQ
-                            </h2>
-                        </ScrollReveal>
-                        <p className="mt-3 text-muted-foreground">Les réponses aux questions les plus fréquentes.</p>
+                <div className="md:mx-8 lg:mx-0">
+                    <div className="flex items-start gap-3">
+                        <HelpCircle className="mt-1 h-6 w-6 text-primary" />
+                        <div className="max-w-2xl">
+                            <ScrollReveal>
+                                <h2 id="faq-title" className="text-3xl md:text-4xl font-semibold">
+                                    FAQ
+                                </h2>
+                            </ScrollReveal>
+                            <p className="mt-3 text-muted-foreground">Les réponses aux questions les plus fréquentes.</p>
+                        </div>
                     </div>
-                </div>
 
-                {/* ligne d’accent */}
-                <div className="mt-6 h-px w-full bg-[linear-gradient(90deg,transparent,rgba(212,175,55,0.6),transparent)]" />
+                    {/* ligne d’accent */}
+                    <div className="mt-6 h-px w-full bg-[linear-gradient(90deg,transparent,rgba(212,175,55,0.6),transparent)]" />
 
-                <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {FAQS.map((item) => (
-                        <FAQItem key={item.id} item={item} open={openId === item.id} onToggle={() => setOpenId((prev) => (prev === item.id ? null : item.id))} />
-                    ))}
-                </div>
+                    <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {FAQS.map((item) => (
+                            <FAQItem key={item.id} item={item} open={openId === item.id} onToggle={() => setOpenId((prev) => (prev === item.id ? null : item.id))} />
+                        ))}
+                    </div>
 
-                {/* CTA contact */}
-                <div className="mt-10 flex flex-col items-stretch gap-3 md:flex-row md:items-center md:justify-between text-sm">
-                    <a href="#contact" className="btn w-full justify-center md:w-auto">
-                        <Mail className="h-4 w-4" />
-                        Nous contacter
-                    </a>
-                    <span className="text-muted-foreground text-center md:text-left">Toujours une question&nbsp;? On vous répond rapidement.</span>
+                    {/* CTA contact */}
+                    <div className="mt-10 flex flex-col items-stretch gap-3 md:flex-row md:items-center md:justify-between text-sm">
+                        <a href="#contact" className="btn w-full justify-center md:w-auto">
+                            <Mail className="h-4 w-4" />
+                            Nous contacter
+                        </a>
+                        <span className="text-muted-foreground text-center md:text-left">Toujours une question&nbsp;? On vous répond rapidement.</span>
+                    </div>
                 </div>
             </div>
 

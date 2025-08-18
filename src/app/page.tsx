@@ -14,34 +14,16 @@ export default function HomePage() {
         <>
             <Header />
             <main id="main">
-                <section id="hero">
-                    <Hero />
-                </section>
-                <section id="concept" className="md:py-24 py-14">
-                    <Concept />
-                </section>
-                <section id="experiences" className="md:py-24 py-14">
-                    <Menus />
-                </section>
-                <section id="steps" className="md:py-24 py-14 bg-muted/30">
-                    <Steps />
-                </section>
-                <section id="dataviz" className="md:py-24 py-14">
-                    <Dataviz />
-                </section>
-                <section id="reserver" className="md:py-24 py-14 bg-muted/30">
-                    <BookingForm />
-                </section>
-                <section id="faq" className="md:py-24 py-14">
-                    <FAQ />
-                </section>
-                <section id="contact" className="md:py-24 py-14 bg-muted/30">
-                    <Contact />
-                </section>
+                <Hero />
+                <Concept />
+                <Menus />
+                <Steps />
+                <Dataviz />
+                <BookingForm />
+                <FAQ />
+                <Contact />
             </main>
-            <footer className="border-t border-muted">
-                <Footer />
-            </footer>
+            <Footer />
         </>
     );
 }

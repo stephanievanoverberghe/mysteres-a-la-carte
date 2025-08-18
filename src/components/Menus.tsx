@@ -25,7 +25,7 @@ const IMG: Record<(typeof MENUS)[number]['id'], string> = {
 
 export default function Menus() {
     return (
-        <section id="experiences" aria-labelledby="menus-title" className="relative">
+        <section id="experiences" aria-labelledby="menus-title" className="relative md:py-24 py-14">
             <div className="container">
                 {/* Marges horizontales sur tablette, reset sur desktop */}
                 <div className="md:px-10 lg:px-0">

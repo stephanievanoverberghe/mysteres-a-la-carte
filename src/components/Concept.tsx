@@ -46,7 +46,7 @@ export default function Concept() {
     };
 
     return (
-        <section id="concept" aria-labelledby="concept-title" className="relative">
+        <section id="concept" aria-labelledby="concept-title" className="relative md:py-24 py-14">
             <div className="container">
                 {/* ⬇️ marges horizontales sur tablette, reset sur desktop */}
                 <div className="md:mx-8 lg:mx-0">
