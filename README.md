@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mystères à la carte
 
-## Getting Started
+> One-page démo (portfolio) – **escape game culinaire** à Bastille (Paris).  
+> Stack moderne (Next.js App Router, Tailwind v4, Framer Motion ciblé) + micro-FX, accessibilité et SEO propres.
 
-First, run the development server:
+![Open Graph](/public/og.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## ✨ Caractéristiques
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+-   **Next.js 15 (App Router)** – pages statiques + quelques client components
+-   **Tailwind v4** avec thème inline (`globals.css`) et tokens (`--color-*`)
+-   **Animations ciblées** : Framer Motion **uniquement** dans le _Hero_ ; reveal CSS ailleurs
+-   **FX doux et opt-in** : TopLoader, scroll progress, cursor glow, splash (montés proprement)
+-   **Formulaire de réservation** (demo, sans backend) :
+    -   `react-hook-form` + validation Zod **chargée à la demande**
+    -   honeypot anti-bot, toasts globaux, overlay de succès
+-   **Sections** : Hero, Concept (image tilt), Menus (cards visuelles), Steps, Dataviz, Réserver, FAQ, Contact (embed Google Maps optionnel)
+-   **Pages légales** : mentions légales, CGV, politique de confidentialité
+-   **Accessibilité** : `SkipLink`, contrastes, `prefers-reduced-motion`
+-   **SEO** : Metadata, OG/Twitter image, favicon, 404 & not-found dédiées
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ✨ Fonctionnalités
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+-   **Hero visuel tendance** (image de fond, glow doré, grain animé, parallax léger)
+-   **Header mobile/tablette premium** (sheet, liens soulignés animés, CTA “Réserver”)
+-   **Sections riches**
+    -   Concept (visuel tilt/parallax + badges 3D)
+    -   Menus (cards visuelles responsives, pricing, tags, CTA)
+    -   Steps (timeline 1-2-3-4)
+    -   Dataviz _light_ (Recharts) — lazy et SSR off
+    -   Réserver (RHF + Zod, honeypot, toasts, overlay succès)
+    -   FAQ, Contact (Google Maps : fallback statique)
+-   **FX opt-in** : Top loader, Scroll progress, Cursor glow, Splash (logo), Orchestrateur de scroll (effets doux à partir de `lg`)
+-   **Pages légales** : mentions, CGV, confidentialité (cohérentes démo / sans stockage)
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
