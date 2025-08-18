@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Clock } from 'lucide-react';
 import ScrollReveal from './FX/UI/ScrollReveal';
@@ -6,22 +7,20 @@ import ScrollReveal from './FX/UI/ScrollReveal';
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const containerV = { hidden: {}, show: { transition: { staggerChildren: 0.06 } } };
-const cardV = {
-    hidden: { opacity: 0, y: 14 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease } },
-};
+const cardV = { hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0, transition: { duration: 0.5, ease } } };
 
-const STEPS = [
-    { n: 1, title: 'Brief de table', desc: 'Annonce du scénario et des règles.' },
-    { n: 2, title: 'Entrée-énigme', desc: 'Premiers indices gustatifs.' },
-    { n: 3, title: 'Plat principal', desc: 'Pistes à recouper avec l’équipe.' },
-    { n: 4, title: 'Dessert-résolution', desc: 'Le twist final se savoure !' },
-] as const;
+type Step = { n: number; title: string; desc: string; img?: string };
+const STEPS: Step[] = [
+    { n: 1, title: 'Brief de table', desc: 'Annonce du scénario et des règles.', img: '/steps/brief.png' },
+    { n: 2, title: 'Entrée-énigme', desc: 'Premiers indices gustatifs.', img: '/steps/entree.png' },
+    { n: 3, title: 'Plat principal', desc: 'Pistes à recouper avec l’équipe.', img: '/steps/plat.png' },
+    { n: 4, title: 'Dessert-résolution', desc: 'Le twist final se savoure !', img: '/steps/dessert.png' },
+];
 
 export default function Steps() {
     return (
         <section id="steps" aria-labelledby="steps-title" className="relative">
-            <div className="container">
+            <div className="container md:px-10 lg:px-0">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
                     <div className="max-w-2xl">
                         <ScrollReveal>
@@ -54,23 +53,45 @@ export default function Steps() {
                             whileHover={{ y: -6 }}
                             transition={{ type: 'spring', stiffness: 220, damping: 20 }}
                             className="
-                relative rounded-2xl border border-muted bg-background/60 p-6 shadow-soft
+                relative rounded-2xl border border-muted bg-background/60 shadow-soft overflow-hidden
                 md:before:hidden
                 before:absolute before:left-[1.1rem] before:top-0 before:bottom-0 before:w-px before:bg-muted/60
               "
+                            style={{ contentVisibility: 'auto' } as React.CSSProperties}
                         >
+                            {/* Visuel (uniquement dès md) */}
+                            {s.img && (
+                                <div className="relative hidden md:block aspect-[16/10]">
+                                    <Image
+                                        src={s.img}
+                                        alt={`${s.title} — visuel`}
+                                        fill
+                                        className="object-cover"
+                                        sizes="(min-width:1024px) 23vw, 50vw"
+                                        priority={false}
+                                        draggable={false}
+                                    />
+                                    <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-black/10" />
+                                    {/* cartouche discret */}
+                                    <div className="absolute left-3 top-3 rounded-lg border border-white/20 bg-black/35 px-2.5 py-1 text-[11px] text-white/90 backdrop-blur">
+                                        Étape {s.n}
+                                    </div>
+                                </div>
+                            )}
+
                             {/* Connecteur timeline (mobile) */}
                             {i === STEPS.length - 1 && (
                                 <span aria-hidden className="md:hidden absolute left-[1.1rem] bottom-0 h-6 w-px bg-gradient-to-b from-muted/60 to-transparent" />
                             )}
 
-                            {/* Badge numéro */}
-                            <div className="flex items-center gap-3">
-                                <div className="flex h-8 w-8 items-center justify-center rounded-full border border-primary text-primary font-semibold">{s.n}</div>
-                                <h3 className="text-lg font-semibold">{s.title}</h3>
+                            {/* Contenu texte */}
+                            <div className="p-6">
+                                <div className="flex items-center gap-3">
+                                    <div className="flex h-8 w-8 items-center justify-center rounded-full border border-primary text-primary font-semibold">{s.n}</div>
+                                    <h3 className="text-lg font-semibold">{s.title}</h3>
+                                </div>
+                                <p className="mt-3 text-muted-foreground">{s.desc}</p>
                             </div>
-
-                            <p className="mt-3 text-muted-foreground">{s.desc}</p>
 
                             {/* liseré or discret en haut */}
                             <span
@@ -87,6 +108,12 @@ export default function Steps() {
                     <span className="rounded-xl border border-muted bg-background/60 px-3 py-1">Serveurs complices</span>
                 </div>
             </div>
+
+            {/* Glow discret */}
+            <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 -z-10 opacity-10 bg-[radial-gradient(800px_360px_at_70%_20%,var(--color-primary)_0%,transparent_60%)]"
+            />
         </section>
     );
 }
