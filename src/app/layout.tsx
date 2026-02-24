@@ -2,10 +2,10 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
-import { ToastProvider } from '@/components/FX/UI/ToastProvider';
+import { ToastProvider } from '@/shared/ui/fx/ToastProvider';
 import SkipLink from '@/components/SkipLink';
 import ScrollOrchestrator from '@/components/FX/ScrollFX/ScrollOrchestrator';
-import FXMounts from '@/components/FX/UI/FXMounts';
+import FXMounts from '@/shared/ui/fx/FXMounts';
 
 export const metadata: Metadata = {
     metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://mysteres-a-la-carte.vercel.app/'),

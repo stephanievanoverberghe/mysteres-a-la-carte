@@ -27,14 +27,14 @@ Priorité 3 : industrialiser perf/SEO/a11y (budgets, metadata, audits automatis�
 
 ### Découpage par responsabilités
 
-- [ ] Extraire la logique métier du formulaire (`schema`, defaults, mapping menu) de `src/components/BookingForm.tsx` vers `src/features/booking/{model,constants}.ts`. (Impact: High | Effort: M | Risk: Med)
-- [ ] Isoler la logique de navigation/scroll-spy de `src/components/Header.tsx` dans un hook `useHeaderNavigation` pour séparer UI et side effects. (Impact: High | Effort: M | Risk: Med)
-- [ ] Créer une couche `shared/ui` pour les primitives réutilisées (`ScrollReveal`, `Magnetic`, boutons) actuellement dispersées dans `src/components/FX/UI/` et `src/app/globals.css`. (Impact: Med | Effort: M | Risk: Low)
+- [x] Extraire la logique métier du formulaire (`schema`, defaults, mapping menu) de `src/components/BookingForm.tsx` vers `src/features/booking/{model,constants}.ts`. (Impact: High | Effort: M | Risk: Med)
+- [x] Isoler la logique de navigation/scroll-spy de `src/components/Header.tsx` dans un hook `useHeaderNavigation` pour séparer UI et side effects. (Impact: High | Effort: M | Risk: Med)
+- [x] Créer une couche `shared/ui` pour les primitives réutilisées (`ScrollReveal`, `Magnetic`, boutons) actuellement dispersées dans `src/components/FX/UI/` et `src/app/globals.css`. (Impact: Med | Effort: M | Risk: Low)
 
 ### Dépendances et couplages
 
-- [ ] Introduire des règles de boundary d’import (ex: via `eslint-plugin-boundaries`) pour empêcher `app/` de dépendre d’implémentations `features/*/internal`. (Impact: Med | Effort: M | Risk: Low)
-- [ ] Limiter la dépendance directe de `src/app/page.tsx` à des composants orchestrateurs de section (pas aux implémentations internes). (Impact: Med | Effort: M | Risk: Low)
+- [x] Introduire des règles de boundary d’import (ex: via `eslint-plugin-boundaries`) pour empêcher `app/` de dépendre d’implémentations `features/*/internal`. (Impact: Med | Effort: M | Risk: Low)
+- [x] Limiter la dépendance directe de `src/app/page.tsx` à des composants orchestrateurs de section (pas aux implémentations internes). (Impact: Med | Effort: M | Risk: Low)
 
 ## 3) Components & UI Patterns
 

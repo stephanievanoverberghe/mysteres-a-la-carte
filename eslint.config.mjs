@@ -18,6 +18,28 @@ const eslintConfig = [
       'max-lines': ['warn', { max: 250, skipBlankLines: true, skipComments: true }],
     },
   },
+  {
+    files: ['src/app/**/*.{ts,tsx}'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: ['@/features/*/internal/*'],
+        },
+      ],
+    },
+  },
+  {
+    files: ['src/shared/**/*.{ts,tsx}'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: ['@/app/*', '@/features/*'],
+        },
+      ],
+    },
+  },
 ];
 
 export default eslintConfig;

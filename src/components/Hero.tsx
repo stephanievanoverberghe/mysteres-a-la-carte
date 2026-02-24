@@ -3,7 +3,7 @@ import { useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { ChevronDown } from 'lucide-react';
 import LiveSpots from '@/components/LiveSpots';
-import Magnetic from './FX/UI/Magnetic';
+import Magnetic from '@/shared/ui/fx/Magnetic';
 import { motion, useMotionValue, useTransform, useReducedMotion, LazyMotion, domAnimation } from 'framer-motion';
 
 const ease = [0.22, 1, 0.36, 1] as const;

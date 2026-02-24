@@ -1,7 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import { MapPin, Mail, Phone, Clock, Train, Car, Navigation } from 'lucide-react';
-import ScrollReveal from './FX/UI/ScrollReveal';
+import ScrollReveal from '@/shared/ui/fx/ScrollReveal';
 
 const ease = [0.22, 1, 0.36, 1] as const;
 const containerV = { hidden: {}, show: { transition: { staggerChildren: 0.06 } } };

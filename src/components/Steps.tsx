@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Clock } from 'lucide-react';
-import ScrollReveal from './FX/UI/ScrollReveal';
+import ScrollReveal from '@/shared/ui/fx/ScrollReveal';
 
 const ease = [0.22, 1, 0.36, 1] as const;
 

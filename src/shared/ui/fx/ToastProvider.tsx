@@ -49,7 +49,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
             void timeout;
             return id;
         },
-        [remove]
+        [remove],
     );
 
     const api: ToastApi = useMemo(
@@ -60,7 +60,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
             warning: (title, description) => show({ title, description, variant: 'warning' }),
             error: (title, description) => show({ title, description, variant: 'error' }),
         }),
-        [show]
+        [show],
     );
 
     return (

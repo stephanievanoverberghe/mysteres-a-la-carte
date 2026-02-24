@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform, useReducedMotion, type MotionValue } from 'framer-motion';
 import Image from 'next/image';
 import { Lightbulb, UtensilsCrossed, Users, Search, Timer } from 'lucide-react';
-import ScrollReveal from './FX/UI/ScrollReveal';
+import ScrollReveal from '@/shared/ui/fx/ScrollReveal';
 
 const ease = [0.22, 1, 0.36, 1] as const;
 

@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, Compass, Search, Copy, Link2, Bug, Home } from 'lucide-react';
-import { useToast } from '@/components/FX/UI/ToastProvider';
-import Magnetic from '@/components/FX/UI/Magnetic';
+import { useToast } from '@/shared/ui/fx/ToastProvider';
+import Magnetic from '@/shared/ui/fx/Magnetic';
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
