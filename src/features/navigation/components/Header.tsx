@@ -2,23 +2,29 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useRef } from 'react';
 import { useHeaderNavigation } from '@/features/navigation/hooks/useHeaderNavigation';
 import DesktopNav from '@/features/navigation/components/DesktopNav';
 import MobileMenuButton from '@/features/navigation/components/MobileMenuButton';
 import MobileMenuSheet from '@/features/navigation/components/MobileMenuSheet';
+import { useMobileMenuA11y } from '@/features/navigation/hooks/useMobileMenuA11y';
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function Header() {
     const { active, hidden, open, scrolled, setOpen } = useHeaderNavigation();
+    const triggerRef = useRef<HTMLButtonElement>(null);
+    const dialogRef = useRef<HTMLElement>(null);
+
+    useMobileMenuA11y({ open, onClose: () => setOpen(false), triggerRef, dialogRef });
 
     return (
         <header
-            className={`fixed inset-x-0 top-0 z-50 transition-transform duration-300 ${hidden ? '-translate-y-full md:-translate-y-full lg:translate-y-0' : 'translate-y-0'} ${scrolled ? 'bg-background/70 backdrop-blur supports-[backdrop-filter]:backdrop-blur border-b border-muted' : ''}`}
+            className={`fixed inset-x-0 top-0 z-50 transition-transform duration-300 ${hidden ? '-translate-y-full md:-translate-y-full lg:translate-y-0' : 'translate-y-0'} ${scrolled ? 'bg-background/70 backdrop-blur supports-backdrop-filter:backdrop-blur border-b border-muted' : ''}`}
         >
             <span
                 aria-hidden
-                className={`pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-[linear-gradient(90deg,transparent,var(--color-primary),transparent)] opacity-70 ${scrolled ? '' : 'opacity-0'} transition-opacity`}
+                className={`pointer-events-none absolute inset-x-0 top-0 h-0.5 bg-[linear-gradient(90deg,transparent,var(--color-primary),transparent)] opacity-70 ${scrolled ? '' : 'opacity-0'} transition-opacity`}
             />
 
             <div className="container flex items-center justify-between py-3 md:py-4">
@@ -28,7 +34,7 @@ export default function Header() {
                 </Link>
 
                 <DesktopNav active={active} />
-                <MobileMenuButton open={open} onToggle={() => setOpen((v) => !v)} />
+                <MobileMenuButton ref={triggerRef} open={open} onToggle={() => setOpen((v) => !v)} />
             </div>
 
             <AnimatePresence>
@@ -36,7 +42,7 @@ export default function Header() {
                     <>
                         <motion.div
                             key="backdrop"
-                            className="lg:hidden fixed inset-0 z-40 bg-black/60 backdrop-blur supports-[backdrop-filter]:backdrop-blur"
+                            className="lg:hidden fixed inset-0 z-40 bg-black/60 backdrop-blur supports-backdrop-filter:backdrop-blur"
                             initial={{ clipPath: 'circle(0% at 92% 0%)' }}
                             animate={{ clipPath: 'circle(150% at 92% 0%)', transition: { duration: 0.45, ease } }}
                             exit={{ clipPath: 'circle(0% at 92% 0%)', transition: { duration: 0.3, ease } }}
@@ -48,7 +54,7 @@ export default function Header() {
                             />
                         </motion.div>
 
-                        <MobileMenuSheet active={active} onClose={() => setOpen(false)} />
+                        <MobileMenuSheet active={active} onClose={() => setOpen(false)} dialogRef={dialogRef} />
                     </>
                 )}
             </AnimatePresence>

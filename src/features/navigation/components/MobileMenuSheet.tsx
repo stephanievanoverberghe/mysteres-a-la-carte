@@ -2,21 +2,28 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ChevronRight, UtensilsCrossed, X } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { type RefObject } from 'react';
 import { NAV_LINKS } from '@/content/navigation';
 import Button from '@/shared/ui/Button';
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-type Props = { active: string; onClose: () => void };
+type Props = {
+    active: string;
+    onClose: () => void;
+    dialogRef: RefObject<HTMLElement | null>;
+};
 
-export default function MobileMenuSheet({ active, onClose }: Props) {
+export default function MobileMenuSheet({ active, onClose, dialogRef }: Props) {
     return (
         <motion.aside
             key="sheet"
+            ref={dialogRef}
             id="mobile-nav"
             role="dialog"
             aria-modal="true"
-            className="lg:hidden fixed inset-x-0 top-0 z-50 origin-top rounded-b-2xl border-b border-white/10 bg-background/85 backdrop-blur supports-[backdrop-filter]:backdrop-blur"
+            className="lg:hidden fixed inset-x-0 top-0 z-50 origin-top rounded-b-2xl border-b border-white/10 bg-background/85 backdrop-blur supports-backdrop-filter:backdrop-blur"
+            tabIndex={-1}
             initial={{ y: -28, opacity: 0, scale: 0.98 }}
             animate={{ y: 0, opacity: 1, scale: 1, transition: { duration: 0.28, ease } }}
             exit={{ y: -20, opacity: 0, transition: { duration: 0.22, ease } }}
@@ -65,7 +72,7 @@ export default function MobileMenuSheet({ active, onClose }: Props) {
                 </motion.div>
             </div>
 
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-background/90 to-transparent" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-linear-to-t from-background/90 to-transparent" />
         </motion.aside>
     );
 }

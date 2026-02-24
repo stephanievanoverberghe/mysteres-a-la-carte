@@ -88,9 +88,9 @@ Priorité 3 : industrialiser perf/SEO/a11y (budgets, metadata, audits automatis�
 
 ## 8) Accessibilité (a11y)
 
-- [ ] Ajouter une gestion clavier complète (focus trap, retour focus) pour le menu mobile de `src/components/Header.tsx`. (Impact: High | Effort: M | Risk: Med)
-- [ ] Ajouter `aria-live="assertive"` et rôles adaptés pour les erreurs de formulaire dans `src/components/BookingForm.tsx`. (Impact: Med | Effort: S | Risk: Low)
-- [ ] Vérifier et corriger la hiérarchie de titres sur les pages légales `src/app/*/page.tsx` pour garantir une structure cohérente H1→H2. (Impact: Med | Effort: S | Risk: Low)
+- [x] Ajouter une gestion clavier complète (focus trap, retour focus) pour le menu mobile de `src/components/Header.tsx`. (Impact: High | Effort: M | Risk: Med)
+- [x] Ajouter `aria-live="assertive"` et rôles adaptés pour les erreurs de formulaire dans `src/components/BookingForm.tsx`. (Impact: Med | Effort: S | Risk: Low)
+- [x] Vérifier et corriger la hiérarchie de titres sur les pages légales `src/app/*/page.tsx` pour garantir une structure cohérente H1→H2. (Impact: Med | Effort: S | Risk: Low)
 - [ ] Ajouter des tests automatisés axe (home + not-found + pages légales). (Impact: High | Effort: M | Risk: Low)
 
 ## 9) Testing & Quality Gates

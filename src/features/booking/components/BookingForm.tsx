@@ -28,6 +28,8 @@ export default function BookingForm() {
         defaultValues: BOOKING_DEFAULT_VALUES,
     });
 
+    const errorCount = Object.keys(errors).length;
+
     const { loading, status, openSuccess, setOpenSuccess, lastSubmission, submit } = useBookingSubmission({
         onSuccess: success,
         onError: error,
@@ -48,6 +50,9 @@ export default function BookingForm() {
                     <SectionDivider />
 
                     <form onSubmit={handleSubmit(submit)} className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6" noValidate>
+                        <p role="alert" aria-live="assertive" className="sr-only">
+                            {errorCount > 0 ? `Le formulaire contient ${errorCount} erreur${errorCount > 1 ? 's' : ''}.` : ''}
+                        </p>
                         <fieldset className="contents" disabled={loading}>
                             <BookingFields register={register} errors={errors} />
                             <BookingConsent register={register} errors={errors} />

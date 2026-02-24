@@ -1,3 +1,4 @@
+import { forwardRef } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -6,9 +7,10 @@ type Props = {
     onToggle: () => void;
 };
 
-export default function MobileMenuButton({ open, onToggle }: Props) {
+const MobileMenuButton = forwardRef<HTMLButtonElement, Props>(function MobileMenuButton({ open, onToggle }, ref) {
     return (
         <motion.button
+            ref={ref}
             whileTap={{ scale: 0.96 }}
             className="lg:hidden p-2 rounded-xl border border-muted hover:bg-muted/20"
             onClick={onToggle}
@@ -19,4 +21,6 @@ export default function MobileMenuButton({ open, onToggle }: Props) {
             {open ? <X /> : <Menu />}
         </motion.button>
     );
-}
+});
+
+export default MobileMenuButton;

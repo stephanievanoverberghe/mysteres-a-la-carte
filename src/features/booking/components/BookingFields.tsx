@@ -27,7 +27,7 @@ export default function BookingFields({ register, errors }: Props) {
                     {...register('name')}
                 />
                 {errors.name && (
-                    <p id="err-name" className="text-sm text-red-400">
+                    <p id="err-name" role="alert" aria-live="assertive" className="text-sm text-red-400">
                         {errors.name.message}
                     </p>
                 )}
@@ -45,7 +45,7 @@ export default function BookingFields({ register, errors }: Props) {
                     {...register('email')}
                 />
                 {errors.email && (
-                    <p id="err-email" className="text-sm text-red-400">
+                    <p id="err-email" role="alert" aria-live="assertive" className="text-sm text-red-400">
                         {errors.email.message}
                     </p>
                 )}
@@ -63,7 +63,7 @@ export default function BookingFields({ register, errors }: Props) {
                     {...register('phone')}
                 />
                 {errors.phone && (
-                    <p id="err-phone" className="text-sm text-red-400">
+                    <p id="err-phone" role="alert" aria-live="assertive" className="text-sm text-red-400">
                         {errors.phone.message}
                     </p>
                 )}
@@ -81,7 +81,7 @@ export default function BookingFields({ register, errors }: Props) {
                         {...register('date')}
                     />
                     {errors.date && (
-                        <p id="err-date" className="text-sm text-red-400">
+                        <p id="err-date" role="alert" aria-live="assertive" className="text-sm text-red-400">
                             {errors.date.message}
                         </p>
                     )}
@@ -97,7 +97,7 @@ export default function BookingFields({ register, errors }: Props) {
                         {...register('time')}
                     />
                     {errors.time && (
-                        <p id="err-time" className="text-sm text-red-400">
+                        <p id="err-time" role="alert" aria-live="assertive" className="text-sm text-red-400">
                             {errors.time.message}
                         </p>
                     )}
@@ -117,7 +117,7 @@ export default function BookingFields({ register, errors }: Props) {
                     {...register('people', { setValueAs: (value) => Number(value) || 0 })}
                 />
                 {errors.people && (
-                    <p id="err-people" className="text-sm text-red-400">
+                    <p id="err-people" role="alert" aria-live="assertive" className="text-sm text-red-400">
                         {errors.people.message}
                     </p>
                 )}
@@ -139,7 +139,7 @@ export default function BookingFields({ register, errors }: Props) {
                     ))}
                 </select>
                 {errors.menuId && (
-                    <p id="err-menu" className="text-sm text-red-400">
+                    <p id="err-menu" role="alert" aria-live="assertive" className="text-sm text-red-400">
                         {errors.menuId.message}
                     </p>
                 )}
@@ -148,11 +148,11 @@ export default function BookingFields({ register, errors }: Props) {
             <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex flex-col gap-2">
                     <label htmlFor="allergies">Allergies / restrictions</label>
-                    <textarea id="allergies" className="rounded-xl border border-muted bg-background/60 px-3 py-2 min-h-[96px]" {...register('allergies')} />
+                    <textarea id="allergies" className="rounded-xl border border-muted bg-background/60 px-3 py-2 min-h-24" {...register('allergies')} />
                 </div>
                 <div className="flex flex-col gap-2">
                     <label htmlFor="message">Message</label>
-                    <textarea id="message" className="rounded-xl border border-muted bg-background/60 px-3 py-2 min-h-[96px]" {...register('message')} />
+                    <textarea id="message" className="rounded-xl border border-muted bg-background/60 px-3 py-2 min-h-24" {...register('message')} />
                 </div>
             </div>
         </>
