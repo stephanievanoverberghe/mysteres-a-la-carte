@@ -7,12 +7,19 @@ import { isClientDebugEnabled } from '@/shared/lib/config/env';
 
 type BookingStatus = 'idle' | 'loading' | 'success' | 'error';
 
+/**
+ * Dépendances externes injectées dans le hook pour gérer les notifications et la remise à zéro.
+ */
 type UseBookingSubmissionParams = {
   onSuccess: (_title: string, _message: string) => void;
   onError: (_title: string, _message: string) => void;
   reset: (_values: BookingFormInput) => void;
 };
 
+/**
+ * Gère le cycle complet d'une soumission de réservation (chargement, succès, erreur).
+ * Inclut un honeypot anti-spam et conserve un résumé de la dernière demande validée.
+ */
 export function useBookingSubmission({ onSuccess, onError, reset }: UseBookingSubmissionParams) {
   const [status, setStatus] = useState<BookingStatus>('idle');
   const [openSuccess, setOpenSuccess] = useState(false);
