@@ -55,10 +55,10 @@ export function ToastProvider({ children }: { children: ReactNode }) {
     const api: ToastApi = useMemo(
         () => ({
             show,
-            success: (title, description) => show({ title, description, variant: 'success' }),
-            info: (title, description) => show({ title, description, variant: 'info' }),
-            warning: (title, description) => show({ title, description, variant: 'warning' }),
-            error: (title, description) => show({ title, description, variant: 'error' }),
+            success: (title, description) => show({ title, variant: 'success', ...(description ? { description } : {}) }),
+            info: (title, description) => show({ title, variant: 'info', ...(description ? { description } : {}) }),
+            warning: (title, description) => show({ title, variant: 'warning', ...(description ? { description } : {}) }),
+            error: (title, description) => show({ title, variant: 'error', ...(description ? { description } : {}) }),
         }),
         [show],
     );

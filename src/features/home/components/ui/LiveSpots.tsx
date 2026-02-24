@@ -7,7 +7,8 @@ export default function LiveSpots() {
 
     useEffect(() => {
         const hour = new Date().getHours();
-        const base = [10, 9, 8, 7, 6, 5][hour % 6];
+        const BASE_SPOTS = [10, 9, 8, 7, 6, 5] as const;
+        const base = BASE_SPOTS[hour % BASE_SPOTS.length] ?? BASE_SPOTS[0];
         setSpots(base);
 
         const id = setInterval(() => {

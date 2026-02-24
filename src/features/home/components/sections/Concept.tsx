@@ -99,7 +99,7 @@ export default function Concept() {
                                 onMouseMove={onMove}
                                 onMouseLeave={onLeave}
                                 className="relative aspect-[16/10] lg:aspect-[5/4] rounded-2xl border border-muted shadow-soft overflow-hidden"
-                                style={{ transformStyle: 'preserve-3d', perspective: 1000 } as React.CSSProperties}
+                                style={{ transformStyle: 'preserve-3d', perspective: 1000 }}
                             >
                                 {/* Visuel */}
                                 <motion.div

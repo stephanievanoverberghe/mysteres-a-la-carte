@@ -1,6 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, LabelList } from 'recharts';
+import type { LabelProps, TooltipContentProps } from 'recharts';
 import ScrollReveal from '@/shared/ui/fx/ScrollReveal';
 import SectionTitle from '@/shared/ui/SectionTitle';
 import SectionDivider from '@/shared/ui/SectionDivider';
@@ -13,11 +14,7 @@ const blockV = {
     show: { opacity: 1, y: 0, transition: { duration: 0.5, ease } },
 };
 
-/** ---- Types locaux ---- */
 type DataPoint = { name: string; value: number };
-type ReTooltipPayload = { value: number; name: string; color?: string };
-type ReTooltipProps = { active?: boolean; payload?: ReTooltipPayload[]; label?: string | number };
-type LabelContentProps = { x?: number; y?: number; width?: number; value?: number | string };
 
 /** ---- Données ---- */
 const DATA: DataPoint[] = [
@@ -27,7 +24,7 @@ const DATA: DataPoint[] = [
 ];
 
 /** Label au-dessus des barres */
-function ValueLabel({ x = 0, y = 0, width = 0, value }: LabelContentProps) {
+function ValueLabel({ x = 0, y = 0, width = 0, value }: LabelProps) {
     const cx = Number(x) + Number(width) / 2;
     return (
         <text x={cx} y={Number(y) - 6} textAnchor="middle" fontSize={12} fill="var(--color-primary)">
@@ -37,9 +34,11 @@ function ValueLabel({ x = 0, y = 0, width = 0, value }: LabelContentProps) {
 }
 
 /** Infobulle personnalisée */
-function CustomTooltip({ active, payload, label }: ReTooltipProps) {
+function CustomTooltip({ active, payload, label }: TooltipContentProps<number, string>) {
     if (!active || !payload || payload.length === 0) return null;
-    const v = Number(payload[0].value);
+    const entry = payload[0];
+    if (!entry) return null;
+    const v = Number(entry.value);
     return (
         <div className="rounded-xl border border-muted bg-background/90 px-3 py-2 text-sm shadow-soft">
             <div className="text-muted-foreground">{String(label)}</div>
@@ -80,7 +79,7 @@ export default function Dataviz() {
                                             tick={{ fill: 'var(--color-muted-foreground)', fontSize: 12 }}
                                             tickFormatter={(v: number) => `${v}%`}
                                         />
-                                        <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(255,255,255,0.04)' }} />
+                                        <Tooltip content={CustomTooltip} cursor={{ fill: 'rgba(255,255,255,0.04)' }} />
                                         <Bar dataKey="value" fill="var(--color-primary)" fillOpacity={0.9} stroke="var(--color-primary)" radius={[8, 8, 0, 0]}>
                                             <LabelList dataKey="value" content={<ValueLabel />} />
                                         </Bar>

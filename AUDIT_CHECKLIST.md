@@ -63,10 +63,10 @@ Priorité 3 : industrialiser perf/SEO/a11y (budgets, metadata, audits automatis�
 
 ## 5) Typescript & Type Safety
 
-- [ ] Activer `noUncheckedIndexedAccess` et `exactOptionalPropertyTypes` dans `tsconfig.json` pour réduire les erreurs de nullabilité implicite. (Impact: Med | Effort: S | Risk: Med)
-- [ ] Désactiver `allowJs` dans `tsconfig.json` si aucun fichier JS n’est requis. (Impact: Med | Effort: S | Risk: Low)
-- [ ] Remplacer les types ad hoc de `src/components/Dataviz.tsx` par les types officiels Recharts importés pour éviter les divergences API. (Impact: Med | Effort: S | Risk: Low)
-- [ ] Ajouter des types partagés de domaine (`MenuId`, `BookingRequest`) dans `src/types/booking.ts` pour supprimer la duplication de littéraux. (Impact: High | Effort: S | Risk: Low)
+- [x] Activer `noUncheckedIndexedAccess` et `exactOptionalPropertyTypes` dans `tsconfig.json` pour réduire les erreurs de nullabilité implicite. (Impact: Med | Effort: S | Risk: Med)
+- [x] Désactiver `allowJs` dans `tsconfig.json` si aucun fichier JS n’est requis. (Impact: Med | Effort: S | Risk: Low)
+- [x] Remplacer les types ad hoc de `src/components/Dataviz.tsx` par les types officiels Recharts importés pour éviter les divergences API. (Impact: Med | Effort: S | Risk: Low)
+- [x] Ajouter des types partagés de domaine (`MenuId`, `BookingRequest`) dans `src/types/booking.ts` pour supprimer la duplication de littéraux. (Impact: High | Effort: S | Risk: Low)
 
 ## 6) Performance (LCP/CLS/INP)
 

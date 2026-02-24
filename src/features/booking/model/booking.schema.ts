@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { MENU_IDS } from '@/content/menus';
+import type { BookingSubmission } from '@/types/booking';
 
 export const bookingFormSchema = z.object({
     name: z.string().min(2, 'Nom requis'),
@@ -17,3 +18,4 @@ export const bookingFormSchema = z.object({
 
 export type BookingFormValues = z.output<typeof bookingFormSchema>;
 export type BookingFormInput = z.input<typeof bookingFormSchema>;
+export type BookingFormPayload = BookingSubmission;

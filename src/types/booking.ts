@@ -1,4 +1,4 @@
-import type { MenuId } from '@/content/menus';
+export type MenuId = 'carn-hivor' | 'botanique' | 'evasion' | 'aventure-gourmande';
 
 export type BookingRequest = {
     name: string;
@@ -10,6 +10,9 @@ export type BookingRequest = {
     menuId: MenuId;
     allergies: string;
     message: string;
+};
+
+export type BookingSubmission = BookingRequest & {
     consent: boolean;
     bot: string;
 };

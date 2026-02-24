@@ -1,3 +1,5 @@
+import type { MenuId } from '@/types/booking';
+
 export const MENUS = [
     {
         id: 'carn-hivor',
@@ -32,7 +34,5 @@ export const MENUS = [
         image: '/menu/aventure.webp',
     },
 ] as const;
-
-export type MenuId = (typeof MENUS)[number]['id'];
 
 export const MENU_IDS = MENUS.map((menu) => menu.id) as [MenuId, ...MenuId[]];

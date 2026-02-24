@@ -4,10 +4,10 @@ import { motion } from 'framer-motion';
 type Props = {
     open: boolean;
     onClose: () => void;
-    name?: string;
-    people?: number;
-    date?: string;
-    time?: string;
+    name?: string | undefined;
+    people?: number | undefined;
+    date?: string | undefined;
+    time?: string | undefined;
 };
 
 export default function BookingSuccess({ open, onClose, name, people, date, time }: Props) {

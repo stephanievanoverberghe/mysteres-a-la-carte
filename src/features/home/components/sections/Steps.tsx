@@ -58,7 +58,7 @@ export default function Steps() {
                 md:before:hidden
                 before:absolute before:left-[1.1rem] before:top-0 before:bottom-0 before:w-px before:bg-muted/60
               "
-                                style={{ contentVisibility: 'auto' } as React.CSSProperties}
+                                style={{ contentVisibility: 'auto' }}
                             >
                                 {/* Visuel (uniquement dès md) */}
                                 {s.img && (
