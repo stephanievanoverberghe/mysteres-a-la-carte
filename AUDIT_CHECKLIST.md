@@ -8,20 +8,20 @@ Priorité 3 : industrialiser perf/SEO/a11y (budgets, metadata, audits automatis�
 
 ## P0 — À corriger immédiatement
 
-- [ ] Supprimer la dépendance `nodemailer` et `@types/nodemailer` de `package.json` tant qu’aucun envoi serveur n’existe, pour réduire la surface supply-chain inutile. (Impact: High | Effort: S | Risk: Low)
+- [x] Supprimer la dépendance `nodemailer` et `@types/nodemailer` de `package.json` tant qu’aucun envoi serveur n’existe, pour réduire la surface supply-chain inutile. (Impact: High | Effort: S | Risk: Low)
 
 ## 1) Repo & Conventions
 
 ### Structure globale
 
-- [ ] Définir une convention d’organisation cible dans `README.md` (ex: `features/`, `shared/`, `app/`) et l’appliquer aux nouveaux fichiers de `src/`. (Impact: High | Effort: M | Risk: Low)
-- [ ] Ajouter un guide de nommage (PascalCase composants, camelCase hooks/utilitaires, kebab-case segments route) dans `README.md`. (Impact: Med | Effort: S | Risk: Low)
-- [ ] Centraliser les constantes de contenu (`NAV`, `MENUS`, textes légaux) dans des modules dédiés plutôt que dans `src/components/Header.tsx`, `src/components/BookingForm.tsx` et `src/app/*/page.tsx`. (Impact: High | Effort: M | Risk: Low)
+- [x] Définir une convention d’organisation cible dans `README.md` (ex: `features/`, `shared/`, `app/`) et l’appliquer aux nouveaux fichiers de `src/`. (Impact: High | Effort: M | Risk: Low)
+- [x] Ajouter un guide de nommage (PascalCase composants, camelCase hooks/utilitaires, kebab-case segments route) dans `README.md`. (Impact: Med | Effort: S | Risk: Low)
+- [x] Centraliser les constantes de contenu (`NAV`, `MENUS`, textes légaux) dans des modules dédiés plutôt que dans `src/components/Header.tsx`, `src/components/BookingForm.tsx` et `src/app/*/page.tsx`. (Impact: High | Effort: M | Risk: Low)
 
 ### Conventions de code
 
-- [ ] Ajouter des règles ESLint de complexité/taille de fichier (ex: `max-lines`, `complexity`) pour prévenir les composants >150 lignes dans `src/components/*.tsx`. (Impact: Med | Effort: S | Risk: Low)
-- [ ] Remplacer les casts `as unknown as number` dans `src/components/BookingForm.tsx` par un typage RHF explicite (`setValueAs` ou schéma coercitif). (Impact: High | Effort: S | Risk: Low)
+- [x] Ajouter des règles ESLint de complexité/taille de fichier (ex: `max-lines`, `complexity`) pour prévenir les composants >150 lignes dans `src/components/*.tsx`. (Impact: Med | Effort: S | Risk: Low)
+- [x] Remplacer les casts `as unknown as number` dans `src/components/BookingForm.tsx` par un typage RHF explicite (`setValueAs` ou schéma coercitif). (Impact: High | Effort: S | Risk: Low)
 
 ## 2) Architecture & Boundaries
 
