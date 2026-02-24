@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { buildCanonicalUrl, getSiteUrl, getSiteUrlObject } from '../../src/shared/lib/seo/site-url';
+import { buildCanonicalUrl, getSiteUrl, getSiteUrlObject } from '../../src/shared/lib/seo/site-url.ts';
 
 test('getSiteUrl uses default URL when env is undefined', () => {
     delete process.env.NEXT_PUBLIC_SITE_URL;
