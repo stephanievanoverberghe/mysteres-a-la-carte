@@ -1,6 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { listenWindowEvent } from '@/shared/lib/browser/events';
+
+const SECTION_IDS = ['hero', 'concept', 'experiences', 'steps', 'dataviz', 'reserver', 'faq', 'contact'];
 
 export function useHeaderNavigation() {
     const [open, setOpen] = useState(false);
@@ -10,29 +13,47 @@ export function useHeaderNavigation() {
 
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 8);
-        window.addEventListener('scroll', onScroll);
-        return () => window.removeEventListener('scroll', onScroll);
+        onScroll();
+        return listenWindowEvent('scroll', onScroll, { passive: true });
     }, []);
 
     useEffect(() => {
+        const ids = SECTION_IDS;
+
         if (!('IntersectionObserver' in window)) {
-            return;
+            const syncActiveFromScroll = () => {
+                let current = 'hero';
+                ids.forEach((id) => {
+                    const element = document.getElementById(id);
+                    if (!element) return;
+                    const { top } = element.getBoundingClientRect();
+                    if (top <= window.innerHeight * 0.5) current = id;
+                });
+
+                setActive(`#${current}`);
+            };
+
+            syncActiveFromScroll();
+            return listenWindowEvent('scroll', syncActiveFromScroll, { passive: true });
         }
 
-        const ids = ['hero', 'concept', 'experiences', 'steps', 'dataviz', 'reserver', 'faq', 'contact'];
         const targets = ids.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
         const io = new IntersectionObserver(
             (entries) => {
-                entries.forEach((entry) => entry.isIntersecting && setActive(`#${entry.target.id}`));
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) setActive(`#${entry.target.id}`);
+                });
             },
             { rootMargin: '-45% 0px -50% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] },
         );
-        targets.forEach((el) => io.observe(el));
+
+        targets.forEach((element) => io.observe(element));
         return () => io.disconnect();
     }, []);
 
     useEffect(() => {
         let lastY = window.scrollY;
+
         const onScroll = () => {
             if (window.innerWidth >= 1024 || open) return;
             const y = window.scrollY;
@@ -42,8 +63,8 @@ export function useHeaderNavigation() {
             if (goingUp) setHidden(false);
             lastY = y;
         };
-        window.addEventListener('scroll', onScroll, { passive: true });
-        return () => window.removeEventListener('scroll', onScroll);
+
+        return listenWindowEvent('scroll', onScroll, { passive: true });
     }, [open]);
 
     useEffect(() => {
@@ -53,11 +74,7 @@ export function useHeaderNavigation() {
         };
     }, [open]);
 
-    useEffect(() => {
-        const handler = () => setOpen(false);
-        window.addEventListener('hashchange', handler);
-        return () => window.removeEventListener('hashchange', handler);
-    }, []);
+    useEffect(() => listenWindowEvent('hashchange', () => setOpen(false)), []);
 
     return { active, hidden, open, scrolled, setOpen };
 }

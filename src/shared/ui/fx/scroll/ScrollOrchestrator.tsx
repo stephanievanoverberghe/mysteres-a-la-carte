@@ -1,5 +1,6 @@
 'use client';
 import { useEffect } from 'react';
+import { listenWindowEvent } from '@/shared/lib/browser/events';
 
 /**
  * Orchestrateur d'effets de scroll directionnels (molette).
@@ -11,8 +12,6 @@ import { useEffect } from 'react';
  */
 export default function ScrollOrchestrator() {
     useEffect(() => {
-        if (typeof window === 'undefined') return;
-
         const mq = window.matchMedia('(min-width: 1024px)');
         if (!mq.matches) return;
 
@@ -23,17 +22,15 @@ export default function ScrollOrchestrator() {
         let dir: 'up' | 'down' | 'none' = 'none';
         let raf = 0;
 
-        const onWheel = (e: WheelEvent) => {
-            const dy = e.deltaY;
+        const onWheel = (event: WheelEvent) => {
+            const dy = event.deltaY;
             if (dy === 0) return;
             dirSign = dy > 0 ? 1 : -1;
             dir = dy > 0 ? 'down' : 'up';
-            // Normalisation : trackpad/molette
             target = Math.min(1, Math.abs(dy) / 120);
         };
 
         const tick = () => {
-            // lissage + décroissance
             current += (target - current) * 0.15;
             target *= 0.92;
 
@@ -52,24 +49,24 @@ export default function ScrollOrchestrator() {
             raf = requestAnimationFrame(tick);
         };
 
-        window.addEventListener('wheel', onWheel, { passive: true });
+        const stop = () => {
+            root.style.setProperty('--fx-speed', '0');
+            root.style.setProperty('--fx-dir', '0');
+            root.dataset.scrollDir = 'none';
+            cancelAnimationFrame(raf);
+            detachWheel();
+        };
+
+        const detachWheel = listenWindowEvent('wheel', onWheel, { passive: true });
         raf = requestAnimationFrame(tick);
 
-        const onChange = (ev: MediaQueryListEvent) => {
-            if (!ev.matches) {
-                // on coupe tout si on repasse < lg
-                root.style.setProperty('--fx-speed', '0');
-                root.style.setProperty('--fx-dir', '0');
-                root.dataset.scrollDir = 'none';
-                cancelAnimationFrame(raf);
-                window.removeEventListener('wheel', onWheel);
-            }
+        const onChange = (event: MediaQueryListEvent) => {
+            if (!event.matches) stop();
         };
         mq.addEventListener('change', onChange);
 
         return () => {
-            cancelAnimationFrame(raf);
-            window.removeEventListener('wheel', onWheel);
+            stop();
             mq.removeEventListener('change', onChange);
             root.style.removeProperty('--fx-speed');
             root.style.removeProperty('--fx-dir');

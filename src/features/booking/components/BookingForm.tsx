@@ -13,11 +13,9 @@ import SectionDivider from '@/shared/ui/SectionDivider';
 
 import { BOOKING_DEFAULT_VALUES } from '@/features/booking/model/booking.constants';
 import { bookingFormSchema, type BookingFormInput, type BookingFormValues } from '@/features/booking/model/booking.schema';
+import { useBookingSubmission } from '@/features/booking/hooks/useBookingSubmission';
 
 export default function BookingForm() {
-    const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-    const [openSuccess, setOpenSuccess] = useState(false);
-    const [last, setLast] = useState<Partial<BookingFormValues>>({});
     const { success, error } = useToast();
 
     const {
@@ -30,37 +28,11 @@ export default function BookingForm() {
         defaultValues: BOOKING_DEFAULT_VALUES,
     });
 
-    const onSubmit = async (data: BookingFormValues) => {
-        setStatus('loading');
-        try {
-            if (data.bot) {
-                setStatus('success');
-                setOpenSuccess(true);
-                success('Demande envoyée', 'Nous confirmons sous 24 h ouvrées.');
-                reset(BOOKING_DEFAULT_VALUES);
-                return;
-            }
-
-            console.group('%c[Reservation DEMO]', 'color:#D4AF37;font-weight:bold;');
-            console.table({ Nom: data.name, Email: data.email, Téléphone: data.phone, Date: data.date, Heure: data.time, Personnes: data.people, Menu: data.menuId });
-            if (data.allergies) console.log('Allergies:', data.allergies);
-            if (data.message) console.log('Message:', data.message);
-            console.groupEnd();
-
-            await new Promise((r) => setTimeout(r, 600));
-
-            setLast({ name: data.name, people: data.people, date: data.date, time: data.time });
-            setStatus('success');
-            setOpenSuccess(true);
-            success('Demande envoyée', 'Nous confirmons sous 24 h ouvrées.');
-            reset(BOOKING_DEFAULT_VALUES);
-        } catch {
-            setStatus('error');
-            error('Échec de l’envoi', 'Réessayez dans un instant.');
-        }
-    };
-
-    const loading = status === 'loading';
+    const { loading, status, openSuccess, setOpenSuccess, lastSubmission, submit } = useBookingSubmission({
+        onSuccess: success,
+        onError: error,
+        reset,
+    });
 
     return (
         <section id="reserver" aria-labelledby="reserver-title" className="relative md:py-24 py-14 bg-muted/30">
@@ -75,7 +47,7 @@ export default function BookingForm() {
 
                     <SectionDivider />
 
-                    <form onSubmit={handleSubmit(onSubmit)} className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6" noValidate>
+                    <form onSubmit={handleSubmit(submit)} className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6" noValidate>
                         <fieldset className="contents" disabled={loading}>
                             <BookingFields register={register} errors={errors} />
                             <BookingConsent register={register} errors={errors} />
@@ -85,7 +57,14 @@ export default function BookingForm() {
                 </div>
             </div>
 
-            <BookingSuccess open={openSuccess} onClose={() => setOpenSuccess(false)} name={last.name} people={last.people} date={last.date} time={last.time} />
+            <BookingSuccess
+                open={openSuccess}
+                onClose={() => setOpenSuccess(false)}
+                name={lastSubmission.name}
+                people={lastSubmission.people}
+                date={lastSubmission.date}
+                time={lastSubmission.time}
+            />
         </section>
     );
 }

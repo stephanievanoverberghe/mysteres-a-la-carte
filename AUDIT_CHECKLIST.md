@@ -53,13 +53,13 @@ Priorité 3 : industrialiser perf/SEO/a11y (budgets, metadata, audits automatis�
 
 ### Gestion d’état local
 
-- [ ] Isoler la machine d’état du formulaire (`idle/loading/success/error`) dans un hook `useBookingSubmission` pour clarifier la logique de transitions. (Impact: High | Effort: M | Risk: Med)
-- [ ] Encapsuler la logique `sessionStorage`/timers de `src/components/FX/UI/Splash.tsx` dans un hook robuste avec nettoyage systématique des timeouts. (Impact: Med | Effort: S | Risk: Low)
+- [x] Isoler la machine d’état du formulaire (`idle/loading/success/error`) dans un hook `useBookingSubmission` pour clarifier la logique de transitions. (Impact: High | Effort: M | Risk: Med)
+- [x] Encapsuler la logique `sessionStorage`/timers de `src/components/FX/UI/Splash.tsx` dans un hook robuste avec nettoyage systématique des timeouts. (Impact: Med | Effort: S | Risk: Low)
 
 ### Side effects navigateur
 
-- [ ] Créer un utilitaire partagé pour l’abonnement/désabonnement d’événements scroll/wheel utilisé dans `Header.tsx` et `ScrollOrchestrator.tsx`. (Impact: Med | Effort: M | Risk: Low)
-- [ ] Ajouter des garde-fous de fallback si `IntersectionObserver` n’est pas disponible dans `src/components/Header.tsx`. (Impact: Med | Effort: S | Risk: Low)
+- [x] Créer un utilitaire partagé pour l’abonnement/désabonnement d’événements scroll/wheel utilisé dans `Header.tsx` et `ScrollOrchestrator.tsx`. (Impact: Med | Effort: M | Risk: Low)
+- [x] Ajouter des garde-fous de fallback si `IntersectionObserver` n’est pas disponible dans `src/components/Header.tsx`. (Impact: Med | Effort: S | Risk: Low)
 
 ## 5) Typescript & Type Safety
 
