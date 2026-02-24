@@ -12,32 +12,53 @@ export function useHeaderNavigation() {
     const [hidden, setHidden] = useState(false);
 
     useEffect(() => {
-        const onScroll = () => setScrolled(window.scrollY > 8);
-        onScroll();
-        return listenWindowEvent('scroll', onScroll, { passive: true });
-    }, []);
-
-    useEffect(() => {
         const ids = SECTION_IDS;
+        const hasIntersectionObserver = 'IntersectionObserver' in window;
+        const fallbackTargets = ids.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
 
-        if (!('IntersectionObserver' in window)) {
-            const syncActiveFromScroll = () => {
+        let rafId = 0;
+        let lastY = window.scrollY;
+
+        const syncFromScroll = () => {
+            const y = window.scrollY;
+
+            setScrolled(y > 8);
+
+            if (window.innerWidth < 1024 && !open) {
+                const goingDown = y > lastY + 4;
+                const goingUp = y < lastY - 4;
+                if (y > 80 && goingDown) setHidden(true);
+                if (goingUp) setHidden(false);
+            }
+
+            if (!hasIntersectionObserver) {
                 let current = 'hero';
-                ids.forEach((id) => {
-                    const element = document.getElementById(id);
-                    if (!element) return;
+                fallbackTargets.forEach((element) => {
                     const { top } = element.getBoundingClientRect();
-                    if (top <= window.innerHeight * 0.5) current = id;
+                    if (top <= window.innerHeight * 0.5) current = element.id;
                 });
-
                 setActive(`#${current}`);
-            };
+            }
 
-            syncActiveFromScroll();
-            return listenWindowEvent('scroll', syncActiveFromScroll, { passive: true });
+            lastY = y;
+            rafId = 0;
+        };
+
+        const onScroll = () => {
+            if (rafId !== 0) return;
+            rafId = requestAnimationFrame(syncFromScroll);
+        };
+
+        syncFromScroll();
+        const detachScroll = listenWindowEvent('scroll', onScroll, { passive: true });
+
+        if (!hasIntersectionObserver) {
+            return () => {
+                detachScroll();
+                if (rafId !== 0) cancelAnimationFrame(rafId);
+            };
         }
 
-        const targets = ids.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
         const io = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
@@ -47,24 +68,12 @@ export function useHeaderNavigation() {
             { rootMargin: '-45% 0px -50% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] },
         );
 
-        targets.forEach((element) => io.observe(element));
-        return () => io.disconnect();
-    }, []);
-
-    useEffect(() => {
-        let lastY = window.scrollY;
-
-        const onScroll = () => {
-            if (window.innerWidth >= 1024 || open) return;
-            const y = window.scrollY;
-            const goingDown = y > lastY + 4;
-            const goingUp = y < lastY - 4;
-            if (y > 80 && goingDown) setHidden(true);
-            if (goingUp) setHidden(false);
-            lastY = y;
+        fallbackTargets.forEach((element) => io.observe(element));
+        return () => {
+            io.disconnect();
+            detachScroll();
+            if (rafId !== 0) cancelAnimationFrame(rafId);
         };
-
-        return listenWindowEvent('scroll', onScroll, { passive: true });
     }, [open]);
 
     useEffect(() => {

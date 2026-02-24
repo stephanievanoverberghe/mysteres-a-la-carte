@@ -72,12 +72,12 @@ Priorité 3 : industrialiser perf/SEO/a11y (budgets, metadata, audits automatis�
 
 ### Chargement et bundles
 
-- [ ] Dynamiser le chargement de `Dataviz` dans `src/app/page.tsx` (comme annoncé dans le README) pour éviter de charger Recharts sur l’entrée critique. (Impact: High | Effort: S | Risk: Low)
+- [x] Dynamiser le chargement de `Dataviz` dans `src/app/page.tsx` (comme annoncé dans le README) pour éviter de charger Recharts sur l’entrée critique. (Impact: High | Effort: S | Risk: Low)
 - [ ] Mesurer la taille JS de chaque composant FX (`TopLoader`, `CursorGlow`, `Splash`, `ScrollProgress`) et conditionner leur montage selon viewport/préférences utilisateur. (Impact: Med | Effort: M | Risk: Low)
 
 ### Rendu et interactions
 
-- [ ] Éviter les listeners scroll multiples dans `Header.tsx` en mutualisant la lecture de `window.scrollY` via un seul handler throttle. (Impact: Med | Effort: M | Risk: Med)
+- [x] Éviter les listeners scroll multiples dans `Header.tsx` en mutualisant la lecture de `window.scrollY` via un seul handler throttle. (Impact: Med | Effort: M | Risk: Med)
 - [ ] Ajouter un budget Web Vitals (LCP/CLS/INP) dans CI avec seuils et échec de pipeline. (Impact: High | Effort: M | Risk: Med)
 
 ## 7) SEO & Metadata

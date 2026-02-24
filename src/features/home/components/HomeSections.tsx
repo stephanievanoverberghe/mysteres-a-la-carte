@@ -1,12 +1,16 @@
+import dynamic from 'next/dynamic';
 import BookingForm from '@/features/booking/components/BookingForm';
 import Concept from '@/features/home/components/sections/Concept';
 import Contact from '@/features/home/components/sections/Contact';
-import Dataviz from '@/features/home/components/sections/Dataviz';
 import FAQ from '@/features/home/components/sections/FAQ';
 import Hero from '@/features/home/components/sections/Hero';
 import Menus from '@/features/home/components/sections/Menus';
 import Steps from '@/features/home/components/sections/Steps';
 import Pane from '@/shared/ui/fx/scroll/Pane';
+
+const Dataviz = dynamic(() => import('@/features/home/components/sections/Dataviz'), {
+    loading: () => <section id="dataviz" className="md:py-24 py-14" aria-hidden="true" />,
+});
 
 export default function HomeSections() {
     return (
