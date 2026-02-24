@@ -4,15 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Menu, X, ChevronRight, UtensilsCrossed } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-
-const NAV = [
-    { href: '#concept', label: 'Concept' },
-    { href: '#experiences', label: 'Expériences' },
-    { href: '#steps', label: 'À quoi vous attendre' },
-    { href: '#reserver', label: 'Réserver' },
-    { href: '#faq', label: 'FAQ' },
-    { href: '#contact', label: 'Accès' },
-];
+import { NAV_LINKS } from '@/content/navigation';
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -37,7 +29,7 @@ export default function Header() {
             (entries) => {
                 entries.forEach((entry) => entry.isIntersecting && setActive(`#${entry.target.id}`));
             },
-            { rootMargin: '-45% 0px -50% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] }
+            { rootMargin: '-45% 0px -50% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] },
         );
         targets.forEach((el) => io.observe(el));
         return () => io.disconnect();
@@ -99,7 +91,7 @@ export default function Header() {
 
                 {/* Nav desktop (≥ lg) */}
                 <nav className="hidden lg:flex items-center gap-6" aria-label="Navigation principale">
-                    {NAV.map((item) => (
+                    {NAV_LINKS.map((item) => (
                         <a
                             key={item.href}
                             href={item.href}
@@ -195,7 +187,7 @@ function MenuSheet({ active, onClose }: { active: string; onClose: () => void })
                     {/* Explorer */}
                     <p className="px-1 pb-2 text-xs uppercase tracking-wide text-muted-foreground">Explorer</p>
                     <ul className="grid gap-1">
-                        {NAV.filter((n) => n.href !== '#reserver').map((item) => (
+                        {NAV_LINKS.filter((n) => n.href !== '#reserver').map((item) => (
                             <motion.li key={item.href} variants={{ hidden: { y: 10, opacity: 0 }, show: { y: 0, opacity: 1, transition: { duration: 0.28, ease } } }}>
                                 <a
                                     href={item.href}

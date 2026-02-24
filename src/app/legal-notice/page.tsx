@@ -1,24 +1,11 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { SITE_INFO } from '@/content/site';
 
 export const metadata: Metadata = {
     title: 'Mentions légales — Mystères à la carte',
     description: 'Informations légales du site démo Mystères à la carte.',
     robots: { index: true, follow: true },
-};
-
-const SITE = {
-    name: 'Mystères à la carte',
-    nature: 'Projet de démonstration – portfolio (aucune activité commerciale).',
-    owner: 'Alchimiste Créations / Stéphanie Vanoverberghe',
-    address: '59000 Lille, France',
-    email: 'orangestreet@live.fr',
-    phone: '+33 1 23 45 67 89',
-    host: {
-        name: 'Vercel, Inc.',
-        site: 'https://vercel.com',
-    },
-    lastUpdate: '17/08/2025',
 };
 
 export default function legalNoticePage() {
@@ -41,7 +28,7 @@ export default function legalNoticePage() {
                 </nav>
 
                 <h1 className="mt-4 text-3xl md:text-4xl font-semibold">Mentions légales</h1>
-                <p className="mt-2 text-muted-foreground">Dernière mise à jour&nbsp;: {SITE.lastUpdate}</p>
+                <p className="mt-2 text-muted-foreground">Dernière mise à jour&nbsp;: {SITE_INFO.lastUpdate}</p>
 
                 <div className="mt-8 grid gap-8">
                     {/* 1. Éditeur */}
@@ -51,20 +38,20 @@ export default function legalNoticePage() {
                         </h2>
                         <div className="mt-3 text-sm leading-relaxed">
                             <p>
-                                <strong>{SITE.name}</strong> — {SITE.nature}
+                                <strong>{SITE_INFO.name}</strong> — {SITE_INFO.nature}
                             </p>
                             <p className="mt-2">
-                                Éditeur / responsable de la publication&nbsp;: <strong>{SITE.owner}</strong>
+                                Éditeur / responsable de la publication&nbsp;: <strong>{SITE_INFO.owner}</strong>
                                 <br />
-                                Adresse&nbsp;: {SITE.address}
+                                Adresse&nbsp;: {SITE_INFO.address}
                                 <br />
                                 Contact&nbsp;:{' '}
-                                <a className="underline underline-offset-4 hover:text-primary" href={`mailto:${SITE.email}`}>
-                                    {SITE.email}
+                                <a className="underline underline-offset-4 hover:text-primary" href={`mailto:${SITE_INFO.email}`}>
+                                    {SITE_INFO.email}
                                 </a>{' '}
                                 —{' '}
-                                <a className="underline underline-offset-4 hover:text-primary" href={`tel:${SITE.phone.replace(/\s+/g, '')}`}>
-                                    {SITE.phone}
+                                <a className="underline underline-offset-4 hover:text-primary" href={`tel:${SITE_INFO.phone.replace(/\s+/g, '')}`}>
+                                    {SITE_INFO.phone}
                                 </a>
                             </p>
                         </div>
@@ -77,11 +64,10 @@ export default function legalNoticePage() {
                         </h2>
                         <div className="mt-3 text-sm leading-relaxed">
                             <p>
-                                Site hébergé par <strong>{SITE.host.name}</strong> —{' '}
-                                <a className="underline underline-offset-4 hover:text-primary" href={SITE.host.site} target="_blank" rel="noreferrer">
-                                    {SITE.host.site}
+                                Site hébergé par <strong>{SITE_INFO.host.name}</strong> —{' '}
+                                <a className="underline underline-offset-4 hover:text-primary" href={SITE_INFO.host.site} target="_blank" rel="noreferrer">
+                                    {SITE_INFO.host.site}
                                 </a>
-                                .
                             </p>
                         </div>
                     </section>
@@ -120,8 +106,8 @@ export default function legalNoticePage() {
                             </p>
                             <p>
                                 Pour toute question liée à la confidentialité, vous pouvez écrire à&nbsp;:
-                                <a className="underline underline-offset-4 hover:text-primary ml-1" href={`mailto:${SITE.email}`}>
-                                    {SITE.email}
+                                <a className="underline underline-offset-4 hover:text-primary ml-1" href={`mailto:${SITE_INFO.email}`}>
+                                    {SITE_INFO.email}
                                 </a>
                                 .
                             </p>
@@ -173,12 +159,12 @@ export default function legalNoticePage() {
                         </h2>
                         <div className="mt-3 text-sm leading-relaxed">
                             <p>
-                                <a className="underline underline-offset-4 hover:text-primary" href={`mailto:${SITE.email}`}>
-                                    {SITE.email}
+                                <a className="underline underline-offset-4 hover:text-primary" href={`mailto:${SITE_INFO.email}`}>
+                                    {SITE_INFO.email}
                                 </a>{' '}
                                 —{' '}
-                                <a className="underline underline-offset-4 hover:text-primary" href={`tel:${SITE.phone.replace(/\s+/g, '')}`}>
-                                    {SITE.phone}
+                                <a className="underline underline-offset-4 hover:text-primary" href={`tel:${SITE_INFO.phone.replace(/\s+/g, '')}`}>
+                                    {SITE_INFO.phone}
                                 </a>
                             </p>
                         </div>

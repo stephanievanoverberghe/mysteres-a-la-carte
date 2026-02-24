@@ -1,28 +1,11 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { SITE_INFO } from '@/content/site';
 
 export const metadata: Metadata = {
     title: 'Politique de confidentialité — Mystères à la carte',
     description: 'Site démo one-page pour portfolio : aucun back-end, aucune conservation des données. Politique de confidentialité en français.',
     robots: { index: true, follow: true },
-};
-
-const SITE = {
-    name: 'Mystères à la carte',
-    nature: 'Site démo one-page à des fins de portfolio (aucune activité commerciale).',
-    owner: 'Alchimiste Créations / Stéphanie Vanoverberghe',
-    address: '59000 Lille, France',
-    email: 'orangestreet@live.fr',
-    phone: '+33 1 23 45 67 89',
-    host: {
-        name: 'Vercel, Inc.',
-        url: 'https://vercel.com',
-        privacy: 'https://vercel.com/legal/privacy-policy',
-    },
-    services: {
-        googleMaps: 'https://policies.google.com/privacy',
-    },
-    lastUpdate: '17/08/2025',
 };
 
 export default function PrivacyPolicyPage() {
@@ -45,7 +28,7 @@ export default function PrivacyPolicyPage() {
                 </nav>
 
                 <h1 className="mt-4 text-3xl md:text-4xl font-semibold">Politique de confidentialité</h1>
-                <p className="mt-2 text-muted-foreground">Dernière mise à jour&nbsp;: {SITE.lastUpdate}</p>
+                <p className="mt-2 text-muted-foreground">Dernière mise à jour&nbsp;: {SITE_INFO.lastUpdate}</p>
 
                 <div className="mt-8 grid gap-8">
                     {/* 1. Qui sommes-nous */}
@@ -55,20 +38,20 @@ export default function PrivacyPolicyPage() {
                         </h2>
                         <div className="mt-3 text-sm leading-relaxed">
                             <p>
-                                <strong>{SITE.name}</strong> — {SITE.nature}
+                                <strong>{SITE_INFO.name}</strong> — {SITE_INFO.nature}
                             </p>
                             <p className="mt-2">
-                                Éditeur / Responsable du traitement&nbsp;: <strong>{SITE.owner}</strong>
+                                Éditeur / Responsable du traitement&nbsp;: <strong>{SITE_INFO.owner}</strong>
                                 <br />
-                                Adresse&nbsp;: {SITE.address}
+                                Adresse&nbsp;: {SITE_INFO.address}
                                 <br />
                                 Contact&nbsp;:{' '}
-                                <a className="underline underline-offset-4 hover:text-primary" href={`mailto:${SITE.email}`}>
-                                    {SITE.email}
+                                <a className="underline underline-offset-4 hover:text-primary" href={`mailto:${SITE_INFO.email}`}>
+                                    {SITE_INFO.email}
                                 </a>{' '}
                                 —{' '}
-                                <a className="underline underline-offset-4 hover:text-primary" href={`tel:${SITE.phone.replace(/\s+/g, '')}`}>
-                                    {SITE.phone}
+                                <a className="underline underline-offset-4 hover:text-primary" href={`tel:${SITE_INFO.phone.replace(/\s+/g, '')}`}>
+                                    {SITE_INFO.phone}
                                 </a>
                             </p>
                         </div>
@@ -149,11 +132,11 @@ export default function PrivacyPolicyPage() {
                         <div className="mt-3 text-sm leading-relaxed space-y-3">
                             <p>
                                 Hébergement&nbsp;:{' '}
-                                <a className="underline underline-offset-4 hover:text-primary" href={SITE.host.url} target="_blank" rel="noreferrer">
-                                    {SITE.host.name}
+                                <a className="underline underline-offset-4 hover:text-primary" href={SITE_INFO.host.url} target="_blank" rel="noreferrer">
+                                    {SITE_INFO.host.name}
                                 </a>{' '}
                                 —{' '}
-                                <a className="underline underline-offset-4 hover:text-primary" href={SITE.host.privacy} target="_blank" rel="noreferrer">
+                                <a className="underline underline-offset-4 hover:text-primary" href={SITE_INFO.host.privacy} target="_blank" rel="noreferrer">
                                     Politique de confidentialité
                                 </a>
                                 .
@@ -161,7 +144,7 @@ export default function PrivacyPolicyPage() {
                             <p>
                                 Cartes&nbsp;: une iframe Google Maps est intégrée dans la section Contact. Google peut traiter des données techniques (IP, appareil) selon sa propre
                                 politique&nbsp;:{' '}
-                                <a className="underline underline-offset-4 hover:text-primary" href={SITE.services.googleMaps} target="_blank" rel="noreferrer">
+                                <a className="underline underline-offset-4 hover:text-primary" href={SITE_INFO.services.googleMaps} target="_blank" rel="noreferrer">
                                     Règles de confidentialité Google
                                 </a>
                                 .
@@ -178,8 +161,8 @@ export default function PrivacyPolicyPage() {
                         <div className="mt-3 text-sm leading-relaxed">
                             <p>
                                 Comme ce site démo ne stocke pas vos données, il n’y a généralement rien à accéder, corriger ou supprimer. Vous pouvez toutefois nous écrire à{' '}
-                                <a className="underline underline-offset-4 hover:text-primary" href={`mailto:${SITE.email}`}>
-                                    {SITE.email}
+                                <a className="underline underline-offset-4 hover:text-primary" href={`mailto:${SITE_INFO.email}`}>
+                                    {SITE_INFO.email}
                                 </a>{' '}
                                 pour toute question relative à la vie privée. En cas de litige, vous pouvez également contacter votre autorité locale (ex.&nbsp;CNIL).
                             </p>
@@ -215,12 +198,12 @@ export default function PrivacyPolicyPage() {
                         </h2>
                         <p className="mt-3 text-sm leading-relaxed">
                             Email&nbsp;:{' '}
-                            <a className="underline underline-offset-4 hover:text-primary" href={`mailto:${SITE.email}`}>
-                                {SITE.email}
+                            <a className="underline underline-offset-4 hover:text-primary" href={`mailto:${SITE_INFO.email}`}>
+                                {SITE_INFO.email}
                             </a>{' '}
                             — Téléphone&nbsp;:{' '}
-                            <a className="underline underline-offset-4 hover:text-primary" href={`tel:${SITE.phone.replace(/\s+/g, '')}`}>
-                                {SITE.phone}
+                            <a className="underline underline-offset-4 hover:text-primary" href={`tel:${SITE_INFO.phone.replace(/\s+/g, '')}`}>
+                                {SITE_INFO.phone}
                             </a>
                         </p>
                     </section>

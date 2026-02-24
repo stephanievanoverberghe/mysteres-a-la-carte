@@ -4,17 +4,9 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import BookingSuccess from '@/components/BookingSuccess';
+import { MENU_IDS, MENUS } from '@/content/menus';
 import { useToast } from './FX/UI/ToastProvider';
 import ScrollReveal from './FX/UI/ScrollReveal';
-
-/** Menus (ids stricts) */
-const MENUS = [
-    { id: 'carn-hivor', name: 'Carn Hivor', price: 60 },
-    { id: 'botanique', name: 'Botanique', price: 50 },
-    { id: 'evasion', name: 'Évasion', price: 50 },
-    { id: 'aventure-gourmande', name: 'Aventure gourmande (enfants)', price: 30 },
-] as const;
-const MENU_IDS = ['carn-hivor', 'botanique', 'evasion', 'aventure-gourmande'] as const;
 
 /** Schéma Zod */
 const formSchema = z.object({
@@ -23,14 +15,15 @@ const formSchema = z.object({
     phone: z.string().min(6, 'Téléphone requis'),
     date: z.string().min(1, 'Date requise'),
     time: z.string().min(1, 'Heure requise'),
-    people: z.number().int().min(1, 'Min 1').max(8, 'Max 8'),
+    people: z.coerce.number().int().min(1, 'Min 1').max(8, 'Max 8'),
     menuId: z.enum(MENU_IDS),
     allergies: z.string().max(600).default(''),
     message: z.string().max(800).default(''),
     consent: z.boolean().refine((v) => v === true, { message: 'Consentement requis' }),
     bot: z.string().max(0).default(''), // honeypot
 });
-type FormValues = z.input<typeof formSchema>;
+type FormValues = z.output<typeof formSchema>;
+type FormInput = z.input<typeof formSchema>;
 
 export default function BookingForm() {
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -43,7 +36,7 @@ export default function BookingForm() {
         handleSubmit,
         formState: { errors },
         reset,
-    } = useForm<FormValues>({
+    } = useForm<FormInput, unknown, FormValues>({
         resolver: zodResolver(formSchema),
         defaultValues: {
             name: '',
@@ -51,7 +44,7 @@ export default function BookingForm() {
             phone: '',
             date: '',
             time: '',
-            people: 2 as unknown as number, // RHF convertira via valueAsNumber
+            people: 2,
             menuId: MENUS[0].id,
             allergies: '',
             message: '',
@@ -74,7 +67,7 @@ export default function BookingForm() {
                     phone: '',
                     date: '',
                     time: '',
-                    people: 2 as unknown as number,
+                    people: 2,
                     menuId: MENUS[0].id,
                     allergies: '',
                     message: '',
@@ -113,7 +106,7 @@ export default function BookingForm() {
                 phone: '',
                 date: '',
                 time: '',
-                people: 2 as unknown as number,
+                people: 2,
                 menuId: MENUS[0].id,
                 allergies: '',
                 message: '',
@@ -253,7 +246,7 @@ export default function BookingForm() {
                                     className="rounded-xl border border-muted bg-background/60 px-3 py-2"
                                     aria-invalid={!!errors.people}
                                     aria-describedby={errors.people ? 'err-people' : undefined}
-                                    {...register('people', { valueAsNumber: true })}
+                                    {...register('people', { setValueAs: (value) => Number(value) || 0 })}
                                 />
                                 {errors.people && (
                                     <p id="err-people" className="text-sm text-red-400">
@@ -274,7 +267,7 @@ export default function BookingForm() {
                                 >
                                     {MENUS.map((m) => (
                                         <option key={m.id} value={m.id}>
-                                            {m.name} — {m.price}€
+                                            {m.title} — {m.price}€
                                         </option>
                                     ))}
                                 </select>

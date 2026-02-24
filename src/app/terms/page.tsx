@@ -1,20 +1,11 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { SITE_INFO } from '@/content/site';
 
 export const metadata: Metadata = {
     title: 'Conditions générales — Mystères à la carte',
     description: 'Conditions générales d’utilisation (et de vente le cas échéant) pour le site démo “Mystères à la carte”. Pas de back-end, pas de vente en ligne.',
     robots: { index: true, follow: true },
-};
-
-const SITE = {
-    name: 'Mystères à la carte',
-    nature: 'Site démo one-page à des fins de portfolio (aucune activité commerciale).',
-    owner: 'Alchimiste Créations / Stéphanie Vanoverberghe',
-    address: '59000 Lille, France',
-    email: 'orangestreet@live.fr',
-    phone: '+33 1 23 45 67 89',
-    lastUpdate: '17/08/2025',
 };
 
 export default function TermsPage() {
@@ -37,7 +28,7 @@ export default function TermsPage() {
                 </nav>
 
                 <h1 className="mt-4 text-3xl md:text-4xl font-semibold">Conditions générales</h1>
-                <p className="mt-2 text-muted-foreground">Dernière mise à jour&nbsp;: {SITE.lastUpdate}</p>
+                <p className="mt-2 text-muted-foreground">Dernière mise à jour&nbsp;: {SITE_INFO.lastUpdate}</p>
 
                 <div className="mt-8 grid gap-8">
                     {/* 1. Objet */}
@@ -46,8 +37,8 @@ export default function TermsPage() {
                             1. Objet
                         </h2>
                         <p className="mt-3 text-sm leading-relaxed">
-                            Les présentes conditions générales encadrent l’accès et l’utilisation du site <strong>{SITE.name}</strong>, actuellement présenté comme un{' '}
-                            <strong>{SITE.nature}</strong>. Le site ne permet pas la réalisation d’achats en ligne.
+                            Les présentes conditions générales encadrent l’accès et l’utilisation du site <strong>{SITE_INFO.name}</strong>, actuellement présenté comme un{' '}
+                            <strong>{SITE_INFO.nature}</strong>. Le site ne permet pas la réalisation d’achats en ligne.
                         </p>
                     </section>
 
@@ -165,12 +156,12 @@ export default function TermsPage() {
                         </h2>
                         <p className="mt-3 text-sm leading-relaxed">
                             Pour toute question relative aux présentes conditions&nbsp;:{' '}
-                            <a className="underline underline-offset-4 hover:text-primary" href={`mailto:${SITE.email}`}>
-                                {SITE.email}
+                            <a className="underline underline-offset-4 hover:text-primary" href={`mailto:${SITE_INFO.email}`}>
+                                {SITE_INFO.email}
                             </a>{' '}
                             —{' '}
-                            <a className="underline underline-offset-4 hover:text-primary" href={`tel:${SITE.phone.replace(/\s+/g, '')}`}>
-                                {SITE.phone}
+                            <a className="underline underline-offset-4 hover:text-primary" href={`tel:${SITE_INFO.phone.replace(/\s+/g, '')}`}>
+                                {SITE_INFO.phone}
                             </a>
                         </p>
                     </section>

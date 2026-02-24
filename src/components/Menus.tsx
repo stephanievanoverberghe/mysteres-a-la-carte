@@ -3,25 +3,12 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { UtensilsCrossed } from 'lucide-react';
 import ScrollReveal from './FX/UI/ScrollReveal';
+import { MENUS } from '@/content/menus';
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const containerV = { hidden: {}, show: { transition: { staggerChildren: 0.06 } } };
 const cardV = { hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0, transition: { duration: 0.5, ease } } };
-
-const MENUS = [
-    { id: 'carn-hivor', title: 'Carn Hivor', price: 60, desc: 'Parcours carné, indices fumés & textures franches.', tags: ['carné', 'signature'] },
-    { id: 'botanique', title: 'Botanique', price: 50, desc: 'Épopée végétale, herbes fines & révélations florales.', tags: ['végétarien'] },
-    { id: 'evasion', title: 'Évasion', price: 50, desc: 'Allergies & restrictions prises en compte.', tags: ['ajusté'] },
-    { id: 'aventure-gourmande', title: 'Aventure gourmande (enfants)', price: 30, desc: 'Mystère ludique aux saveurs douces, dès 8 ans.', tags: ['kids'] },
-] as const;
-
-const IMG: Record<(typeof MENUS)[number]['id'], string> = {
-    'carn-hivor': '/menu/carn-hivor.webp',
-    botanique: '/menu/botanique.webp',
-    evasion: '/menu/evasion.webp',
-    'aventure-gourmande': '/menu/aventure.webp',
-};
 
 export default function Menus() {
     return (
@@ -58,7 +45,7 @@ export default function Menus() {
                                 {/* Image */}
                                 <div className="relative aspect-[4/3]">
                                     <Image
-                                        src={IMG[m.id]}
+                                        src={m.image}
                                         alt={`${m.title} — visuel`}
                                         fill
                                         className="object-cover will-change-transform transition-transform duration-700 group-hover:scale-[1.04] group-hover:saturate-[1.15]"
