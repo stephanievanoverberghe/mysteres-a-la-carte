@@ -12,12 +12,12 @@ test('navigation ancre vers réserver', async ({ page }) => {
 test('soumission formulaire démo avec succès', async ({ page }) => {
   await page.goto('/#reserver');
 
-  await page.getByLabel('Nom').fill('Test QA');
-  await page.getByLabel('Email').fill('qa@example.com');
-  await page.getByLabel('Téléphone').fill('0601020304');
-  await page.getByLabel('Date').fill('2026-06-15');
-  await page.getByLabel('Heure').fill('19:30');
-  await page.getByLabel('Nombre de personnes').fill('4');
+  await page.getByLabel('Nom', { exact: true }).fill('Test QA');
+  await page.getByLabel('Email', { exact: true }).fill('qa@example.com');
+  await page.getByLabel('Téléphone', { exact: true }).fill('0601020304');
+  await page.getByLabel('Date', { exact: true }).fill('2026-06-15');
+  await page.getByLabel('Heure', { exact: true }).fill('19:30');
+  await page.getByLabel('Nombre de personnes', { exact: true }).fill('4');
   await page.getByLabel(/J’accepte que mes informations/).check();
 
   await page.getByRole('button', { name: 'Envoyer la demande' }).click();
