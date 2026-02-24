@@ -1,4 +1,5 @@
 'use client';
+import { useEffect, useState } from 'react';
 import {
   Bar,
   BarChart,
@@ -57,6 +58,12 @@ function CustomTooltip({ active, payload, label }: TooltipContentProps<number, s
 }
 
 export default function Dataviz() {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <section id="dataviz" aria-labelledby="dv-title" className="relative md:py-24 py-14">
       <div className="container">
@@ -86,34 +93,44 @@ export default function Dataviz() {
               className="mt-8 rounded-2xl border border-muted bg-background/60 p-6 shadow-soft"
             >
               <div className="h-64 w-full">
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={DATA} margin={{ top: 24, right: 16, left: 8, bottom: 8 }}>
-                    <CartesianGrid stroke="rgba(255,255,255,0.06)" vertical={false} />
-                    <XAxis
-                      dataKey="name"
-                      tickLine={false}
-                      axisLine={false}
-                      tick={{ fill: 'var(--color-muted-foreground)', fontSize: 12 }}
-                    />
-                    <YAxis
-                      tickLine={false}
-                      axisLine={false}
-                      width={28}
-                      tick={{ fill: 'var(--color-muted-foreground)', fontSize: 12 }}
-                      tickFormatter={(v: number) => `${v}%`}
-                    />
-                    <Tooltip content={CustomTooltip} cursor={{ fill: 'rgba(255,255,255,0.04)' }} />
-                    <Bar
-                      dataKey="value"
-                      fill="var(--color-primary)"
-                      fillOpacity={0.9}
-                      stroke="var(--color-primary)"
-                      radius={[8, 8, 0, 0]}
-                    >
-                      <LabelList dataKey="value" content={<ValueLabel />} />
-                    </Bar>
-                  </BarChart>
-                </ResponsiveContainer>
+                {isMounted ? (
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart data={DATA} margin={{ top: 24, right: 16, left: 8, bottom: 8 }}>
+                      <CartesianGrid stroke="rgba(255,255,255,0.06)" vertical={false} />
+                      <XAxis
+                        dataKey="name"
+                        tickLine={false}
+                        axisLine={false}
+                        tick={{ fill: 'var(--color-muted-foreground)', fontSize: 12 }}
+                      />
+                      <YAxis
+                        tickLine={false}
+                        axisLine={false}
+                        width={28}
+                        tick={{ fill: 'var(--color-muted-foreground)', fontSize: 12 }}
+                        tickFormatter={(v: number) => `${v}%`}
+                      />
+                      <Tooltip
+                        content={CustomTooltip}
+                        cursor={{ fill: 'rgba(255,255,255,0.04)' }}
+                      />
+                      <Bar
+                        dataKey="value"
+                        fill="var(--color-primary)"
+                        fillOpacity={0.9}
+                        stroke="var(--color-primary)"
+                        radius={[8, 8, 0, 0]}
+                      >
+                        <LabelList dataKey="value" content={<ValueLabel />} />
+                      </Bar>
+                    </BarChart>
+                  </ResponsiveContainer>
+                ) : (
+                  <div
+                    className="h-full w-full animate-pulse rounded-xl bg-background/50"
+                    aria-hidden
+                  />
+                )}
               </div>
 
               <div className="mt-4 text-xs text-muted-foreground">
