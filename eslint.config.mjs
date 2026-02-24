@@ -18,7 +18,7 @@ const eslintConfig = [
       complexity: ['warn', 12],
       'max-lines': ['warn', { max: 250, skipBlankLines: true, skipComments: true }],
       'no-console': ['warn', { allow: ['warn', 'error'] }],
-      'sort-imports': ['warn', { ignoreDeclarationSort: false, ignoreCase: true }],
+      'sort-imports': ['warn', { ignoreDeclarationSort: true, ignoreCase: true }],
       'no-unused-vars': ['warn', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
     },
   },

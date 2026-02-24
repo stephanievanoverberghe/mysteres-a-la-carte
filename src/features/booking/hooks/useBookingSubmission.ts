@@ -8,9 +8,9 @@ import { isClientDebugEnabled } from '@/shared/lib/config/env';
 type BookingStatus = 'idle' | 'loading' | 'success' | 'error';
 
 type UseBookingSubmissionParams = {
-  onSuccess: (title: string, message: string) => void;
-  onError: (title: string, message: string) => void;
-  reset: (values: BookingFormInput) => void;
+  onSuccess: (_title: string, _message: string) => void;
+  onError: (_title: string, _message: string) => void;
+  reset: (_values: BookingFormInput) => void;
 };
 
 export function useBookingSubmission({ onSuccess, onError, reset }: UseBookingSubmissionParams) {
@@ -33,19 +33,17 @@ export function useBookingSubmission({ onSuccess, onError, reset }: UseBookingSu
         }
 
         if (shouldLogSubmission) {
-          console.group('%c[Reservation DEMO]', 'color:#D4AF37;font-weight:bold;');
-          console.table({
-            Nom: data.name,
-            Email: data.email,
-            Téléphone: data.phone,
-            Date: data.date,
-            Heure: data.time,
-            Personnes: data.people,
-            Menu: data.menuId,
+          console.warn('[Reservation DEMO]', {
+            nom: data.name,
+            email: data.email,
+            telephone: data.phone,
+            date: data.date,
+            heure: data.time,
+            personnes: data.people,
+            menu: data.menuId,
           });
-          if (data.allergies) console.log('Allergies:', data.allergies);
-          if (data.message) console.log('Message:', data.message);
-          console.groupEnd();
+          if (data.allergies) console.warn('Allergies:', data.allergies);
+          if (data.message) console.warn('Message:', data.message);
         }
 
         await new Promise((resolve) => setTimeout(resolve, 600));

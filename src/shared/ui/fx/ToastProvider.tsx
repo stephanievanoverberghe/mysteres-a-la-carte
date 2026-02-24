@@ -17,11 +17,11 @@ type ToastInput = {
 type ToastItem = ToastInput & { id: string; createdAt: number };
 
 type ToastApi = {
-  show: (t: ToastInput) => string;
-  success: (title: string, description?: string) => string;
-  info: (title: string, description?: string) => string;
-  warning: (title: string, description?: string) => string;
-  error: (title: string, description?: string) => string;
+  show: (_toast: ToastInput) => string;
+  success: (_title: string, _description?: string) => string;
+  info: (_title: string, _description?: string) => string;
+  warning: (_title: string, _description?: string) => string;
+  error: (_title: string, _description?: string) => string;
 };
 
 const ToastCtx = createContext<ToastApi | null>(null);

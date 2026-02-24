@@ -3,7 +3,7 @@ import { Search } from 'lucide-react';
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-type Props = { q: string; onChange: (value: string) => void };
+type Props = { q: string; onChange: (_value: string) => void };
 
 export default function NotFoundSearch({ q, onChange }: Props) {
   return (

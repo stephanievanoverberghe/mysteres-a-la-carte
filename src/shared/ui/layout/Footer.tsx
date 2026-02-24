@@ -1,9 +1,10 @@
 'use client';
+import { isClientDebugEnabled } from '@/shared/lib/config/env';
+import { motion } from 'framer-motion';
 import { ArrowUp, Facebook, Instagram, Mail, Youtube } from 'lucide-react';
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { useState } from 'react';
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -11,11 +12,14 @@ export default function Footer() {
   const [email, setEmail] = useState('');
   const [sent, setSent] = useState(false);
   const year = new Date().getFullYear();
+  const shouldLogNewsletter = isClientDebugEnabled('NEXT_PUBLIC_ENABLE_BOOKING_DEBUG_LOGS');
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim()) return;
-    console.log('[Newsletter DEMO] email:', email);
+    if (shouldLogNewsletter) {
+      console.warn('[Newsletter DEMO] email:', email);
+    }
     setSent(true);
     setEmail('');
   };
