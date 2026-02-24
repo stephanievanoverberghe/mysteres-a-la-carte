@@ -82,9 +82,9 @@ Priorité 3 : industrialiser perf/SEO/a11y (budgets, metadata, audits automatis�
 
 ## 7) SEO & Metadata
 
-- [ ] Compléter `metadata` dans `src/app/layout.tsx` avec `alternates.canonical`, `keywords`, `authors`, `category`. (Impact: Med | Effort: S | Risk: Low)
-- [ ] Ajouter des metadata spécifiques aux pages légales (`openGraph`, canonical) dans `src/app/legal-notice/page.tsx`, `src/app/privacy-policy/page.tsx`, `src/app/terms/page.tsx`. (Impact: Med | Effort: S | Risk: Low)
-- [ ] Vérifier la cohérence `NEXT_PUBLIC_SITE_URL` (trailing slash) dans `layout.tsx`, `robots.ts`, `sitemap.ts` pour éviter les URL doubles. (Impact: Med | Effort: S | Risk: Low)
+- [x] Compléter `metadata` dans `src/app/layout.tsx` avec `alternates.canonical`, `keywords`, `authors`, `category`. (Impact: Med | Effort: S | Risk: Low)
+- [x] Ajouter des metadata spécifiques aux pages légales (`openGraph`, canonical) dans `src/app/legal-notice/page.tsx`, `src/app/privacy-policy/page.tsx`, `src/app/terms/page.tsx`. (Impact: Med | Effort: S | Risk: Low)
+- [x] Vérifier la cohérence `NEXT_PUBLIC_SITE_URL` (trailing slash) dans `layout.tsx`, `robots.ts`, `sitemap.ts` pour éviter les URL doubles. (Impact: Med | Effort: S | Risk: Low)
 
 ## 8) Accessibilité (a11y)
 

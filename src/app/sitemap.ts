@@ -1,7 +1,8 @@
 import type { MetadataRoute } from 'next';
+import { getSiteUrlObject } from '@/shared/lib/seo/site-url';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const base = new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://mysteres-a-la-carte.vercel.app/');
+    const base = getSiteUrlObject();
     const routes = ['/', '/privacy-policy', '/terms', '/legal-notice'];
     const now = new Date().toISOString();
 

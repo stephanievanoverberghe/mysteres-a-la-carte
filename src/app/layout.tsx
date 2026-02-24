@@ -1,16 +1,20 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import { ToastProvider } from '@/shared/ui/fx/ToastProvider';
 import SkipLink from '@/shared/ui/navigation/SkipLink';
 import ScrollOrchestrator from '@/shared/ui/fx/scroll/ScrollOrchestrator';
 import FXMounts from '@/shared/ui/fx/FXMounts';
+import { getSiteUrlObject } from '@/shared/lib/seo/site-url';
 
 export const metadata: Metadata = {
-    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://mysteres-a-la-carte.vercel.app/'),
+    metadataBase: getSiteUrlObject(),
     title: { default: 'Mystères à la carte', template: '%s — Mystères à la carte' },
     description: 'Escape game culinaire à Bastille. Démo one-page pour portfolio.',
+    alternates: { canonical: '/' },
+    keywords: ['escape game culinaire', 'Bastille', 'expérience immersive', 'restaurant immersif', 'mystères à la carte'],
+    authors: [{ name: 'Alchimiste Créations / Stéphanie Vanoverberghe' }],
+    category: 'food and entertainment',
     openGraph: {
         type: 'website',
         url: '/',
@@ -40,7 +44,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <FXMounts />
                     {children}
                 </ToastProvider>
-                <SpeedInsights />
             </body>
         </html>
     );

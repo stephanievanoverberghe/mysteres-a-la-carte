@@ -2,10 +2,20 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { TERMS_SECTIONS } from '@/content/legal';
 import { SITE_INFO } from '@/content/site';
+import { buildCanonicalUrl } from '@/shared/lib/seo/site-url';
+
+const termsPath = '/terms';
 
 export const metadata: Metadata = {
     title: 'Conditions générales d’utilisation — Mystères à la carte',
     description: 'CGU du site démo Mystères à la carte.',
+    alternates: { canonical: termsPath },
+    openGraph: {
+        url: buildCanonicalUrl(termsPath),
+        title: 'Conditions générales d’utilisation — Mystères à la carte',
+        description: 'CGU du site démo Mystères à la carte.',
+        type: 'article',
+    },
     robots: { index: true, follow: true },
 };
 

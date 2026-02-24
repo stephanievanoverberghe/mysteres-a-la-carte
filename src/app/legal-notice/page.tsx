@@ -2,10 +2,20 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { LEGAL_NOTICE_SECTIONS } from '@/content/legal';
 import { SITE_INFO } from '@/content/site';
+import { buildCanonicalUrl } from '@/shared/lib/seo/site-url';
+
+const legalNoticePath = '/legal-notice';
 
 export const metadata: Metadata = {
     title: 'Mentions légales — Mystères à la carte',
     description: 'Informations légales du site démo Mystères à la carte.',
+    alternates: { canonical: legalNoticePath },
+    openGraph: {
+        url: buildCanonicalUrl(legalNoticePath),
+        title: 'Mentions légales — Mystères à la carte',
+        description: 'Informations légales du site démo Mystères à la carte.',
+        type: 'article',
+    },
     robots: { index: true, follow: true },
 };
 

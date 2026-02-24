@@ -1,7 +1,8 @@
 import type { MetadataRoute } from 'next';
+import { getSiteUrl } from '@/shared/lib/seo/site-url';
 
 export default function robots(): MetadataRoute.Robots {
-    const host = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://mysteres-a-la-carte.vercel.app/';
+    const host = getSiteUrl();
     return {
         rules: [{ userAgent: '*', allow: '/' }],
         sitemap: `${host}/sitemap.xml`,

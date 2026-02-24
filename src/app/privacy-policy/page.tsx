@@ -2,10 +2,20 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { PRIVACY_POLICY_SECTIONS } from '@/content/legal';
 import { SITE_INFO } from '@/content/site';
+import { buildCanonicalUrl } from '@/shared/lib/seo/site-url';
+
+const privacyPolicyPath = '/privacy-policy';
 
 export const metadata: Metadata = {
     title: 'Politique de confidentialité — Mystères à la carte',
     description: 'Politique de confidentialité du site démo Mystères à la carte.',
+    alternates: { canonical: privacyPolicyPath },
+    openGraph: {
+        url: buildCanonicalUrl(privacyPolicyPath),
+        title: 'Politique de confidentialité — Mystères à la carte',
+        description: 'Politique de confidentialité du site démo Mystères à la carte.',
+        type: 'article',
+    },
     robots: { index: true, follow: true },
 };
 
