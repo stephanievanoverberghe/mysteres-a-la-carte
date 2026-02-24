@@ -48,7 +48,31 @@
 - `npm run lint` : applique ESLint (ordre d'imports, imports inutilisés, `no-console` avec allowlist `warn/error` pour la démo).
 - `npm run typecheck` : contrôle TypeScript strict sans émission.
 - `npm run test:coverage` : exécute les tests unitaires avec un seuil de couverture.
+- `npm run dev:strict` : lance le serveur de dev après vérifications format/lint/typecheck.
+- `npm run check:all` : exécute l’ensemble des quality gates en local avant push.
 - CI GitHub Actions : enchaîne format, lint, typecheck, tests et build puis lance un audit des dépendances (`npm audit --audit-level=high`).
+
+---
+
+## ⚡ Décisions performance
+
+- **FX opt-in** : les effets visuels sont montés via un orchestrateur dédié et restent non bloquants pour le rendu principal.
+- **Lazy loading ciblé** : la dataviz est chargée dynamiquement pour réduire le JS initial de la home.
+- **Reduced motion** : les animations doivent respecter `prefers-reduced-motion` et proposer une expérience dégradée propre.
+
+### Limites connues
+
+- Les micro-FX sont volontairement visuels (projet démo) et peuvent rester coûteux sur des appareils très modestes.
+- Le curseur personnalisé et certains effets sont moins pertinents sur mobile/tablette.
+- Les budgets Web Vitals automatisés ne sont pas encore branchés en CI.
+
+---
+
+## 🔐 Environnement
+
+- Copier `.env.example` vers `.env.local` pour configurer l’exécution locale.
+- `NEXT_PUBLIC_SITE_URL` est obligatoire pour générer des URLs canoniques cohérentes (metadata, sitemap, robots).
+- Utiliser une URL complète sans slash final (ex: `https://example.com`).
 
 ---
 

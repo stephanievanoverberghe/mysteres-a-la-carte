@@ -109,10 +109,10 @@ Priorité 3 : industrialiser perf/SEO/a11y (budgets, metadata, audits automatis�
 
 ## 11) Docs & Developer Experience
 
-- [ ] Créer `docs/architecture.md` avec responsabilités de couches (`app`, `features`, `shared`, `services`). (Impact: High | Effort: S | Risk: Low)
-- [ ] Documenter dans `README.md` les décisions de perf (FX opt-in, lazy loading, reduced motion) et leurs limites. (Impact: Med | Effort: S | Risk: Low)
-- [ ] Ajouter un fichier `.env.example` (ex: `NEXT_PUBLIC_SITE_URL`) et les conventions d’environnement. (Impact: Med | Effort: S | Risk: Low)
-- [ ] Ajouter des scripts DX (`dev:strict`, `check:all`) pour faciliter l’onboarding. (Impact: Med | Effort: S | Risk: Low)
+- [x] Créer `docs/architecture.md` avec responsabilités de couches (`app`, `features`, `shared`, `services`). (Impact: High | Effort: S | Risk: Low)
+- [x] Documenter dans `README.md` les décisions de perf (FX opt-in, lazy loading, reduced motion) et leurs limites. (Impact: Med | Effort: S | Risk: Low)
+- [x] Ajouter un fichier `.env.example` (ex: `NEXT_PUBLIC_SITE_URL`) et les conventions d’environnement. (Impact: Med | Effort: S | Risk: Low)
+- [x] Ajouter des scripts DX (`dev:strict`, `check:all`) pour faciliter l’onboarding. (Impact: Med | Effort: S | Risk: Low)
 
 ## 12) Security & Robustness
 
