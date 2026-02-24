@@ -116,7 +116,7 @@ Priorité 3 : industrialiser perf/SEO/a11y (budgets, metadata, audits automatis�
 
 ## 12) Security & Robustness
 
-- [ ] Ajouter des headers de sécurité (CSP, X-Frame-Options, Referrer-Policy) dans `next.config.ts`. (Impact: High | Effort: M | Risk: Med)
-- [ ] Vérifier et documenter la politique de liens externes (`rel="noreferrer noopener"`) sur tout `target="_blank"` des pages légales et footer. (Impact: Med | Effort: S | Risk: Low)
-- [ ] Encadrer le logging navigateur de données utilisateur dans `BookingForm.tsx` derrière un flag de développement explicite. (Impact: High | Effort: S | Risk: Low)
-- [ ] Ajouter une page d’erreur globale `src/app/error.tsx` avec fallback utilisateur et journalisation minimale. (Impact: Med | Effort: S | Risk: Low)
+- [x] Ajouter des headers de sécurité (CSP, X-Frame-Options, Referrer-Policy) dans `next.config.ts`. (Impact: High | Effort: M | Risk: Med)
+- [x] Vérifier et documenter la politique de liens externes (`rel="noreferrer noopener"`) sur tout `target="_blank"` des pages légales et footer. (Impact: Med | Effort: S | Risk: Low)
+- [x] Encadrer le logging navigateur de données utilisateur dans `BookingForm.tsx` derrière un flag de développement explicite. (Impact: High | Effort: S | Risk: Low)
+- [x] Ajouter une page d’erreur globale `src/app/error.tsx` avec fallback utilisateur et journalisation minimale. (Impact: Med | Effort: S | Risk: Low)

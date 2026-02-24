@@ -3,6 +3,7 @@
 import type { BookingFormInput, BookingFormValues } from '@/features/booking/model/booking.schema';
 import { useCallback, useState } from 'react';
 import { BOOKING_DEFAULT_VALUES } from '@/features/booking/model/booking.constants';
+import { isClientDebugEnabled } from '@/shared/lib/config/env';
 
 type BookingStatus = 'idle' | 'loading' | 'success' | 'error';
 
@@ -16,6 +17,7 @@ export function useBookingSubmission({ onSuccess, onError, reset }: UseBookingSu
   const [status, setStatus] = useState<BookingStatus>('idle');
   const [openSuccess, setOpenSuccess] = useState(false);
   const [lastSubmission, setLastSubmission] = useState<Partial<BookingFormValues>>({});
+  const shouldLogSubmission = isClientDebugEnabled('NEXT_PUBLIC_ENABLE_BOOKING_DEBUG_LOGS');
 
   const submit = useCallback(
     async (data: BookingFormValues) => {
@@ -30,19 +32,21 @@ export function useBookingSubmission({ onSuccess, onError, reset }: UseBookingSu
           return;
         }
 
-        console.group('%c[Reservation DEMO]', 'color:#D4AF37;font-weight:bold;');
-        console.table({
-          Nom: data.name,
-          Email: data.email,
-          Téléphone: data.phone,
-          Date: data.date,
-          Heure: data.time,
-          Personnes: data.people,
-          Menu: data.menuId,
-        });
-        if (data.allergies) console.log('Allergies:', data.allergies);
-        if (data.message) console.log('Message:', data.message);
-        console.groupEnd();
+        if (shouldLogSubmission) {
+          console.group('%c[Reservation DEMO]', 'color:#D4AF37;font-weight:bold;');
+          console.table({
+            Nom: data.name,
+            Email: data.email,
+            Téléphone: data.phone,
+            Date: data.date,
+            Heure: data.time,
+            Personnes: data.people,
+            Menu: data.menuId,
+          });
+          if (data.allergies) console.log('Allergies:', data.allergies);
+          if (data.message) console.log('Message:', data.message);
+          console.groupEnd();
+        }
 
         await new Promise((resolve) => setTimeout(resolve, 600));
 
@@ -61,7 +65,7 @@ export function useBookingSubmission({ onSuccess, onError, reset }: UseBookingSu
         onError('Échec de l’envoi', 'Réessayez dans un instant.');
       }
     },
-    [onError, onSuccess, reset],
+    [onError, onSuccess, reset, shouldLogSubmission],
   );
 
   return {

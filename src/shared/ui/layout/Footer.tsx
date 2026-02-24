@@ -197,7 +197,7 @@ function Social({
     <a
       href={href}
       target="_blank"
-      rel="noreferrer"
+      rel="noopener noreferrer"
       aria-label={label}
       title={label}
       className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-muted bg-background/60 hover:text-primary hover:border-primary transition-colors"

@@ -78,7 +78,7 @@ export default function Contact() {
                     {ADDRESS_LINE}
                   </address>
                   <div className="mt-4 flex flex-wrap gap-3">
-                    <a href={MAPS_LINK} target="_blank" rel="noreferrer" className="btn">
+                    <a href={MAPS_LINK} target="_blank" rel="noopener noreferrer" className="btn">
                       Itinéraire
                     </a>
                     <a href="#reserver" className="btn" aria-label="Aller à la section Réserver">

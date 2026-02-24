@@ -68,3 +68,9 @@ Ce document formalise l’architecture cible du projet et les responsabilités d
 - Les constantes éditoriales doivent aller dans `src/content`.
 - Un composant utilisé dans plusieurs features doit être déplacé vers `shared/ui`.
 - Les effets visuels doivent rester optionnels et respecter `prefers-reduced-motion`.
+
+## Sécurité et robustesse
+
+- Les headers de sécurité HTTP sont définis au niveau racine dans `next.config.ts` pour s’appliquer à toutes les routes App Router.
+- Les liens externes ouverts dans un nouvel onglet doivent utiliser `rel="noopener noreferrer"`.
+- Les logs de données utilisateur côté navigateur doivent être strictement réservés au développement et protégés par un flag d’environnement explicite.

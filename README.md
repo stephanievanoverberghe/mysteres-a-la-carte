@@ -72,7 +72,16 @@
 
 - Copier `.env.example` vers `.env.local` pour configurer l’exécution locale.
 - `NEXT_PUBLIC_SITE_URL` est obligatoire pour générer des URLs canoniques cohérentes (metadata, sitemap, robots).
+- `NEXT_PUBLIC_ENABLE_BOOKING_DEBUG_LOGS` active les logs de soumission côté navigateur uniquement en développement.
 - Utiliser une URL complète sans slash final (ex: `https://example.com`).
+
+---
+
+## 🛡️ Security & robustness
+
+- Les headers HTTP de sécurité sont centralisés dans `next.config.ts` (CSP, `X-Frame-Options`, `Referrer-Policy`, etc.).
+- Toute ouverture de lien externe avec `target="_blank"` doit inclure `rel="noopener noreferrer"`.
+- La page d’erreur globale `src/app/error.tsx` fournit un fallback utilisateur et un logging minimal pour le diagnostic.
 
 ---
 
