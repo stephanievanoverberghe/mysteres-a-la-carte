@@ -2,6 +2,8 @@
 import { motion } from 'framer-motion';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, LabelList } from 'recharts';
 import ScrollReveal from '@/shared/ui/fx/ScrollReveal';
+import SectionTitle from '@/shared/ui/SectionTitle';
+import SectionDivider from '@/shared/ui/SectionDivider';
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -54,16 +56,16 @@ export default function Dataviz() {
                     <motion.div variants={containerV} initial="hidden" whileInView="show" viewport={{ once: true, margin: '-15% 0px -20% 0px' }}>
                         <motion.div variants={blockV} className="max-w-2xl">
                             <ScrollReveal>
-                                <h2 id="dv-title" className="text-3xl md:text-4xl font-semibold">
-                                    Le saviez-vous&nbsp;?
-                                </h2>
+                                <SectionTitle id="dv-title">Le saviez-vous&nbsp;?</SectionTitle>
                             </ScrollReveal>
                             <p className="mt-3 text-muted-foreground">
                                 Chez nos joueurs tests, les <span className="text-foreground">indices gustatifs</span> sont les plus décisifs.
                             </p>
                         </motion.div>
 
-                        <motion.div variants={blockV} className="mt-6 h-px w-full bg-[linear-gradient(90deg,transparent,rgba(212,175,55,0.6),transparent)]" />
+                        <motion.div variants={blockV}>
+                            <SectionDivider className="mt-6" />
+                        </motion.div>
 
                         <motion.div variants={blockV} className="mt-8 rounded-2xl border border-muted bg-background/60 p-6 shadow-soft">
                             <div className="h-64 w-full">

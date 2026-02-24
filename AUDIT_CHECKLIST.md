@@ -40,14 +40,14 @@ Priorité 3 : industrialiser perf/SEO/a11y (budgets, metadata, audits automatis�
 
 ### Taille et lisibilité
 
-- [ ] Scinder `src/components/BookingForm.tsx` en sous-composants (`BookingFields`, `BookingConsent`, `BookingActions`) pour améliorer la lisibilité et la testabilité. (Impact: High | Effort: M | Risk: Med)
-- [ ] Scinder `src/components/Header.tsx` (desktop nav, mobile sheet, hooks de scroll) en composants dédiés. (Impact: High | Effort: M | Risk: Med)
-- [ ] Scinder `src/components/NotFoundView.tsx` en blocs (hero, recherche, raccourcis, actions) avec props explicites. (Impact: Med | Effort: M | Risk: Low)
+- [x] Scinder `src/components/BookingForm.tsx` en sous-composants (`BookingFields`, `BookingConsent`, `BookingActions`) pour améliorer la lisibilité et la testabilité. (Impact: High | Effort: M | Risk: Med)
+- [x] Scinder `src/components/Header.tsx` (desktop nav, mobile sheet, hooks de scroll) en composants dédiés. (Impact: High | Effort: M | Risk: Med)
+- [x] Scinder `src/components/NotFoundView.tsx` en blocs (hero, recherche, raccourcis, actions) avec props explicites. (Impact: Med | Effort: M | Risk: Low)
 
 ### Patterns UI
 
-- [ ] Créer des primitives `SectionTitle` et `SectionDivider` pour réduire la duplication des motifs h2 + ligne d’accent dans `Concept`, `Menus`, `Steps`, `Dataviz`, `BookingForm`, `FAQ`, `Contact`. (Impact: Med | Effort: M | Risk: Low)
-- [ ] Uniformiser les variants CTA (`btn`, `btn-ghost`) via un composant `Button` typé pour éviter les divergences de classes Tailwind. (Impact: Med | Effort: M | Risk: Low)
+- [x] Créer des primitives `SectionTitle` et `SectionDivider` pour réduire la duplication des motifs h2 + ligne d’accent dans `Concept`, `Menus`, `Steps`, `Dataviz`, `BookingForm`, `FAQ`, `Contact`. (Impact: Med | Effort: M | Risk: Low)
+- [x] Uniformiser les variants CTA (`btn`, `btn-ghost`) via un composant `Button` typé pour éviter les divergences de classes Tailwind. (Impact: Med | Effort: M | Risk: Low)
 
 ## 4) State / Data / Side Effects
 

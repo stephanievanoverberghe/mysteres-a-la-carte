@@ -1,10 +1,11 @@
 'use client';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Menu, X, ChevronRight, UtensilsCrossed } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { NAV_LINKS } from '@/content/navigation';
 import { useHeaderNavigation } from '@/features/navigation/hooks/useHeaderNavigation';
+import DesktopNav from '@/features/navigation/components/DesktopNav';
+import MobileMenuButton from '@/features/navigation/components/MobileMenuButton';
+import MobileMenuSheet from '@/features/navigation/components/MobileMenuSheet';
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -13,17 +14,11 @@ export default function Header() {
 
     return (
         <header
-            className={`
-        fixed inset-x-0 top-0 z-50 transition-transform duration-300
-        ${hidden ? '-translate-y-full md:-translate-y-full lg:translate-y-0' : 'translate-y-0'}
-        ${scrolled ? 'bg-background/70 backdrop-blur supports-[backdrop-filter]:backdrop-blur border-b border-muted' : ''}
-      `}
+            className={`fixed inset-x-0 top-0 z-50 transition-transform duration-300 ${hidden ? '-translate-y-full md:-translate-y-full lg:translate-y-0' : 'translate-y-0'} ${scrolled ? 'bg-background/70 backdrop-blur supports-[backdrop-filter]:backdrop-blur border-b border-muted' : ''}`}
         >
             <span
                 aria-hidden
-                className={`pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-[linear-gradient(90deg,transparent,var(--color-primary),transparent)] opacity-70 ${
-                    scrolled ? '' : 'opacity-0'
-                } transition-opacity`}
+                className={`pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-[linear-gradient(90deg,transparent,var(--color-primary),transparent)] opacity-70 ${scrolled ? '' : 'opacity-0'} transition-opacity`}
             />
 
             <div className="container flex items-center justify-between py-3 md:py-4">
@@ -32,36 +27,8 @@ export default function Header() {
                     <Image src="/logo.png" alt="Mystères à la Carte" width={180} height={40} className="h-8 w-auto md:h-9" priority sizes="(min-width:1024px) 180px, 140px" />
                 </Link>
 
-                <nav className="hidden lg:flex items-center gap-6" aria-label="Navigation principale">
-                    {NAV_LINKS.map((item) => (
-                        <a
-                            key={item.href}
-                            href={item.href}
-                            className={`relative inline-block py-1 transition ${active === item.href ? 'text-primary' : 'hover:text-primary'} group`}
-                        >
-                            {item.label}
-                            <span
-                                className={`absolute -bottom-1 left-0 h-[2px] w-full origin-left scale-x-0 bg-primary transition-transform duration-300 group-hover:scale-x-100 ${
-                                    active === item.href ? 'scale-x-100' : ''
-                                }`}
-                            />
-                        </a>
-                    ))}
-                    <a href="#reserver" className="btn">
-                        Réserver
-                    </a>
-                </nav>
-
-                <motion.button
-                    whileTap={{ scale: 0.96 }}
-                    className="lg:hidden p-2 rounded-xl border border-muted hover:bg-muted/20"
-                    onClick={() => setOpen((v) => !v)}
-                    aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
-                    aria-expanded={open}
-                    aria-controls="mobile-nav"
-                >
-                    {open ? <X /> : <Menu />}
-                </motion.button>
+                <DesktopNav active={active} />
+                <MobileMenuButton open={open} onToggle={() => setOpen((v) => !v)} />
             </div>
 
             <AnimatePresence>
@@ -81,71 +48,10 @@ export default function Header() {
                             />
                         </motion.div>
 
-                        <MenuSheet active={active} onClose={() => setOpen(false)} />
+                        <MobileMenuSheet active={active} onClose={() => setOpen(false)} />
                     </>
                 )}
             </AnimatePresence>
         </header>
-    );
-}
-
-function MenuSheet({ active, onClose }: { active: string; onClose: () => void }) {
-    return (
-        <motion.aside
-            key="sheet"
-            id="mobile-nav"
-            role="dialog"
-            aria-modal="true"
-            className="lg:hidden fixed inset-x-0 top-0 z-50 origin-top rounded-b-2xl border-b border-white/10 bg-background/85 backdrop-blur supports-[backdrop-filter]:backdrop-blur"
-            initial={{ y: -28, opacity: 0, scale: 0.98 }}
-            animate={{ y: 0, opacity: 1, scale: 1, transition: { duration: 0.28, ease } }}
-            exit={{ y: -20, opacity: 0, transition: { duration: 0.22, ease } }}
-            drag="y"
-            dragConstraints={{ top: 0, bottom: 0 }}
-            dragElastic={0.12}
-            onDragEnd={(_, info) => {
-                if (info.offset.y > 80) onClose();
-            }}
-        >
-            <div className="container py-4">
-                <div className="flex items-center justify-between">
-                    <Link href="#hero" onClick={onClose} className="flex items-center gap-2">
-                        <Image src="/logo.png" alt="Mystères à la Carte" width={150} height={36} className="h-8 w-auto" />
-                    </Link>
-                    <motion.button whileTap={{ scale: 0.96 }} className="p-2 rounded-xl border border-muted hover:bg-muted/20" onClick={onClose} aria-label="Fermer le menu">
-                        <X />
-                    </motion.button>
-                </div>
-
-                <motion.div className="mt-3" initial="hidden" animate="show" variants={{ hidden: {}, show: { transition: { staggerChildren: 0.05 } } }}>
-                    <p className="px-1 pb-2 text-xs uppercase tracking-wide text-muted-foreground">Explorer</p>
-                    <ul className="grid gap-1">
-                        {NAV_LINKS.filter((n) => n.href !== '#reserver').map((item) => (
-                            <motion.li key={item.href} variants={{ hidden: { y: 10, opacity: 0 }, show: { y: 0, opacity: 1, transition: { duration: 0.28, ease } } }}>
-                                <a
-                                    href={item.href}
-                                    onClick={onClose}
-                                    className={`flex items-center justify-between rounded-xl px-3 py-3 text-base transition ${active === item.href ? 'bg-primary/10 text-primary' : 'hover:bg-muted/30'}`}
-                                >
-                                    <span>{item.label}</span>
-                                    <ChevronRight className="h-4 w-4 opacity-70" />
-                                </a>
-                            </motion.li>
-                        ))}
-                    </ul>
-
-                    <div className="mt-4">
-                        <a href="#reserver" onClick={onClose} className="btn w-full justify-center">
-                            <UtensilsCrossed className="h-4 w-4" />
-                            Réserver maintenant
-                        </a>
-                    </div>
-
-                    <div className="mt-3 text-xs text-muted-foreground text-center">Bastille, Paris • 60–90&nbsp;min • 2–6 joueurs</div>
-                </motion.div>
-            </div>
-
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-background/90 to-transparent" />
-        </motion.aside>
     );
 }

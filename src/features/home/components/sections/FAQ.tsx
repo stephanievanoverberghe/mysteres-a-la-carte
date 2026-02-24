@@ -3,6 +3,8 @@ import { useState, type ReactNode } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, HelpCircle, Mail } from 'lucide-react';
 import ScrollReveal from '@/shared/ui/fx/ScrollReveal';
+import SectionTitle from '@/shared/ui/SectionTitle';
+import SectionDivider from '@/shared/ui/SectionDivider';
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -67,16 +69,14 @@ export default function FAQ() {
                         <HelpCircle className="mt-1 h-6 w-6 text-primary" />
                         <div className="max-w-2xl">
                             <ScrollReveal>
-                                <h2 id="faq-title" className="text-3xl md:text-4xl font-semibold">
-                                    FAQ
-                                </h2>
+                                <SectionTitle id="faq-title">FAQ</SectionTitle>
                             </ScrollReveal>
                             <p className="mt-3 text-muted-foreground">Les réponses aux questions les plus fréquentes.</p>
                         </div>
                     </div>
 
                     {/* ligne d’accent */}
-                    <div className="mt-6 h-px w-full bg-[linear-gradient(90deg,transparent,rgba(212,175,55,0.6),transparent)]" />
+                    <SectionDivider className="mt-6" />
 
                     <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
                         {FAQS.map((item) => (

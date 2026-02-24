@@ -3,6 +3,8 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { UtensilsCrossed } from 'lucide-react';
 import ScrollReveal from '@/shared/ui/fx/ScrollReveal';
+import SectionTitle from '@/shared/ui/SectionTitle';
+import SectionDivider from '@/shared/ui/SectionDivider';
 import { MENUS } from '@/content/menus';
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -18,14 +20,12 @@ export default function Menus() {
                 <div className="md:px-10 lg:px-0">
                     <div className="max-w-2xl">
                         <ScrollReveal>
-                            <h2 id="menus-title" className="text-3xl md:text-4xl font-semibold">
-                                Nos expériences
-                            </h2>
+                            <SectionTitle id="menus-title">Nos expériences</SectionTitle>
                         </ScrollReveal>
                         <p className="mt-3 text-muted-foreground">Quatre parcours à la carte. Choisissez votre mystère.</p>
                     </div>
 
-                    <div className="mt-6 h-px w-full bg-[linear-gradient(90deg,transparent,rgba(212,175,55,0.6),transparent)]" />
+                    <SectionDivider className="mt-6" />
 
                     <motion.div
                         variants={containerV}

@@ -4,6 +4,8 @@ import { motion, useMotionValue, useSpring, useTransform, useReducedMotion, type
 import Image from 'next/image';
 import { Lightbulb, UtensilsCrossed, Users, Search, Timer } from 'lucide-react';
 import ScrollReveal from '@/shared/ui/fx/ScrollReveal';
+import SectionTitle from '@/shared/ui/SectionTitle';
+import SectionDivider from '@/shared/ui/SectionDivider';
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -52,9 +54,7 @@ export default function Concept() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-10">
                         <div className="max-w-2xl order-2 lg:order-1">
                             <ScrollReveal>
-                                <h2 id="concept-title" className="text-3xl md:text-4xl font-semibold">
-                                    Le concept
-                                </h2>
+                                <SectionTitle id="concept-title">Le concept</SectionTitle>
                             </ScrollReveal>
                             <p className="mt-3 text-muted-foreground">Une expérience immersive qui mêle jeu d’enquête et gastronomie. 60 à 90 minutes, difficulté modulable.</p>
 
@@ -157,7 +157,7 @@ export default function Concept() {
                     </div>
 
                     {/* ligne d’accent */}
-                    <div className="mt-10 h-px w-full bg-[linear-gradient(90deg,transparent,rgba(212,175,55,0.6),transparent)]" />
+                    <SectionDivider className="mt-10" />
                 </div>
             </div>
 

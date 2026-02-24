@@ -2,6 +2,8 @@
 import { motion } from 'framer-motion';
 import { MapPin, Mail, Phone, Clock, Train, Car, Navigation } from 'lucide-react';
 import ScrollReveal from '@/shared/ui/fx/ScrollReveal';
+import SectionTitle from '@/shared/ui/SectionTitle';
+import SectionDivider from '@/shared/ui/SectionDivider';
 
 const ease = [0.22, 1, 0.36, 1] as const;
 const containerV = { hidden: {}, show: { transition: { staggerChildren: 0.06 } } };
@@ -37,16 +39,16 @@ export default function Contact() {
                             <MapPin className="mt-1 h-6 w-6 text-primary" />
                             <div className="max-w-2xl">
                                 <ScrollReveal>
-                                    <h2 id="contact-title" className="text-3xl md:text-4xl font-semibold">
-                                        Contact & Accès
-                                    </h2>
+                                    <SectionTitle id="contact-title">Contact & Accès</SectionTitle>
                                 </ScrollReveal>
                                 <p className="mt-3 text-muted-foreground">Retrouvez-nous à Bastille. Écrivez-nous ou réservez votre table.</p>
                             </div>
                         </motion.div>
 
                         {/* ligne d’accent */}
-                        <motion.div variants={blockV} className="mt-6 h-px w-full bg-[linear-gradient(90deg,transparent,rgba(212,175,55,0.6),transparent)]" />
+                        <motion.div variants={blockV}>
+                            <SectionDivider className="mt-6" />
+                        </motion.div>
 
                         {/* Grid info + carte */}
                         <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">

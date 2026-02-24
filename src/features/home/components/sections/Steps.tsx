@@ -3,6 +3,8 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Clock } from 'lucide-react';
 import ScrollReveal from '@/shared/ui/fx/ScrollReveal';
+import SectionTitle from '@/shared/ui/SectionTitle';
+import SectionDivider from '@/shared/ui/SectionDivider';
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -25,9 +27,7 @@ export default function Steps() {
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
                         <div className="max-w-2xl">
                             <ScrollReveal>
-                                <h2 id="steps-title" className="text-3xl md:text-4xl font-semibold">
-                                    À quoi vous attendre
-                                </h2>
+                                <SectionTitle id="steps-title">À quoi vous attendre</SectionTitle>
                             </ScrollReveal>
                             <p className="mt-3 text-muted-foreground">Une progression en 4 temps pour savourer l’enquête.</p>
                         </div>
@@ -37,7 +37,7 @@ export default function Steps() {
                     </div>
 
                     {/* ligne d’accent */}
-                    <div className="mt-6 h-px w-full bg-[linear-gradient(90deg,transparent,rgba(212,175,55,0.6),transparent)]" />
+                    <SectionDivider className="mt-6" />
 
                     {/* timeline mobile / grid desktop */}
                     <motion.div
