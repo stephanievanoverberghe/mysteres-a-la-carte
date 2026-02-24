@@ -1,16 +1,16 @@
 import BookingForm from '@/features/booking/components/BookingForm';
-import Concept from '@/components/Concept';
-import Contact from '@/components/Contact';
-import Dataviz from '@/components/Dataviz';
-import FAQ from '@/components/FAQ';
-import Hero from '@/components/Hero';
-import Menus from '@/components/Menus';
-import Steps from '@/components/Steps';
-import Pane from '@/components/FX/ScrollFX/Pane';
+import Concept from '@/features/home/components/sections/Concept';
+import Contact from '@/features/home/components/sections/Contact';
+import Dataviz from '@/features/home/components/sections/Dataviz';
+import FAQ from '@/features/home/components/sections/FAQ';
+import Hero from '@/features/home/components/sections/Hero';
+import Menus from '@/features/home/components/sections/Menus';
+import Steps from '@/features/home/components/sections/Steps';
+import Pane from '@/shared/ui/fx/scroll/Pane';
 
 export default function HomeSections() {
     return (
-        <main id="main">
+        <>
             <Pane translate={10} rotate={0.15} scale={0.01} className="block">
                 <Hero />
             </Pane>
@@ -42,6 +42,6 @@ export default function HomeSections() {
             <Pane translate={12} rotate={0.14} scale={0.01} className="block">
                 <Contact />
             </Pane>
-        </main>
+        </>
     );
 }

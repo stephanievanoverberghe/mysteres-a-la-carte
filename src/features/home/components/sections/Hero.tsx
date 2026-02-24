@@ -2,7 +2,7 @@
 import { useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { ChevronDown } from 'lucide-react';
-import LiveSpots from '@/components/LiveSpots';
+import LiveSpots from '@/features/home/components/ui/LiveSpots';
 import Magnetic from '@/shared/ui/fx/Magnetic';
 import { motion, useMotionValue, useTransform, useReducedMotion, LazyMotion, domAnimation } from 'framer-motion';
 

@@ -3,8 +3,8 @@ import './globals.css';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import { ToastProvider } from '@/shared/ui/fx/ToastProvider';
-import SkipLink from '@/components/SkipLink';
-import ScrollOrchestrator from '@/components/FX/ScrollFX/ScrollOrchestrator';
+import SkipLink from '@/shared/ui/navigation/SkipLink';
+import ScrollOrchestrator from '@/shared/ui/fx/scroll/ScrollOrchestrator';
 import FXMounts from '@/shared/ui/fx/FXMounts';
 
 export const metadata: Metadata = {

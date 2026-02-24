@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import BookingSuccess from '@/components/BookingSuccess';
+import BookingSuccess from '@/features/booking/components/BookingSuccess';
 import { MENUS } from '@/content/menus';
 import { useToast } from '@/shared/ui/fx/ToastProvider';
 import ScrollReveal from '@/shared/ui/fx/ScrollReveal';

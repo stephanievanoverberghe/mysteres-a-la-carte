@@ -1,4 +1,4 @@
-import Footer from '@/components/Footer';
+import Footer from '@/shared/ui/layout/Footer';
 import HomeSections from '@/features/home/components/HomeSections';
 import Header from '@/features/navigation/components/Header';
 
