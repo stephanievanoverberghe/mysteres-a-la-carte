@@ -1,34 +1,19 @@
 'use client';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import BookingSuccess from '@/components/BookingSuccess';
-import { MENU_IDS, MENUS } from '@/content/menus';
-import { useToast } from './FX/UI/ToastProvider';
-import ScrollReveal from './FX/UI/ScrollReveal';
+import { MENUS } from '@/content/menus';
+import { useToast } from '@/components/FX/UI/ToastProvider';
+import ScrollReveal from '@/shared/ui/fx/ScrollReveal';
 
-/** Schéma Zod */
-const formSchema = z.object({
-    name: z.string().min(2, 'Nom requis'),
-    email: z.string().email('Email invalide'),
-    phone: z.string().min(6, 'Téléphone requis'),
-    date: z.string().min(1, 'Date requise'),
-    time: z.string().min(1, 'Heure requise'),
-    people: z.coerce.number().int().min(1, 'Min 1').max(8, 'Max 8'),
-    menuId: z.enum(MENU_IDS),
-    allergies: z.string().max(600).default(''),
-    message: z.string().max(800).default(''),
-    consent: z.boolean().refine((v) => v === true, { message: 'Consentement requis' }),
-    bot: z.string().max(0).default(''), // honeypot
-});
-type FormValues = z.output<typeof formSchema>;
-type FormInput = z.input<typeof formSchema>;
+import { BOOKING_DEFAULT_VALUES } from '@/features/booking/model/booking.constants';
+import { bookingFormSchema, type BookingFormInput, type BookingFormValues } from '@/features/booking/model/booking.schema';
 
 export default function BookingForm() {
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
     const [openSuccess, setOpenSuccess] = useState(false);
-    const [last, setLast] = useState<Partial<FormValues>>({});
+    const [last, setLast] = useState<Partial<BookingFormValues>>({});
     const { success, error } = useToast();
 
     const {
@@ -36,24 +21,12 @@ export default function BookingForm() {
         handleSubmit,
         formState: { errors },
         reset,
-    } = useForm<FormInput, unknown, FormValues>({
-        resolver: zodResolver(formSchema),
-        defaultValues: {
-            name: '',
-            email: '',
-            phone: '',
-            date: '',
-            time: '',
-            people: 2,
-            menuId: MENUS[0].id,
-            allergies: '',
-            message: '',
-            consent: false,
-            bot: '',
-        },
+    } = useForm<BookingFormInput, unknown, BookingFormValues>({
+        resolver: zodResolver(bookingFormSchema),
+        defaultValues: BOOKING_DEFAULT_VALUES,
     });
 
-    const onSubmit = async (data: FormValues) => {
+    const onSubmit = async (data: BookingFormValues) => {
         setStatus('loading');
         try {
             // Honeypot: si rempli, on “réussit” silencieusement
@@ -61,19 +34,7 @@ export default function BookingForm() {
                 setStatus('success');
                 setOpenSuccess(true);
                 success('Demande envoyée', 'Nous confirmons sous 24 h ouvrées.');
-                reset({
-                    name: '',
-                    email: '',
-                    phone: '',
-                    date: '',
-                    time: '',
-                    people: 2,
-                    menuId: MENUS[0].id,
-                    allergies: '',
-                    message: '',
-                    consent: false,
-                    bot: '',
-                });
+                reset(BOOKING_DEFAULT_VALUES);
                 return;
             }
 
@@ -100,19 +61,7 @@ export default function BookingForm() {
             setOpenSuccess(true);
             success('Demande envoyée', 'Nous confirmons sous 24 h ouvrées.');
 
-            reset({
-                name: '',
-                email: '',
-                phone: '',
-                date: '',
-                time: '',
-                people: 2,
-                menuId: MENUS[0].id,
-                allergies: '',
-                message: '',
-                consent: false,
-                bot: '',
-            });
+            reset(BOOKING_DEFAULT_VALUES);
         } catch {
             setStatus('error');
             error('Échec de l’envoi', 'Réessayez dans un instant.');
