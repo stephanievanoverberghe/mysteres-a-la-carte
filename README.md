@@ -50,6 +50,7 @@
 - `npm run test:coverage` : exécute les tests unitaires avec un seuil de couverture.
 - `npm run dev:strict` : lance le serveur de dev après vérifications format/lint/typecheck.
 - `npm run check:all` : exécute l’ensemble des quality gates en local avant push.
+- `npm run fx:size` : mesure le poids source + gzip des composants FX critiques avec budget d'échec.
 - CI GitHub Actions : enchaîne format, lint, typecheck, tests et build puis lance un audit des dépendances (`npm audit --audit-level=high`).
 
 ---

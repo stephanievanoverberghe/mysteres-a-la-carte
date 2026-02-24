@@ -34,6 +34,9 @@ jobs:
       - name: Test coverage gate
         run: npm run test:coverage
 
+      - name: FX size budget
+        run: npm run fx:size
+
       - name: Build
         run: npm run build
 

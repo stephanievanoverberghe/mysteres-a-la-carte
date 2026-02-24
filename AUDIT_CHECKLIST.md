@@ -2,6 +2,12 @@
 
 ## Résumé — 3 priorités
 
+## Checkup de validation (2026-02-24)
+
+- ✅ Points terminés vérifiés : **47/51**
+- 🔧 Points restants : **4/51** (Web Vitals CI, axe automatisé, Vitest/Testing Library, Playwright)
+- 🧭 Niveau global estimé du site : **8.6/10**
+
 Priorité 1 : clarifier les boundaries UI/domain/data pour réduire le couplage des composants monolithiques.
 Priorité 2 : renforcer les garde-fous qualité (tests, CI, conventions lint/typing) pour éviter la régression silencieuse.
 Priorité 3 : industrialiser perf/SEO/a11y (budgets, metadata, audits automatisés) sur la home one-page et les pages légales.
@@ -73,7 +79,7 @@ Priorité 3 : industrialiser perf/SEO/a11y (budgets, metadata, audits automatis�
 ### Chargement et bundles
 
 - [x] Dynamiser le chargement de `Dataviz` dans `src/app/page.tsx` (comme annoncé dans le README) pour éviter de charger Recharts sur l’entrée critique. (Impact: High | Effort: S | Risk: Low)
-- [ ] Mesurer la taille JS de chaque composant FX (`TopLoader`, `CursorGlow`, `Splash`, `ScrollProgress`) et conditionner leur montage selon viewport/préférences utilisateur. (Impact: Med | Effort: M | Risk: Low)
+- [x] Mesurer la taille JS de chaque composant FX (`TopLoader`, `CursorGlow`, `Splash`, `ScrollProgress`) et conditionner leur montage selon viewport/préférences utilisateur. (Impact: Med | Effort: M | Risk: Low)
 
 ### Rendu et interactions
 
