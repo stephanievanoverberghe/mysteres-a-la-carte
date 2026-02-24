@@ -1,8 +1,8 @@
 'use client';
 import { useRef } from 'react';
-import { motion, useMotionValue, useSpring, useTransform, useReducedMotion, type MotionValue } from 'framer-motion';
+import { motion, type MotionValue, useMotionValue, useReducedMotion, useSpring, useTransform } from 'framer-motion';
 import Image from 'next/image';
-import { Lightbulb, UtensilsCrossed, Users, Search, Timer } from 'lucide-react';
+import { Lightbulb, Search, Timer, Users, UtensilsCrossed } from 'lucide-react';
 import ScrollReveal from '@/shared/ui/fx/ScrollReveal';
 import SectionTitle from '@/shared/ui/SectionTitle';
 import SectionDivider from '@/shared/ui/SectionDivider';

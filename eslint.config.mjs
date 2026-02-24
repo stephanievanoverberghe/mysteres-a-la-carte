@@ -2,7 +2,7 @@ import tsParser from '@typescript-eslint/parser';
 
 const eslintConfig = [
   {
-    ignores: ['node_modules/**', '.next/**', 'out/**', 'dist/**'],
+    ignores: ['node_modules/**', '.next/**', 'out/**', 'dist/**', 'coverage/**'],
   },
   {
     files: ['**/*.ts', '**/*.tsx'],
@@ -17,6 +17,15 @@ const eslintConfig = [
     rules: {
       complexity: ['warn', 12],
       'max-lines': ['warn', { max: 250, skipBlankLines: true, skipComments: true }],
+      'no-console': ['warn', { allow: ['warn', 'error'] }],
+      'sort-imports': ['warn', { ignoreDeclarationSort: false, ignoreCase: true }],
+      'no-unused-vars': ['warn', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
+    },
+  },
+  {
+    files: ['tests/**/*.{ts,tsx}', '**/*.test.{ts,tsx}'],
+    rules: {
+      'no-console': 'off',
     },
   },
   {

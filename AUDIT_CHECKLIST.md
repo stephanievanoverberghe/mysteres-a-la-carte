@@ -97,15 +97,15 @@ Priorité 3 : industrialiser perf/SEO/a11y (budgets, metadata, audits automatis�
 
 - [ ] Mettre en place Vitest + Testing Library et couvrir `BookingForm`, `Header`, `ToastProvider`, `NotFoundView`. (Impact: High | Effort: M | Risk: Med)
 - [ ] Ajouter des tests d’intégration Playwright pour les parcours critiques (navigation ancre, soumission formulaire démo, page 404). (Impact: High | Effort: M | Risk: Med)
-- [ ] Ajouter un script `npm run typecheck` (`tsc --noEmit`) et l’imposer en CI. (Impact: High | Effort: S | Risk: Low)
-- [ ] Ajouter un seuil de couverture minimal (ex: 70%) avant merge. (Impact: Med | Effort: S | Risk: Low)
+- [x] Ajouter un script `npm run typecheck` (`tsc --noEmit`) et l’imposer en CI. (Impact: High | Effort: S | Risk: Low)
+- [x] Ajouter un seuil de couverture minimal (ex: 70%) avant merge. (Impact: Med | Effort: S | Risk: Low)
 
 ## 10) Tooling (ESLint/Prettier/CI)
 
-- [ ] Ajouter Prettier + `eslint-config-prettier` et un script `format:check` pour stabiliser le style. (Impact: Med | Effort: S | Risk: Low)
-- [ ] Étendre `eslint.config.mjs` avec règles `import/order`, `unused-imports`, `no-console` (allowlist démo documentée). (Impact: Med | Effort: S | Risk: Low)
-- [ ] Créer un pipeline CI (lint + typecheck + tests + build) via GitHub Actions. (Impact: High | Effort: M | Risk: Low)
-- [ ] Ajouter un contrôle des dépendances vulnérables (`npm audit --audit-level=high`) en CI. (Impact: Med | Effort: S | Risk: Low)
+- [x] Ajouter Prettier + `eslint-config-prettier` et un script `format:check` pour stabiliser le style. (Impact: Med | Effort: S | Risk: Low)
+- [x] Étendre `eslint.config.mjs` avec règles `import/order`, `unused-imports`, `no-console` (allowlist démo documentée). (Impact: Med | Effort: S | Risk: Low)
+- [x] Créer un pipeline CI (lint + typecheck + tests + build) via GitHub Actions. (Impact: High | Effort: M | Risk: Low)
+- [x] Ajouter un contrôle des dépendances vulnérables (`npm audit --audit-level=high`) en CI. (Impact: Med | Effort: S | Risk: Low)
 
 ## 11) Docs & Developer Experience
 

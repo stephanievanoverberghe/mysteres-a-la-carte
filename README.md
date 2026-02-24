@@ -14,8 +14,8 @@
 - **Animations ciblées** : Framer Motion **uniquement** dans le _Hero_ ; reveal CSS ailleurs
 - **FX doux et opt-in** : TopLoader, scroll progress, cursor glow, splash (montés proprement)
 - **Formulaire de réservation** (demo, sans backend) :
-    - `react-hook-form` + validation Zod **chargée à la demande**
-    - honeypot anti-bot, toasts globaux, overlay de succès
+  - `react-hook-form` + validation Zod **chargée à la demande**
+  - honeypot anti-bot, toasts globaux, overlay de succès
 - **Sections** : Hero, Concept (image tilt), Menus (cards visuelles), Steps, Dataviz, Réserver, FAQ, Contact (embed Google Maps optionnel)
 - **Pages légales** : mentions légales, CGV, politique de confidentialité
 - **Accessibilité** : `SkipLink`, contrastes, `prefers-reduced-motion`
@@ -42,17 +42,27 @@
 
 ---
 
+## 🧰 Tooling & quality gates
+
+- `npm run format:check` : vérifie le style avec Prettier.
+- `npm run lint` : applique ESLint (ordre d'imports, imports inutilisés, `no-console` avec allowlist `warn/error` pour la démo).
+- `npm run typecheck` : contrôle TypeScript strict sans émission.
+- `npm run test:coverage` : exécute les tests unitaires avec un seuil de couverture.
+- CI GitHub Actions : enchaîne format, lint, typecheck, tests et build puis lance un audit des dépendances (`npm audit --audit-level=high`).
+
+---
+
 ## ✨ Fonctionnalités
 
 - **Hero visuel tendance** (image de fond, glow doré, grain animé, parallax léger)
 - **Header mobile/tablette premium** (sheet, liens soulignés animés, CTA “Réserver”)
 - **Sections riches**
-    - Concept (visuel tilt/parallax + badges 3D)
-    - Menus (cards visuelles responsives, pricing, tags, CTA)
-    - Steps (timeline 1-2-3-4)
-    - Dataviz _light_ (Recharts) — lazy et SSR off
-    - Réserver (RHF + Zod, honeypot, toasts, overlay succès)
-    - FAQ, Contact (Google Maps : fallback statique)
+  - Concept (visuel tilt/parallax + badges 3D)
+  - Menus (cards visuelles responsives, pricing, tags, CTA)
+  - Steps (timeline 1-2-3-4)
+  - Dataviz _light_ (Recharts) — lazy et SSR off
+  - Réserver (RHF + Zod, honeypot, toasts, overlay succès)
+  - FAQ, Contact (Google Maps : fallback statique)
 - **FX opt-in** : Top loader, Scroll progress, Cursor glow, Splash (logo), Orchestrateur de scroll (effets doux à partir de `lg`)
 - **Pages légales** : mentions, CGV, confidentialité (cohérentes démo / sans stockage)
 
